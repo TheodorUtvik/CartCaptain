@@ -1,0 +1,29 @@
+# Maven
+
+target/
+
+# IntelliJ
+
+.idea/
+*.iml
+
+# VS-Code.vscode/*
+
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# Eclipse m2e generated files
+# Eclipse Core
+.project#
+
+#DT-specific (Eclipse Java Development Tools)
+.classpath
