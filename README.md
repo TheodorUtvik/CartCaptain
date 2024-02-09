@@ -5,6 +5,8 @@ Group Members: Theodor Sjetnan Utvik, Sigurd Riseth, Halvard Nordberg, Simon Sni
 
 ## Project description
 
+This project...
+
 [//]: # (TODO: Write a short description of your project/product here.)
 
 ## Project structure
