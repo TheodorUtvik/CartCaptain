@@ -115,6 +115,6 @@ public class FoodItem {
    */
 
   public void printInfo() {
-    System.out.println("Name: " + name + ", Quantity: " + quantity + ", Unit: " + unit + ", Type: " + foodType
+    System.out.println("Name: " + name + ", Quantity: " + quantity + ", Unit: " + unit + ", Type: " + foodType);
   }
 }
