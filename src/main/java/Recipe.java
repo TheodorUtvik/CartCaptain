@@ -9,8 +9,8 @@ import java.util.ArrayList;
  * <li>Approach</li>
  * <li>Image</li>
  *
- * @version 0.0.2
  * @author Theodor Sjetnan Utvik
+ * @version 0.0.2
  * @since 26.02.2024
  */
 
@@ -46,6 +46,7 @@ public class Recipe {
 
   /**
    * Validates that the recipe is not a null value. If it is invalid, a correction String is set.
+   *
    * @param recipeName is validated
    */
   private void setRecipeName(String recipeName) {
@@ -83,7 +84,7 @@ public class Recipe {
    *
    * @return cuisine type
    */
-  private String getCuisineType() {
+  public String getCuisineType() {
     return cuisineType;
   }
 
