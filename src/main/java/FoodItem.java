@@ -1,6 +1,11 @@
 
 /**
  * Represents a food item with a name, quantity, and unit.
+ *
+ *
+ * @version 0.0.1
+ * @author Simon Snildal
+ * @since 26.02.2024
  */
 public class FoodItem {
   /**
