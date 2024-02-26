@@ -5,8 +5,11 @@ import java.util.ArrayList;
  * <li>Recipe Name</li>
  * <li>Time to cook recipe</li>
  * <li>Cuisine Type</li>
+ * <li>Ingredients</li>
+ * <li>Approach</li>
+ * <li>Image</li>
  *
- * @version 0.0.1
+ * @version 0.0.2
  * @author Theodor Sjetnan Utvik
  * @since 26.02.2024
  */
@@ -17,12 +20,18 @@ public class Recipe {
   private String timeToCookRecipe;
   private String cuisineType;
   private ArrayList<FoodItem> ingredients;
+  private ArrayList<String> approach;
+  private String image;
 
-  public Recipe(String recipeName, String timeToCookRecipe, String cuisineType, ArrayList<FoodItem> ingredients) {
+
+  public Recipe(String recipeName, String timeToCookRecipe, String cuisineType,
+      ArrayList<FoodItem> ingredients, ArrayList<String> approach, String image) {
     setRecipeName(recipeName);
     setTimeToCookRecipe(timeToCookRecipe);
     setCuisineType(cuisineType);
     setIngredients(ingredients);
+    setApproach(approach);
+    setImage(image);
   }
 
 
@@ -108,5 +117,13 @@ public class Recipe {
    */
   public void setIngredients(ArrayList<FoodItem> ingredients) {
     this.ingredients = ingredients;
+  }
+
+  public void setApproach(ArrayList<String> approach) {
+    this.approach = approach;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
   }
 }
