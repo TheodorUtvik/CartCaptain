@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Entity class for a recipe which is to be included in the program. The class includes fields:
+ * Entity class for a recipe which is to be included in the program.  The class includes fields:
  * <li>Recipe Name</li>
  * <li>Time to cook recipe</li>
  * <li>Cuisine Type</li>
@@ -9,6 +9,8 @@ import java.util.ArrayList;
  * <li>Approach</li>
  * <li>Image</li>
  *
+ *
+ * @version 0.0.2
  * @author Theodor Sjetnan Utvik
  * @version 0.0.2
  * @since 26.02.2024
