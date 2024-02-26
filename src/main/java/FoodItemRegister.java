@@ -22,7 +22,8 @@ public class FoodItemRegister {
   }
 
   public Iterator<FoodItem> GetItemsByType(String type) {
-    return this.register.values().stream().filter(item -> item.getFoodType().equals(type)).iterator();
+    return this.register.values().stream().filter(item -> item.getFoodType().equals(type))
+        .iterator();
   }
 
 }
