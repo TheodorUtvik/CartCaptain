@@ -17,6 +17,10 @@ public class FoodItem {
    */
   private String unit;
   /**
+   * The type of the food item.
+   */
+  private String foodType;
+  /**
    * The quantity of the food item.
    */
   private int quantity;
@@ -27,11 +31,13 @@ public class FoodItem {
    * @param name the name of the food item
    * @param quantity the quantity of the food item
    * @param unit the unit of the food item
+   * @param foodType the type of the food item
    */
-  public FoodItem(String name, int quantity, String unit) {
+  public FoodItem(String name, String foodType, String unit, int quantity) {
     this.name = name;
-    this.quantity = quantity;
+    this.foodType = foodType;
     this.unit = unit;
+    this.quantity = quantity;
   }
 
   // Getters and setters
@@ -53,11 +59,27 @@ public class FoodItem {
     this.name = name;
   }
   /**
+   * Returns the type of the food item.
+   *
+   * @return the type of the food item
+   */
+  public String getFoodType() {
+    return foodType;
+  }
+  /**
+   * Sets the type of the food item.
+   *
+   * @param foodType the new type of the food item
+   */
+  public void setFoodType(String foodType) {
+    this.foodType = foodType;
+  }
+
+  /**
    * Returns the unit of the food item.
    *
    * @return the unit of the food item
    */
-
   public String getUnit() {
     return unit;
   }
