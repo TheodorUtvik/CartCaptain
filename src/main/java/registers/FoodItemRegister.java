@@ -12,7 +12,7 @@ import entities.FoodItem;
  * @see FoodItem
  * @since 26.02.2024
  */
-public class Register {
+public class FoodItemRegister {
 
   /**
    * The register of food items.
@@ -22,7 +22,7 @@ public class Register {
   /**
    * Constructs a new empty FoodItemRegister.
    */
-  public Register() {
+  public FoodItemRegister() {
     this.register = new HashMap<>();
   }
 
