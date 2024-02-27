@@ -1,5 +1,8 @@
+package registers;
+
 import java.util.HashMap;
 import java.util.Iterator;
+import entities.Recipe;
 
 /**
  * Class for storing Recipes.
@@ -10,7 +13,6 @@ import java.util.Iterator;
  * @since 26.02.2024
  */
 public class RecipeRegister {
-
   /**
    * The register of recipes.
    */

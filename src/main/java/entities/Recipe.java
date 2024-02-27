@@ -1,3 +1,5 @@
+package entities;
+
 import java.util.ArrayList;
 
 /**
@@ -51,7 +53,7 @@ public class Recipe {
    *
    * @param recipeName is validated
    */
-  private void setRecipeName(String recipeName) {
+  public void setRecipeName(String recipeName) {
     if (recipeName != null) {
       this.recipeName = recipeName;
     } else {
@@ -64,7 +66,7 @@ public class Recipe {
    *
    * @return time to cook recipe
    */
-  private String getTimeToCookRecipe() {
+  public String getTimeToCookRecipe() {
     return timeToCookRecipe;
   }
 
@@ -73,7 +75,7 @@ public class Recipe {
    *
    * @param timeToCookRecipe is validated.
    */
-  private void setTimeToCookRecipe(String timeToCookRecipe) {
+  public void setTimeToCookRecipe(String timeToCookRecipe) {
     if (timeToCookRecipe != null) {
       this.timeToCookRecipe = timeToCookRecipe;
     } else {
@@ -95,7 +97,7 @@ public class Recipe {
    *
    * @param cuisineType is validated.
    */
-  private void setCuisineType(String cuisineType) {
+  public void setCuisineType(String cuisineType) {
     if (cuisineType != null) {
       this.cuisineType = cuisineType;
     } else {

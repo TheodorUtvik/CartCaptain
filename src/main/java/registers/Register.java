@@ -1,3 +1,5 @@
+package registers;
+
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -9,7 +11,7 @@ import java.util.Iterator;
  * @see FoodItem
  * @since 26.02.2024
  */
-public class FoodItemRegister {
+public class Register {
 
   /**
    * The register of food items.
@@ -19,7 +21,7 @@ public class FoodItemRegister {
   /**
    * Constructs a new empty FoodItemRegister.
    */
-  public FoodItemRegister() {
+  public Register() {
     this.register = new HashMap<>();
   }
 

@@ -1,11 +1,12 @@
 import java.util.Scanner;
+import registers.Register;
 
 public class UserInterface {
 
   Scanner menuChoice = new Scanner(System.in);
 
   public UserInterface() {
-    private FoodItemRegister register;
+    Register register;
     //private final InputHandler inputHandler;
   }
 

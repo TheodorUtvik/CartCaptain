@@ -1,3 +1,5 @@
+package entities;
+
 /**
  * Represents a food item with a name, quantity, and unit.
  *
