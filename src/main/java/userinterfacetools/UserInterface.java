@@ -10,7 +10,7 @@ public class UserInterface {
 
   public UserInterface() {
     FoodItemRegister foodItemRegister;
-    //private final InputHandler inputHandler;
+    //private final generaltools.InputHandler inputHandler;
   }
 
   public void start() {
