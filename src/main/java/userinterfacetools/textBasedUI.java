@@ -10,6 +10,14 @@ public class textBasedUI {
     System.out.println("Enter the quantity of the grocery item you want to add:");
   }
 
+  public static void inputTypeMessage() {
+    System.out.println("Enter the type of the grocery item you want to add:");
+  }
+
+  public static void inputUnitMessage() {
+    System.out.println("Enter the unit of the grocery item you want to add:");
+  }
+
   public static void menuPrint() {
     System.out.println("1. Handleliste");
     System.out.println("2. Kjøleskap");

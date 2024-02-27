@@ -45,11 +45,25 @@ public class UserInterfaceMethods {
           //changeQuantity();
           break; */
 
-  public void addGrocery() {
+
+  /**
+   * Adds a grocery to the grocery list. The method asks the user for: name, food type, unit and
+   * quantity.
+   *
+   * @see InputHandler
+   * @see textBasedUI
+   * @see FoodItemRegister
+   */
+  public void addGrocery() { // Name, foodtype, unit, quantity
     textBasedUI.inputNameMessage();
     String groceryName = inputHandler.readString();
     textBasedUI.inputQuantityMessage();
+    String groceryType = inputHandler.readString();
+    textBasedUI.inputTypeMessage();
+    String groceryUnit = inputHandler.readString();
+    textBasedUI.inputUnitMessage();
     int groceryQuantity = inputHandler.readInt();
+    groceryList.addFoodItem(groceryName, groceryType, groceryUnit, groceryQuantity);
   }
 
 }

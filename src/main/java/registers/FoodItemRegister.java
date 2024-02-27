@@ -27,11 +27,19 @@ public class FoodItemRegister {
   }
 
   /**
-   * Adds a food item to the register.
+   * Adds a food item to the register which includes:
+   * <li>name</li>
+   * <li>foodType</li>
+   * <li>unit</li>
+   * <li>quantity</li>
    *
-   * @param foodItem the food item to add
+   * @param name the name of the food item
+   * @param foodType the type of the food item
+   * @param unit the unit of the food item
+   * @param quantity the quantity of the food item
    */
-  public void addFoodItem(FoodItem foodItem) {
+  public void addFoodItem(String name, String foodType, String unit, int quantity) {
+    FoodItem foodItem = new FoodItem(name, foodType, unit, quantity);
     this.register.put(foodItem.getName(), foodItem);
   }
 
