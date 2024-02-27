@@ -57,12 +57,13 @@ public class UserInterfaceMethods {
   public void addGrocery() { // Name, foodtype, unit, quantity
     textBasedUI.inputNameMessage();
     String groceryName = inputHandler.readString();
-    textBasedUI.inputQuantityMessage();
+    textBasedUI.inputNameMessage();
     String groceryType = inputHandler.readString();
     textBasedUI.inputTypeMessage();
     String groceryUnit = inputHandler.readString();
     textBasedUI.inputUnitMessage();
     int groceryQuantity = inputHandler.readInt();
+    textBasedUI.inputQuantityMessage();
     groceryList.addFoodItem(groceryName, groceryType, groceryUnit, groceryQuantity);
   }
 
