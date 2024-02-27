@@ -2,6 +2,7 @@ package registers;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import entities.FoodItem;
 
 /**
  * Class for storing FoodItems.
