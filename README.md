@@ -28,7 +28,7 @@ The project structure is displayed in the directory tree below.
 │   │           ├── userinterface
 │   │           │   ├── InputReader.java
 │   │           │   ├── Printer.java
-│   │           │   └── UserInterface.java
+│   │           │   └── userinterfacetools.UserInterface.java
 │   │           └── TrainDispatchApp.java
 │   └── test
 │       └── java
