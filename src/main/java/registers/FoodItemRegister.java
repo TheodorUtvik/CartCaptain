@@ -58,7 +58,7 @@ public class FoodItemRegister {
    * @param name the name of the food item to find
    * @return the food item with the specified name
    */
-  public FoodItem findFoodItem(String name) {
+  public String findFoodItem(String name) {
     return this.register.get(name);
   }
 
