@@ -2,6 +2,22 @@ package userinterfacetools;
 
 public class textBasedUI {
 
+  public static void inputNameMessage() {
+    System.out.println("Enter the name of the grocery item you want to add:");
+  }
+
+  public static void inputQuantityMessage() {
+    System.out.println("Enter the quantity of the grocery item you want to add:");
+  }
+
+  public static void inputTypeMessage() {
+    System.out.println("Enter the type of the grocery item you want to add:");
+  }
+
+  public static void inputUnitMessage() {
+    System.out.println("Enter the unit of the grocery item you want to add:");
+  }
+
   public static void menuPrint() {
     System.out.println("1. Handleliste");
     System.out.println("2. Kjøleskap");
@@ -46,5 +62,7 @@ public class textBasedUI {
     System.out.println("4. Hjem");
     System.out.println("0. Avslutt");
   }
+
+
 
 }

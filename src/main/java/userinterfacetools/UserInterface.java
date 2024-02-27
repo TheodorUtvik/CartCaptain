@@ -7,10 +7,12 @@ import userinterfacetools.textBasedUI;
 public class UserInterface {
 
   Scanner menuChoice = new Scanner(System.in);
+  private FoodItemRegister foodItemRegister;
+  private UserInterfaceMethods uiMethod;
 
   public UserInterface() {
-    FoodItemRegister foodItemRegister;
-    //private final InputHandler inputHandler;
+    this.foodItemRegister = new FoodItemRegister();
+    this.uiMethod = new UserInterfaceMethods();
   }
 
   public void start() {
@@ -77,7 +79,7 @@ public class UserInterface {
     textBasedUI.fridgePrint();
     switch (menuChoice.nextInt()) {
       case 1:
-        //addGrocery();
+        uiMethod.addGrocery();
         break;
       case 2:
         //removeGrocery();
