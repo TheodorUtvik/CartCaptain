@@ -1,7 +1,15 @@
 package userinterfacetools;
 
 public class textBasedUI {
-
+  public static void welcomeMessage() {
+    System.out.println("Welcome to the grocery app!");
+  }
+  public static void existsInList() {
+    System.out.println("The grocery is already in the grocery list.");
+  }
+  public static void groceryAdded() {
+    System.out.println("Grocery added to the grocery list.");
+  }
   public static void inputNameMessage() {
     System.out.println("Enter the name of the grocery item you want to add:");
   }

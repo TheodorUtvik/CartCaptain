@@ -30,7 +30,7 @@ public class InputHandler {
   public int readInt() {
     while (!userInput.hasNextInt()) {
       userInput.next();
-      System.out.print("Invalid input.");
+      System.out.print("Invalid input. Please enter a number:");
     }
     int number = userInput.nextInt();
     userInput.nextLine();

@@ -2,7 +2,6 @@ package userinterfacetools;
 import entities.FoodItem;
 import generaltools.InputHandler;
 import registers.FoodItemRegister;
-import userinterfacetools.textBasedUI;
 
 /**
  * Class for handling user interface methods. The class makes instances of the
@@ -58,14 +57,18 @@ public class UserInterfaceMethods {
   public void addGrocery() { // Name, foodtype, unit, quantity
     textBasedUI.inputNameMessage();
     String groceryName = inputHandler.readString();
-    textBasedUI.inputQuantityMessage();
-    String groceryType = inputHandler.readString();
     textBasedUI.inputTypeMessage();
-    String groceryUnit = inputHandler.readString();
+    String groceryType = inputHandler.readString();
     textBasedUI.inputUnitMessage();
+    String groceryUnit = inputHandler.readString();
+    textBasedUI.inputQuantityMessage();
     int groceryQuantity = inputHandler.readInt();
     FoodItem foodItem = new FoodItem(groceryName, groceryType, groceryUnit, groceryQuantity);
-    groceryList.addFoodItem(foodItem);
+    if(!groceryList.tryAddFoodItem(foodItem)){
+      textBasedUI.existsInList();
+      return;
+    }
+    textBasedUI.groceryAdded();
   }
 
 }

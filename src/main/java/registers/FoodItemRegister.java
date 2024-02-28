@@ -35,9 +35,12 @@ public class FoodItemRegister {
    *
    * @param foodItem the name of the food item
    */
-  public void addFoodItem(FoodItem foodItem) {
-    //FoodItem foodItem = new FoodItem(name, foodType, unit, quantity);
+  public boolean tryAddFoodItem(FoodItem foodItem) {
+    if(register.containsKey(foodItem.getName())) {
+      return false;
+    }
     this.register.put(foodItem.getName(), foodItem);
+    return true;
   }
 
   /**

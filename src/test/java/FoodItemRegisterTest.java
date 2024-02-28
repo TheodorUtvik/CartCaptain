@@ -19,14 +19,14 @@ class FoodItemRegisterTest {
     foodItem1 = new FoodItem("Milk", "Dairy", "L", 1);
     foodItem2 = new FoodItem("Bread", "Bread", "g", 500);
 
-    register.addFoodItem(foodItem1);
-    register.addFoodItem(foodItem2);
+    register.tryAddFoodItem(foodItem1);
+    register.tryAddFoodItem(foodItem2);
   }
 
   @Test
   void addFoodItem() {
     FoodItem foodItem3 = new FoodItem("Egg", "Egg", "pcs", 12);
-    register.addFoodItem(foodItem3);
+    register.tryAddFoodItem(foodItem3);
 
     assertEquals(foodItem3, register.findFoodItem("Egg"));
   }

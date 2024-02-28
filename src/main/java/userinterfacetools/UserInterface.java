@@ -16,6 +16,7 @@ public class UserInterface {
   }
 
   public void start() {
+    //textBasedUI.welcomeMessage();
     boolean running = true;
     while (running) {
       textBasedUI.menuPrint();
