@@ -54,7 +54,7 @@ public class UserInterfaceMethods {
    * @see textBasedUI
    * @see FoodItemRegister
    */
-  public void addGrocery() { // Name, foodtype, unit, quantity
+  public void addGroceryToFridge() { // Name, foodtype, unit, quantity
     textBasedUI.inputNameMessage();
     String groceryName = inputHandler.readString();
     textBasedUI.inputTypeMessage();
@@ -69,6 +69,16 @@ public class UserInterfaceMethods {
       return;
     }
     textBasedUI.groceryAdded();
+  }
+  public void removeGroceryFromFridge() {
+    textBasedUI.inputNameDelete();
+    String groceryName = inputHandler.readString();
+    if(groceryList.findFoodItem(groceryName) == null) {
+      textBasedUI.notInList();
+      return;
+    }
+    groceryList.removeFoodItem(groceryName);
+    textBasedUI.groceryRemoved();
   }
 
 }

@@ -2,7 +2,6 @@ package userinterfacetools;
 
 import java.util.Scanner;
 import registers.FoodItemRegister;
-import userinterfacetools.textBasedUI;
 
 public class UserInterface {
 
@@ -16,7 +15,7 @@ public class UserInterface {
   }
 
   public void start() {
-    //textBasedUI.welcomeMessage();
+    textBasedUI.welcomeMessage();
     boolean running = true;
     while (running) {
       textBasedUI.menuPrint();
@@ -80,10 +79,10 @@ public class UserInterface {
     textBasedUI.fridgePrint();
     switch (menuChoice.nextInt()) {
       case 1:
-        uiMethod.addGrocery();
+        uiMethod.addGroceryToFridge();
         break;
       case 2:
-        //removeGrocery();
+        uiMethod.removeGroceryFromFridge();
         break;
       case 3:
         //printGroceries();

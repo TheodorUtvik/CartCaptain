@@ -4,14 +4,23 @@ public class textBasedUI {
   public static void welcomeMessage() {
     System.out.println("Welcome to the grocery app!");
   }
+  public static void notInList() {
+    System.out.println("The grocery is not in the fridge");
+  }
+  public static void groceryRemoved() {
+    System.out.println("Grocery removed from the fridge.");
+  }
   public static void existsInList() {
-    System.out.println("The grocery is already in the grocery list.");
+    System.out.println("The grocery is already in the fridge.");
   }
   public static void groceryAdded() {
-    System.out.println("Grocery added to the grocery list.");
+    System.out.println("Grocery added to the food inventory.");
   }
   public static void inputNameMessage() {
     System.out.println("Enter the name of the grocery item you want to add:");
+  }
+  public static void inputNameDelete() {
+    System.out.println("Enter the name of the grocery item you want to remove:");
   }
 
   public static void inputQuantityMessage() {
