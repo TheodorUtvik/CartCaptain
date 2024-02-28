@@ -3,6 +3,7 @@ package registers;
 import java.util.HashMap;
 import java.util.Iterator;
 import entities.FoodItem;
+import java.util.Map;
 
 /**
  * Class for storing FoodItems.
@@ -74,6 +75,10 @@ public class FoodItemRegister {
   public Iterator<FoodItem> GetItemsByType(String type) {
     return this.register.values().stream().filter(item -> item.getFoodType().equals(type))
         .iterator();
+  }
+
+  public Iterator<FoodItem> getFoodItems() {
+    return register.values().iterator();
   }
 
 }

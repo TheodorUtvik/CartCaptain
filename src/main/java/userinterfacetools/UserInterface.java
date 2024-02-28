@@ -85,7 +85,7 @@ public class UserInterface {
         uiMethod.removeGroceryFromFridge();
         break;
       case 3:
-        //printGroceries();
+        uiMethod.printFoodInventory();
         break;
       case 4:
         //clearList();
@@ -110,13 +110,13 @@ public class UserInterface {
     textBasedUI.shoppingListPrint();
     switch (menuChoice.nextInt()) {
       case 1:
-        //addGrocery();
+          uiMethod.addGroceryToShoppingList();
         break;
       case 2:
-        //removeGrocery();
+          uiMethod.removeGroceryFromShoppingList();
         break;
       case 3:
-        //printGroceries();
+          uiMethod.printShoppingList();
         break;
       case 4:
         //clearList();
