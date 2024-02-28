@@ -33,13 +33,10 @@ public class FoodItemRegister {
    * <li>unit</li>
    * <li>quantity</li>
    *
-   * @param name the name of the food item
-   * @param foodType the type of the food item
-   * @param unit the unit of the food item
-   * @param quantity the quantity of the food item
+   * @param foodItem the name of the food item
    */
-  public void addFoodItem(String name, String foodType, String unit, int quantity) {
-    FoodItem foodItem = new FoodItem(name, foodType, unit, quantity);
+  public void addFoodItem(FoodItem foodItem) {
+    //FoodItem foodItem = new FoodItem(name, foodType, unit, quantity);
     this.register.put(foodItem.getName(), foodItem);
   }
 
@@ -58,7 +55,10 @@ public class FoodItemRegister {
    * @param name the name of the food item to find
    * @return the food item with the specified name
    */
-  public String findFoodItem(String name) {
+  public FoodItem findFoodItem(String name) {
+    if (name == null) {
+      return null; // or throw an exception
+    }
     return this.register.get(name);
   }
 

@@ -1,4 +1,5 @@
 package userinterfacetools;
+import entities.FoodItem;
 import generaltools.InputHandler;
 import registers.FoodItemRegister;
 import userinterfacetools.textBasedUI;
@@ -63,7 +64,8 @@ public class UserInterfaceMethods {
     String groceryUnit = inputHandler.readString();
     textBasedUI.inputUnitMessage();
     int groceryQuantity = inputHandler.readInt();
-    groceryList.addFoodItem(groceryName, groceryType, groceryUnit, groceryQuantity);
+    FoodItem foodItem = new FoodItem(groceryName, groceryType, groceryUnit, groceryQuantity);
+    groceryList.addFoodItem(foodItem);
   }
 
 }

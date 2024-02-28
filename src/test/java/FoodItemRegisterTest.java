@@ -1,7 +1,9 @@
+import entities.FoodItem;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.util.Iterator;
+import registers.FoodItemRegister;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,23 +28,25 @@ class FoodItemRegisterTest {
     FoodItem foodItem3 = new FoodItem("Egg", "Egg", "pcs", 12);
     register.addFoodItem(foodItem3);
 
-    assertEquals("foodItem3", register.findFoodItem("Egg"));
+    assertEquals(foodItem3, register.findFoodItem("Egg"));
   }
 
-  @Test
+
+ @Test
   void removeFoodItem() {
     register.removeFoodItem("Milk");
-    assertNull("Food item removed", register.findFoodItem("Milk"));
+    assertNull(register.findFoodItem("Milk"));
   }
+
 
   @Test
   void findFoodItem() {
-    assertEquals("foodItem1", register.findFoodItem("Milk"));
+    assertEquals(foodItem1, register.findFoodItem("Milk"));
   }
 
   @Test
   void getItemsByType() {
     Iterator<FoodItem> iterator = register.GetItemsByType("Dairy");
-    assertEquals("foodItem1", iterator.next());
+    assertEquals(foodItem1, iterator.next());
   }
 }
