@@ -32,13 +32,6 @@ public class UserInterfaceMethods {
     this.inputHandler = new InputHandler();
   }
 
-  public void initializeFridge() {
-    fridge.initializeRegister();
-  }
-
-  public void initializeShoppingList() {
-    groceryList.initializeRegister();
-  }
 
 
   /*

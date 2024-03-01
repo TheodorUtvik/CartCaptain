@@ -13,6 +13,12 @@ public class UserInterface {
     this.foodItemRegister = new FoodItemRegister();
     this.uiMethod = new UserInterfaceMethods();
   }
+  public void initializeFridge() {
+    uiMethod.fridge.initialize();
+  }
+  public void initializeShoppingList() {
+    uiMethod.groceryList.initialize();
+  }
 
 
   public void start() {
