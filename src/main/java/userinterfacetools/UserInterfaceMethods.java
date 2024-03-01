@@ -29,13 +29,6 @@ public class UserInterfaceMethods {
     this.inputHandler = new InputHandler();
   }
 
-  public void initializeFridge() {
-    fridge.initializeRegister();
-  }
-
-  public void initializeShoppingList() {
-    groceryList.initializeRegister();
-  }
 
 
   /*
@@ -158,5 +151,8 @@ public class UserInterfaceMethods {
       groceryList.findFoodItem(grocery).setQuantity(quantity);
     }
   }
+
+
+
 
 }
