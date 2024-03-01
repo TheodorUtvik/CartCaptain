@@ -129,14 +129,6 @@ public class UserInterfaceMethods {
       System.out.println(formatGrocery(inventory));
     }
   }
-   public void printShoppingList() {
-    Iterator<FoodItem> iterator = groceryList.getFoodItems();
-     System.out.println(formatGroceryHeader());
-    while (iterator.hasNext()) {
-      FoodItem inventory = iterator.next();
-      System.out.println(formatGrocery(inventory));
-    }
-  }
 
   /**
    * Prints the current list of groceries in the shopping list, formatted with a header.
