@@ -112,11 +112,23 @@ public class TextBasedUI {
 
 
   public static String formatGroceryHeader() {
-    final String ANSI_BOLD = "\033[1m";
-    final String ANSI_RESET = "\033[0m";
-    final String ANSI_BLUE = "\033[34m";
+      final String ANSI_BOLD = "\033[1m";
+      final String ANSI_RESET = "\033[0m";
+      final String ANSI_BLUE = "\033[34m";
 
-    return ANSI_BOLD + ANSI_BLUE + "Matvare | Mat type | Enhet | Antall" + ANSI_RESET;
+      // Create the header string
+      String header = ANSI_BOLD + ANSI_BLUE + "Matvare | Mat type | Enhet | Antall" + ANSI_RESET;
+
+      // Calculate the length of the header string without ANSI escape codes for accurate repetition
+      String headerWithoutAnsi = "Matvare | Mat type | Enhet | Antall";
+
+      // Create the decorative line
+      String decLine = "\n" + ANSI_BLUE + "-".repeat(headerWithoutAnsi.length()) + ANSI_RESET;
+
+      // Return the combined header and decorative line
+      return header + decLine;
+    }
+
   }
-}
+
 
