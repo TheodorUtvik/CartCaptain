@@ -1,4 +1,7 @@
 package userinterfacetools;
+import static userinterfacetools.TextBasedUI.formatGrocery;
+import static userinterfacetools.TextBasedUI.formatGroceryHeader;
+
 import entities.FoodItem;
 import generaltools.InputHandler;
 import java.util.Iterator;
@@ -54,17 +57,17 @@ public class UserInterfaceMethods {
    * quantity.
    *
    * @see InputHandler
-   * @see textBasedUI
+   * @see TextBasedUI
    * @see FoodItemRegister
    */
   public FoodItem inputGroceryDetails() { // Name, foodtype, unit, quantity
-    textBasedUI.inputNameMessage();
+    TextBasedUI.inputNameMessage();
     String groceryName = inputHandler.readString();
-    textBasedUI.inputTypeMessage();
+    TextBasedUI.inputTypeMessage();
     String groceryType = inputHandler.readString();
-    textBasedUI.inputUnitMessage();
+    TextBasedUI.inputUnitMessage();
     String groceryUnit = inputHandler.readString();
-    textBasedUI.inputQuantityMessage();
+    TextBasedUI.inputQuantityMessage();
     int groceryQuantity = inputHandler.readInt();
     FoodItem foodItem = new FoodItem(groceryName, groceryType, groceryUnit, groceryQuantity);
     return foodItem;
@@ -73,86 +76,93 @@ public class UserInterfaceMethods {
 
     if(!groceryList.tryAddFoodItem(inputGroceryDetails())){
 
-      textBasedUI.existsInList();
+      TextBasedUI.existsInList();
       return;
     }
-    textBasedUI.groceryAdded();
+    TextBasedUI.groceryAdded();
   }
   public void addGroceryToFridge(){
 
     if(!fridge.tryAddFoodItem(inputGroceryDetails())){
 
-      textBasedUI.existsInList();
+      TextBasedUI.existsInList();
       return;
     }
-    textBasedUI.groceryAdded();
+    TextBasedUI.groceryAdded();
   }
   /**
    * Deletes a grocery from the fridge. The method asks the user for: name
    *
    * @see InputHandler
-   * @see textBasedUI
+   * @see TextBasedUI
    * @see FoodItemRegister
    */
   public void removeGroceryFromFridge() {
-    textBasedUI.inputNameDelete();
+    TextBasedUI.inputNameDelete();
     String groceryName = inputHandler.readString();
     if(fridge.findFoodItem(groceryName) == null) {
-      textBasedUI.notInList();
+      TextBasedUI.notInList();
       return;
     }
     fridge.removeFoodItem(groceryName);
-    textBasedUI.groceryRemoved();
+    TextBasedUI.groceryRemoved();
   }
   public void removeGroceryFromShoppingList() {
-    textBasedUI.inputNameDelete();
+    TextBasedUI.inputNameDelete();
     String groceryName = inputHandler.readString();
     if(groceryList.findFoodItem(groceryName) == null) {
-      textBasedUI.notInList();
+      TextBasedUI.notInList();
       return;
     }
     groceryList.removeFoodItem(groceryName);
-    textBasedUI.groceryRemoved();
+    TextBasedUI.groceryRemoved();
   }
 
   public void printFoodInventory() {
     Iterator<FoodItem> iterator = fridge.getFoodItems();
     while (iterator.hasNext()) {
       FoodItem inventory = iterator.next();
-      System.out.println(inventory.getDetails());
+      System.out.println(formatGroceryHeader());
+      System.out.println(formatGrocery(inventory));
     }
   }
    public void printShoppingList() {
     Iterator<FoodItem> iterator = groceryList.getFoodItems();
     while (iterator.hasNext()) {
       FoodItem inventory = iterator.next();
-      System.out.println(inventory.getDetails());
+      System.out.println(formatGroceryHeader());
+      System.out.println(formatGrocery(inventory));
     }
   }
 
   public void changeQuantityFridge() {
-    textBasedUI.inputNameChange();
+    TextBasedUI.inputNameChange();
     String grocery = inputHandler.readString();
 
     if (grocery.equals(fridge.findFoodItem(grocery).getName())) {
-      textBasedUI.inputQuantityChange();
+      TextBasedUI.inputQuantityChange();
       int quantity = inputHandler.readInt();
       fridge.findFoodItem(grocery).setQuantity(quantity);
     }
   }
 
   public void changeQuantityShoppingList() {
-    textBasedUI.inputNameChange();
+    TextBasedUI.inputNameChange();
     String grocery = inputHandler.readString();
 
     if (grocery.equals(groceryList.findFoodItem(grocery).getName())) {
-      textBasedUI.inputQuantityChange();
+      TextBasedUI.inputQuantityChange();
       int quantity = inputHandler.readInt();
       groceryList.findFoodItem(grocery).setQuantity(quantity);
     }
   }
 
+  public void clearListFridge() {
+    fridge.removeAllItems();
+  }
 
-
+  public void clearListShoppingList() {
+    groceryList.removeAllItems();
+  }
 
 }
