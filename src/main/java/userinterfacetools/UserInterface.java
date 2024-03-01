@@ -14,6 +14,7 @@ public class UserInterface {
     this.uiMethod = new UserInterfaceMethods();
   }
 
+
   public void start() {
     textBasedUI.welcomeMessage();
     boolean running = true;
@@ -91,7 +92,7 @@ public class UserInterface {
         //clearList();
         break;
       case 5:
-        //changeQuantity();
+        uiMethod.changeQuantityFridge();
         break;
       case 6:
         start();
@@ -122,7 +123,7 @@ public class UserInterface {
         //clearList();
         break;
       case 5:
-        //changeQuantity();
+        uiMethod.changeQuantityShoppingList();
         break;
       case 6:
         start();

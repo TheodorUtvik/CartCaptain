@@ -29,6 +29,15 @@ public class UserInterfaceMethods {
     this.inputHandler = new InputHandler();
   }
 
+  public void initializeFridge() {
+    fridge.initializeRegister();
+  }
+
+  public void initializeShoppingList() {
+    groceryList.initializeRegister();
+  }
+
+
   /*
       case 1:
         //addGrocery();
@@ -125,6 +134,28 @@ public class UserInterfaceMethods {
     while (iterator.hasNext()) {
       FoodItem inventory = iterator.next();
       System.out.println(inventory.getDetails());
+    }
+  }
+
+  public void changeQuantityFridge() {
+    textBasedUI.inputNameChange();
+    String grocery = inputHandler.readString();
+
+    if (grocery.equals(fridge.findFoodItem(grocery).getName())) {
+      textBasedUI.inputQuantityChange();
+      int quantity = inputHandler.readInt();
+      fridge.findFoodItem(grocery).setQuantity(quantity);
+    }
+  }
+
+  public void changeQuantityShoppingList() {
+    textBasedUI.inputNameChange();
+    String grocery = inputHandler.readString();
+
+    if (grocery.equals(groceryList.findFoodItem(grocery).getName())) {
+      textBasedUI.inputQuantityChange();
+      int quantity = inputHandler.readInt();
+      groceryList.findFoodItem(grocery).setQuantity(quantity);
     }
   }
 

@@ -81,4 +81,17 @@ public class FoodItemRegister {
     return register.values().iterator();
   }
 
+  public void initializeRegister() {
+    FoodItem foodItem = new FoodItem("Milk", "Dairy", "L", 1);
+    FoodItem foodItem2 = new FoodItem("Egg", "Dairy", "pcs", 12);
+    FoodItem foodItem3 = new FoodItem("Bread", "Bread", "pcs", 1);
+    FoodItem foodItem4 = new FoodItem("Butter", "Dairy", "g", 250);
+    FoodItem foodItem5 = new FoodItem("Cheese", "Dairy", "g", 500);
+    this.register.put(foodItem.getName(), foodItem);
+    this.register.put(foodItem2.getName(), foodItem2);
+    this.register.put(foodItem3.getName(), foodItem3);
+    this.register.put(foodItem4.getName(), foodItem4);
+    this.register.put(foodItem5.getName(), foodItem5);
+  }
 }
+

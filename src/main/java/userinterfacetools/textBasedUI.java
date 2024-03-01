@@ -35,6 +35,14 @@ public class textBasedUI {
     System.out.println("Enter the unit of the grocery item you want to add:");
   }
 
+  public static void inputQuantityChange() {
+    System.out.println("Enter the new quantity of the grocery item:");
+  }
+
+  public static void inputNameChange() {
+    System.out.println("Enter the name of the grocery item you want to change:");
+  }
+
   public static void menuPrint() {
     System.out.println("1. Handleliste");
     System.out.println("2. Kjøleskap");
