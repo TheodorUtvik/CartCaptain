@@ -5,51 +5,51 @@ import entities.FoodItem;
 public class TextBasedUI {
 
   public static void welcomeMessage() {
-    System.out.println("Welcome to the grocery app!");
+    System.out.println("Velkommen til dagligvareappen!");
   }
 
   public static void notInList() {
-    System.out.println("The grocery is not in the fridge");
+    System.out.println("Varen er ikke i kjøleskapet.");
   }
 
   public static void groceryRemoved() {
-    System.out.println("Grocery removed from the fridge.");
+    System.out.println("Vare fjernet fra kjøleskapet.");
   }
 
   public static void existsInList() {
-    System.out.println("The grocery is already in the fridge.");
+    System.out.println("Varen er allerede i kjøleskapet.");
   }
 
   public static void groceryAdded() {
-    System.out.println("Grocery added to the food inventory.");
+    System.out.println("Vare lagt til i matbeholdningen.");
   }
 
   public static void inputNameMessage() {
-    System.out.println("Enter the name of the grocery item you want to add:");
+    System.out.println("Skriv inn navnet på varen du vil legge til:");
   }
 
   public static void inputNameDelete() {
-    System.out.println("Enter the name of the grocery item you want to remove:");
+    System.out.println("Skriv inn navnet på varen du vil fjerne:");
   }
 
   public static void inputQuantityMessage() {
-    System.out.println("Enter the quantity of the grocery item you want to add:");
+    System.out.println("Skriv inn antall av varen du vil legge til:");
   }
 
   public static void inputTypeMessage() {
-    System.out.println("Enter the type of the grocery item you want to add:");
+    System.out.println("Skriv inn typen av varen du vil legge til:");
   }
 
   public static void inputUnitMessage() {
-    System.out.println("Enter the unit of the grocery item you want to add:");
+    System.out.println("Skriv inn enheten av varen du vil legge til:");
   }
 
   public static void inputQuantityChange() {
-    System.out.println("Enter the new quantity of the grocery item:");
+    System.out.println("Skriv inn det nye antallet av varen:");
   }
 
   public static void inputNameChange() {
-    System.out.println("Enter the name of the grocery item you want to change:");
+    System.out.println("Skriv inn navnet på varen du vil endre:");
   }
 
   public static void menuPrint() {
