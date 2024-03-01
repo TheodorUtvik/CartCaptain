@@ -3,6 +3,7 @@ package registers;
 import java.util.HashMap;
 import java.util.Iterator;
 import entities.FoodItem;
+import java.util.Map;
 
 /**
  * Class for storing FoodItems.
@@ -33,14 +34,14 @@ public class FoodItemRegister {
    * <li>unit</li>
    * <li>quantity</li>
    *
-   * @param name the name of the food item
-   * @param foodType the type of the food item
-   * @param unit the unit of the food item
-   * @param quantity the quantity of the food item
+   * @param foodItem the name of the food item
    */
-  public void addFoodItem(String name, String foodType, String unit, int quantity) {
-    FoodItem foodItem = new FoodItem(name, foodType, unit, quantity);
+  public boolean tryAddFoodItem(FoodItem foodItem) {
+    if(register.containsKey(foodItem.getName())) {
+      return false;
+    }
     this.register.put(foodItem.getName(), foodItem);
+    return true;
   }
 
   /**
@@ -59,6 +60,9 @@ public class FoodItemRegister {
    * @return the food item with the specified name
    */
   public FoodItem findFoodItem(String name) {
+    if (name == null) {
+      return null; // or throw an exception
+    }
     return this.register.get(name);
   }
 
@@ -71,6 +75,10 @@ public class FoodItemRegister {
   public Iterator<FoodItem> GetItemsByType(String type) {
     return this.register.values().stream().filter(item -> item.getFoodType().equals(type))
         .iterator();
+  }
+
+  public Iterator<FoodItem> getFoodItems() {
+    return register.values().iterator();
   }
 
 }
