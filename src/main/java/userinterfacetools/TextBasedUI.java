@@ -1,24 +1,33 @@
 package userinterfacetools;
 
-public class textBasedUI {
+import entities.FoodItem;
+
+public class TextBasedUI {
+
   public static void welcomeMessage() {
     System.out.println("Welcome to the grocery app!");
   }
+
   public static void notInList() {
     System.out.println("The grocery is not in the fridge");
   }
+
   public static void groceryRemoved() {
     System.out.println("Grocery removed from the fridge.");
   }
+
   public static void existsInList() {
     System.out.println("The grocery is already in the fridge.");
   }
+
   public static void groceryAdded() {
     System.out.println("Grocery added to the food inventory.");
   }
+
   public static void inputNameMessage() {
     System.out.println("Enter the name of the grocery item you want to add:");
   }
+
   public static void inputNameDelete() {
     System.out.println("Enter the name of the grocery item you want to remove:");
   }
@@ -33,6 +42,14 @@ public class textBasedUI {
 
   public static void inputUnitMessage() {
     System.out.println("Enter the unit of the grocery item you want to add:");
+  }
+
+  public static void inputQuantityChange() {
+    System.out.println("Enter the new quantity of the grocery item:");
+  }
+
+  public static void inputNameChange() {
+    System.out.println("Enter the name of the grocery item you want to change:");
   }
 
   public static void menuPrint() {
@@ -80,6 +97,26 @@ public class textBasedUI {
     System.out.println("0. Avslutt");
   }
 
+  public static String formatGrocery(FoodItem foodItem) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Matvare: ").append(foodItem.getName()).append(" | ")
+        .append("Type: ").append(foodItem.getFoodType()).append(" | ")
+        .append("Enhet: ").append(foodItem.getUnit()).append(" | ")
+        .append("Antall: ").append(foodItem.getQuantity());
+
+    String decLine = "\n" + "-".repeat(sb.length());
+    sb.append(decLine);
+
+    return sb.toString();
+  }
 
 
+  public static String formatGroceryHeader() {
+    final String ANSI_BOLD = "\033[1m";
+    final String ANSI_RESET = "\033[0m";
+    final String ANSI_BLUE = "\033[34m";
+
+    return ANSI_BOLD + ANSI_BLUE + "Matvare | Mat type | Enhet | Antall" + ANSI_RESET;
+  }
 }
+
