@@ -120,17 +120,17 @@ public class UserInterfaceMethods {
 
   public void printFoodInventory() {
     Iterator<FoodItem> iterator = fridge.getFoodItems();
+    System.out.println(formatGroceryHeader());
     while (iterator.hasNext()) {
       FoodItem inventory = iterator.next();
-      System.out.println(formatGroceryHeader());
       System.out.println(formatGrocery(inventory));
     }
   }
    public void printShoppingList() {
     Iterator<FoodItem> iterator = groceryList.getFoodItems();
+     System.out.println(formatGroceryHeader());
     while (iterator.hasNext()) {
       FoodItem inventory = iterator.next();
-      System.out.println(formatGroceryHeader());
       System.out.println(formatGrocery(inventory));
     }
   }
