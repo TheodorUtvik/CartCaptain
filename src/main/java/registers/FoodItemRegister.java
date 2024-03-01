@@ -1,8 +1,10 @@
 package registers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import entities.FoodItem;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -79,6 +81,12 @@ public class FoodItemRegister {
 
   public Iterator<FoodItem> getFoodItems() {
     return register.values().iterator();
+  }
+
+  public List<FoodItem> removeAllItems() {
+    List<FoodItem> removedItems = new ArrayList<>(register.values());
+    register.clear();
+    return removedItems;
   }
 
   public void initializeRegister() {

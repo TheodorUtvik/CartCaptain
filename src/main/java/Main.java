@@ -5,7 +5,7 @@ import userinterfacetools.UserInterfaceMethods;
 
 public class Main {
   public static void main(String[] args) {
-    //tissetass
+
 
     FoodItemRegister initialize = new FoodItemRegister();
     UserInterfaceMethods uiMethods = new UserInterfaceMethods();

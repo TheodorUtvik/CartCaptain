@@ -16,10 +16,10 @@ public class UserInterface {
 
 
   public void start() {
-    textBasedUI.welcomeMessage();
+    TextBasedUI.welcomeMessage();
     boolean running = true;
     while (running) {
-      textBasedUI.menuPrint();
+      TextBasedUI.menuPrint();
       switch (menuChoice.nextInt()) {
         case 1:
           goToShoppingList();
@@ -46,7 +46,7 @@ public class UserInterface {
 
   public void goToRecipes() {
     System.out.println("Recipes");
-    textBasedUI.recipePrint();
+    TextBasedUI.recipePrint();
     switch (menuChoice.nextInt()) {
       case 1:
         //addRecipe();
@@ -77,7 +77,7 @@ public class UserInterface {
 
   public void goToFridge() {
     System.out.println("Fridge");
-    textBasedUI.fridgePrint();
+    TextBasedUI.fridgePrint();
     switch (menuChoice.nextInt()) {
       case 1:
         uiMethod.addGroceryToFridge();
@@ -89,7 +89,7 @@ public class UserInterface {
         uiMethod.printFoodInventory();
         break;
       case 4:
-        //clearList();
+        uiMethod.clearListFridge();
         break;
       case 5:
         uiMethod.changeQuantityFridge();
@@ -108,19 +108,19 @@ public class UserInterface {
 
   public void goToShoppingList() {
     System.out.println("Shopping list");
-    textBasedUI.shoppingListPrint();
+    TextBasedUI.shoppingListPrint();
     switch (menuChoice.nextInt()) {
       case 1:
-          uiMethod.addGroceryToShoppingList();
+        uiMethod.addGroceryToShoppingList();
         break;
       case 2:
-          uiMethod.removeGroceryFromShoppingList();
+        uiMethod.removeGroceryFromShoppingList();
         break;
       case 3:
-          uiMethod.printShoppingList();
+        uiMethod.printShoppingList();
         break;
       case 4:
-        //clearList();
+        uiMethod.clearListShoppingList();
         break;
       case 5:
         uiMethod.changeQuantityShoppingList();
@@ -139,7 +139,7 @@ public class UserInterface {
 
   public void goToDropDownMenu() {
     System.out.println("Drop down menu");
-    textBasedUI.dropDownPrint();
+    TextBasedUI.dropDownPrint();
     switch (menuChoice.nextInt()) {
       case 1:
         //addGrocery();
