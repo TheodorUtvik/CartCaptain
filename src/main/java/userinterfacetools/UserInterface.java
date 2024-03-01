@@ -1,15 +1,22 @@
+package userinterfacetools;
+
 import java.util.Scanner;
+import registers.FoodItemRegister;
 
 public class UserInterface {
 
   Scanner menuChoice = new Scanner(System.in);
+  private FoodItemRegister foodItemRegister;
+  private UserInterfaceMethods uiMethod;
 
   public UserInterface() {
-    private FoodItemRegister register;
-    //private final InputHandler inputHandler;
+    this.foodItemRegister = new FoodItemRegister();
+    this.uiMethod = new UserInterfaceMethods();
   }
 
+
   public void start() {
+    textBasedUI.welcomeMessage();
     boolean running = true;
     while (running) {
       textBasedUI.menuPrint();
@@ -73,19 +80,19 @@ public class UserInterface {
     textBasedUI.fridgePrint();
     switch (menuChoice.nextInt()) {
       case 1:
-        //addGrocery();
+        uiMethod.addGroceryToFridge();
         break;
       case 2:
-        //removeGrocery();
+        uiMethod.removeGroceryFromFridge();
         break;
       case 3:
-        //printGroceries();
+        uiMethod.printFoodInventory();
         break;
       case 4:
         //clearList();
         break;
       case 5:
-        //changeQuantity();
+        uiMethod.changeQuantityFridge();
         break;
       case 6:
         start();
@@ -104,19 +111,19 @@ public class UserInterface {
     textBasedUI.shoppingListPrint();
     switch (menuChoice.nextInt()) {
       case 1:
-        //addGrocery();
+          uiMethod.addGroceryToShoppingList();
         break;
       case 2:
-        //removeGrocery();
+          uiMethod.removeGroceryFromShoppingList();
         break;
       case 3:
-        //printGroceries();
+          uiMethod.printShoppingList();
         break;
       case 4:
         //clearList();
         break;
       case 5:
-        //changeQuantity();
+        uiMethod.changeQuantityShoppingList();
         break;
       case 6:
         start();
