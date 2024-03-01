@@ -8,8 +8,11 @@ import java.util.Iterator;
 import registers.FoodItemRegister;
 
 /**
- * Class for handling user interface methods. The class makes instances of the
- * FoodItemRegister class for the grocery list and the fridge.
+ *
+ * UserInterfaceMethods facilitates interactions with grocery lists and fridge inventories.
+ * It provides functionalities to add, remove, and list groceries, as well as to modify quantities
+ * and clear lists. It utilizes a TextBasedUI for user interaction and FoodItemRegister for managing
+ * grocery items.
  *
  * @see FoodItemRegister
  * @since 27.02.2024
@@ -24,42 +27,22 @@ public class UserInterfaceMethods {
   InputHandler inputHandler;
 
   /**
-   * Constructs a new UserInterfaceMethods.
-   */
+  * Constructs a new instance of UserInterfaceMethods, initializing two FoodItemRegister instances
+  * for managing groceries in a shopping list and a fridge, and an InputHandler for managing user input.
+  */
   public UserInterfaceMethods() {
     this.groceryList = new FoodItemRegister();
     this.fridge = new FoodItemRegister();
     this.inputHandler = new InputHandler();
   }
 
-
-
-  /*
-      case 1:
-        //addGrocery();
-        break;
-      case 2:
-          //removeGrocery();
-          break;
-      case 3:
-          //printGroceries();
-          break;
-      case 4:
-          //clearList();
-          break;
-      case 5:
-          //changeQuantity();
-          break; */
-
-
   /**
-   * Adds a grocery to the fridge. The method asks the user for: name, food type, unit and
-   * quantity.
+   * Prompts the user to input details for a grocery item, including its name, food type, unit, and quantity.
+   * These inputs are then used to create a new FoodItem object.
    *
-   * @see InputHandler
-   * @see TextBasedUI
-   * @see FoodItemRegister
+   * @return FoodItem The newly created FoodItem object with user-provided details.
    */
+
   public FoodItem inputGroceryDetails() { // Name, foodtype, unit, quantity
     TextBasedUI.inputNameMessage();
     String groceryName = inputHandler.readString();
@@ -72,6 +55,12 @@ public class UserInterfaceMethods {
     FoodItem foodItem = new FoodItem(groceryName, groceryType, groceryUnit, groceryQuantity);
     return foodItem;
   }
+
+  /**
+   * Adds a new grocery item to the shopping list. It prompts the user for item details
+   * and checks if the item already exists in the list. If the item is new, it is added;
+   * otherwise, an existing item message is displayed.
+   */
   public void addGroceryToShoppingList(){
 
     if(!groceryList.tryAddFoodItem(inputGroceryDetails())){
@@ -81,6 +70,12 @@ public class UserInterfaceMethods {
     }
     TextBasedUI.groceryAdded();
   }
+
+  /**
+   * Adds a new grocery item to the fridge. It prompts the user for item details
+   * and checks if the item already exists in the fridge. If the item is new, it is added;
+   * otherwise, an existing item message is displayed.
+   */
   public void addGroceryToFridge(){
 
     if(!fridge.tryAddFoodItem(inputGroceryDetails())){
@@ -90,12 +85,10 @@ public class UserInterfaceMethods {
     }
     TextBasedUI.groceryAdded();
   }
+
   /**
-   * Deletes a grocery from the fridge. The method asks the user for: name
-   *
-   * @see InputHandler
-   * @see TextBasedUI
-   * @see FoodItemRegister
+   * Removes a specified grocery item from the fridge. The method prompts the user for the
+   * name of the item. If the item exists, it is removed; if not, a not found message is displayed.
    */
   public void removeGroceryFromFridge() {
     TextBasedUI.inputNameDelete();
@@ -107,6 +100,11 @@ public class UserInterfaceMethods {
     fridge.removeFoodItem(groceryName);
     TextBasedUI.groceryRemoved();
   }
+
+  /**
+   * Removes a specified grocery item from the shopping list. The method prompts the user for the
+   * name of the item. If the item exists, it is removed; if not, a not found message is displayed.
+   */
   public void removeGroceryFromShoppingList() {
     TextBasedUI.inputNameDelete();
     String groceryName = inputHandler.readString();
@@ -118,23 +116,37 @@ public class UserInterfaceMethods {
     TextBasedUI.groceryRemoved();
   }
 
+
+  /**
+   * Prints the current inventory of groceries in the fridge, formatted with a header.
+   * Each item is listed with its name, type, unit, and quantity.
+   */
   public void printFoodInventory() {
     Iterator<FoodItem> iterator = fridge.getFoodItems();
+    System.out.println(formatGroceryHeader());
     while (iterator.hasNext()) {
       FoodItem inventory = iterator.next();
-      System.out.println(formatGroceryHeader());
-      System.out.println(formatGrocery(inventory));
-    }
-  }
-   public void printShoppingList() {
-    Iterator<FoodItem> iterator = groceryList.getFoodItems();
-    while (iterator.hasNext()) {
-      FoodItem inventory = iterator.next();
-      System.out.println(formatGroceryHeader());
       System.out.println(formatGrocery(inventory));
     }
   }
 
+  /**
+   * Prints the current list of groceries in the shopping list, formatted with a header.
+   * Each item is listed with its name, type, unit, and quantity.
+   */
+  public void printShoppingList() {
+    Iterator<FoodItem> iterator = groceryList.getFoodItems();
+     System.out.println(formatGroceryHeader());
+    while (iterator.hasNext()) {
+      FoodItem inventory = iterator.next();
+      System.out.println(formatGrocery(inventory));
+    }
+  }
+
+  /**
+   * Changes the quantity of an existing grocery item in the fridge. The method prompts the user for the
+   * item's name and the new quantity. If the item exists, its quantity is updated.
+   */
   public void changeQuantityFridge() {
     TextBasedUI.inputNameChange();
     String grocery = inputHandler.readString();
@@ -146,6 +158,10 @@ public class UserInterfaceMethods {
     }
   }
 
+  /**
+   * Changes the quantity of an existing grocery item in the shopping list. The method prompts the user for the
+   * item's name and the new quantity. If the item exists, its quantity is updated.
+   */
   public void changeQuantityShoppingList() {
     TextBasedUI.inputNameChange();
     String grocery = inputHandler.readString();
@@ -157,10 +173,16 @@ public class UserInterfaceMethods {
     }
   }
 
+  /**
+   * Clears all items from the fridge inventory, effectively emptying it.
+   */
   public void clearListFridge() {
     fridge.removeAllItems();
   }
 
+  /**
+   * Clears all items from the shopping list, effectively emptying it.
+   */
   public void clearListShoppingList() {
     groceryList.removeAllItems();
   }

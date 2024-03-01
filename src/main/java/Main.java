@@ -10,8 +10,6 @@ public class Main {
     UserInterface ui = new UserInterface();
     ui.initializeFridge();
     ui.initializeShoppingList();
-    uiMethods.printFoodInventory();
-    uiMethods.printShoppingList();
     ui.start();
 
 
