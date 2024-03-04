@@ -21,6 +21,28 @@ public class TextBasedUI {
   public static final String STK = "stk";
   public static final String GRAM = "g";
 
+  public static void printSelectFoodType() {
+    System.out.println("Vennligst velg type for varen:");
+    System.out.println("1. Meieri");
+    System.out.println("2. Frukt");
+    System.out.println("3. Grønnsaker");
+    System.out.println("4. Kjøtt");
+    System.out.println("5. Brød");
+    System.out.println("6. Korn");
+    System.out.println("7. Krydder");
+    System.out.println("8. Søtsaker");
+    System.out.println("9. Drikke");
+    System.out.println("10. Annet");
+  }
+
+  public static void printSelectUnit() {
+    System.out.println("Vennligst velg enhet for varen:");
+    System.out.println("1. kg");
+    System.out.println("2. dl");
+    System.out.println("3. stk");
+    System.out.println("4. g");
+  }
+
   public static void welcomeMessage() {
     System.out.println("Velkommen til dagligvareappen!");
   }
@@ -51,17 +73,6 @@ public class TextBasedUI {
 
   public static void inputQuantityMessage() {
     System.out.println("Skriv inn antall av varen du vil legge til:");
-  }
-
-  public static void inputTypeMessage() {
-    System.out.println("Skriv inn matchende nummer til typen av varen du vil legge til:");
-    System.out.println("1. Frukt");
-    System.out.println("2. Grønnsaker");
-    System.out.println("3. Meieri");
-    System.out.println("4. Kjøtt");
-    System.out.println("5. Brød");
-    System.out.println("6. Korn");
-    System.out.println("7. Krydder");
   }
 
   public static void inputUnitMessage() {
