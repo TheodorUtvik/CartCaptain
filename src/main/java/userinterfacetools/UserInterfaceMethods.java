@@ -64,9 +64,10 @@ public class UserInterfaceMethods {
    * and checks if the item already exists in the list. If the item is new, it is added;
    * otherwise, an existing item message is displayed.
    */
-  public void addGroceryToShoppingList(){
+  public void addGrocery(FoodItemRegister register) {
+    FoodItem item = inputGroceryDetails();
 
-    if(!groceryList.tryAddFoodItem(inputGroceryDetails())){
+    if(!register.tryAddFoodItem(item)){
 
       TextBasedUI.existsInList();
       return;
