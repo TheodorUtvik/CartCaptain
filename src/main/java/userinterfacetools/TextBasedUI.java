@@ -76,6 +76,14 @@ public class TextBasedUI {
     System.out.println("Skriv inn navnet på varen du vil endre:");
   }
 
+  public static void clearFridgeMessage() {
+    System.out.println("Kjøleskapet er tømt.");
+  }
+
+  public static void clearShoppingListMessage() {
+    System.out.println("Handlelisten er tømt.");
+  }
+
   public static void menuPrint() {
     System.out.println("1. Handleliste");
     System.out.println("2. Kjøleskap");
