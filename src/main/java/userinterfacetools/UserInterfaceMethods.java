@@ -13,12 +13,27 @@ public class UserInterfaceMethods {
   InputHandler inputHandler;
 
   public UserInterfaceMethods() {
-    this.groceryList = new FoodItemRegister();
-    this.fridge = new FoodItemRegister();
+    //this.groceryList = new FoodItemRegister();
+    //this.fridge = new FoodItemRegister();
     this.inputHandler = new InputHandler();
-
-    this.groceryList.initialize();
-    this.fridge.initialize();
+    setGroceryList();
+    setFridge();
+    //this.groceryList.initialize();
+    //this.fridge.initialize();
+  }
+  private FoodItemRegister setGroceryList() {
+    if (groceryList == null) {
+      groceryList = new FoodItemRegister();
+      groceryList.initialize();
+    }
+    return groceryList;
+  }
+  private FoodItemRegister setFridge() {
+    if (fridge == null) {
+      fridge = new FoodItemRegister();
+      fridge.initialize();
+    }
+    return fridge;
   }
 
   public FoodItem inputGroceryDetails() {
@@ -81,5 +96,37 @@ public class UserInterfaceMethods {
       clearShoppingListMessage();
     }
   }
+  public void printFridge() {
+    printList(fridge);
+  }
+  public void printShoppingList() {
+    printList(groceryList);
+  }
+  public void addGroceryShoppingList() {
+    addGrocery(groceryList);
+  }
+  public void removeGroceryShoppingList() {
+    removeGrocery(groceryList);
+  }
+  public void changeQuantityShoppingList() {
+    changeQuantity(groceryList);
+  }
+  public void clearShoppingList() {
+    clearList(groceryList, false);
+  }
+  public void clearFridge() {
+    clearList(fridge, true);
+  }
+  public void addGroceryFridge() {
+    addGrocery(fridge);
+  }
+  public void removeGroceryFridge() {
+    removeGrocery(fridge);
+  }
+  public void changeQuantityFridge() {
+    changeQuantity(fridge);
+  }
+
+
 
 }

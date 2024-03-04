@@ -22,6 +22,8 @@ public class UserInterface {
 
 
   public void start() {
+    //initializeFridge();
+    //initializeShoppingList();
     System.out.println();
     TextBasedUI.welcomeMessage();
     boolean running = true;
@@ -87,19 +89,20 @@ public class UserInterface {
     TextBasedUI.fridgePrint();
     switch (menuChoice.nextInt()) {
       case 1:
-        uiMethod.addGrocery(foodItemRegister);
+        uiMethod.addGroceryFridge();
         break;
       case 2:
-        uiMethod.removeGrocery(foodItemRegister);
+        uiMethod.removeGroceryFridge();
         break;
       case 3:
-        uiMethod.printList(foodItemRegister);
+        //uiMethod.printList(foodItemRegister);
+        uiMethod.printFridge();
         break;
       case 4:
-        uiMethod.clearList(foodItemRegister, true);
+        uiMethod.clearFridge();
         break;
       case 5:
-        uiMethod.changeQuantity(foodItemRegister);
+        uiMethod.changeQuantityFridge();
         break;
       case 6:
         start();
@@ -118,19 +121,19 @@ public class UserInterface {
     TextBasedUI.shoppingListPrint();
     switch (menuChoice.nextInt()) {
       case 1:
-        uiMethod.addGrocery(foodItemRegister);
+        uiMethod.addGroceryShoppingList();
         break;
       case 2:
-        uiMethod.removeGrocery(foodItemRegister);
+        uiMethod.removeGroceryShoppingList();
         break;
       case 3:
-        uiMethod.printList(foodItemRegister);
+        uiMethod.printShoppingList();
         break;
       case 4:
-        uiMethod.clearList(foodItemRegister, false);
+        uiMethod.clearShoppingList();
         break;
       case 5:
-        uiMethod.changeQuantity(foodItemRegister);
+        uiMethod.changeQuantityShoppingList();
         break;
       case 6:
         start();
