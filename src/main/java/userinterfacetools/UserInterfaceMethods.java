@@ -46,8 +46,10 @@ public class UserInterfaceMethods {
   public FoodItem inputGroceryDetails() { // Name, foodtype, unit, quantity
     TextBasedUI.inputNameMessage();
     String groceryName = inputHandler.readString();
+    // 1. Kjøtt, Meieri, Frukt, Grønnsaker, Brød, Korn, Krydder, Søtsaker, Drikke, Annet
     TextBasedUI.inputTypeMessage();
     String groceryType = inputHandler.readString();
+    //Gram, dl, stk
     TextBasedUI.inputUnitMessage();
     String groceryUnit = inputHandler.readString();
     TextBasedUI.inputQuantityMessage();

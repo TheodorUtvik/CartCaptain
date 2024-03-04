@@ -37,7 +37,14 @@ public class TextBasedUI {
   }
 
   public static void inputTypeMessage() {
-    System.out.println("Skriv inn typen av varen du vil legge til:");
+    System.out.println("Skriv inn matchende nummer til typen av varen du vil legge til:");
+    System.out.println("1. Frukt");
+    System.out.println("2. Grønnsaker");
+    System.out.println("3. Meieri");
+    System.out.println("4. Kjøtt");
+    System.out.println("5. Brød");
+    System.out.println("6. Korn");
+    System.out.println("7. Krydder");
   }
 
   public static void inputUnitMessage() {
