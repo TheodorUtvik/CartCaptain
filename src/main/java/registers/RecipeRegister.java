@@ -1,5 +1,6 @@
 package registers;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import entities.Recipe;
@@ -62,6 +63,9 @@ public class RecipeRegister {
   public Iterator<Recipe> GetRecipesByType(String type) {
     return this.register.values().stream().filter(item -> item.getCuisineType().equals(type))
         .iterator();
+  }
+  public Collection<Recipe> getAllRecipes() {
+    return register.values();
   }
 
 }
