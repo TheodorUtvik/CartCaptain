@@ -1,9 +1,13 @@
+<img src="Images/LogoCartCaptain1.png" alt="CartCaptain" width="300">
+
 # CartCaptain - Kitchen Inventory System
 This file uses Mark Down syntax. For more information see [here](https://www.markdownguide.org/basic-syntax/).
 
 Group Members: Theodor Sjetnan Utvik, Sigurd Riseth, Halvard Nordberg, Simon Snildal
 
 ## Project description
+
+This project...
 
 [//]: # (TODO: Write a short description of your project/product here.)
 
@@ -24,7 +28,7 @@ The project structure is displayed in the directory tree below.
 │   │           ├── userinterface
 │   │           │   ├── InputReader.java
 │   │           │   ├── Printer.java
-│   │           │   └── UserInterface.java
+│   │           │   └── userinterfacetools.UserInterface.java
 │   │           └── TrainDispatchApp.java
 │   └── test
 │       └── java
