@@ -28,7 +28,7 @@ public class UserInterfaceRecipe {
     this.inputHandler = inputHandler;
   }
 
-  public void addRecipe() {
+  public static void addRecipe() {
     System.out.println("Enter recipe name:");
     String name = inputHandler.readString();
     System.out.println("Enter time to cook:");
@@ -45,7 +45,7 @@ public class UserInterfaceRecipe {
     System.out.println("Recipe added successfully!");
   }
 
-  public void listRecipes() {
+  public static void listRecipes() {
     for (Recipe recipe : recipeRegister.getAllRecipes()) {
       System.out.println("Name: " + recipe.getRecipeName());
       System.out.println("Time to Cook: " + recipe.getTimeToCookRecipe());
@@ -53,7 +53,7 @@ public class UserInterfaceRecipe {
     }
   }
 
-  public void removeRecipe() {
+  public static void removeRecipe() {
     System.out.println("Enter the name of the recipe to remove:");
     String name = inputHandler.readString();
     recipeRegister.removeRecipe(name);

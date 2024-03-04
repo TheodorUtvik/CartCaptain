@@ -55,13 +55,13 @@ public class UserInterface {
     TextBasedUI.recipePrint();
     switch (menuChoice.nextInt()) {
       case 1:
-        //addRecipe();
+        UserInterfaceRecipe.addRecipe();
         break;
       case 2:
-        //removeRecipe();
+        UserInterfaceRecipe.removeRecipe();
         break;
       case 3:
-        //printRecipes();
+        UserInterfaceRecipe.listRecipes();
         break;
       case 4:
         //clearList();
