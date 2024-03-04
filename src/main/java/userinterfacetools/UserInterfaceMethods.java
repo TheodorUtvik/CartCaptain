@@ -3,6 +3,7 @@ package userinterfacetools;
 import static userinterfacetools.TextBasedUI.*;
 import entities.FoodItem;
 import generaltools.InputHandler;
+import generaltools.Selections;
 import java.util.Iterator;
 import registers.FoodItemRegister;
 
@@ -36,22 +37,38 @@ public class UserInterfaceMethods {
     return fridge;
   }
 
-  public FoodItem inputGroceryDetails() {
-    inputNameMessage();
-    String name = inputHandler.readString();
-    inputTypeMessage();
-    String type = inputHandler.readString();
-    inputUnitMessage();
-    String unit = inputHandler.readString();
-    inputQuantityMessage();
-    int quantity = inputHandler.readInt();
-    return new FoodItem(name, type, unit, quantity);
+  /**
+   * Prompts the user to input details for a grocery item, including its name, food type, unit, and quantity.
+   * These inputs are then used to create a new FoodItem object.
+   *
+   * @return FoodItem The newly created FoodItem object with user-provided details.
+   */
+
+  public FoodItem inputGroceryDetails() { // Name, foodtype, unit, quantity
+    TextBasedUI.inputNameMessage();
+    String groceryName = inputHandler.readString();
+    // 1. Kjøtt, Meieri, Frukt, Grønnsaker, Brød, Korn, Krydder, Søtsaker, Drikke, Annet
+    String groceryType = Selections.selectFoodType();
+    //Gram, dl, stk
+    String groceryUnit = Selections.selectUnit();
+    TextBasedUI.inputQuantityMessage();
+    int groceryQuantity = inputHandler.readInt();
+    FoodItem foodItem = new FoodItem(groceryName, groceryType, groceryUnit, groceryQuantity);
+    return foodItem;
   }
 
-  public void addGrocery(FoodItemRegister register) {
-    FoodItem item = inputGroceryDetails();
-    if (!register.tryAddFoodItem(item)) {
-      existsInList();
+
+
+  /**
+   * Adds a new grocery item to the shopping list. It prompts the user for item details
+   * and checks if the item already exists in the list. If the item is new, it is added;
+   * otherwise, an existing item message is displayed.
+   */
+  public void addGroceryToShoppingList(){
+
+    if(!groceryList.tryAddFoodItem(inputGroceryDetails())){
+
+      TextBasedUI.existsInList();
       return;
     }
     groceryAdded();
