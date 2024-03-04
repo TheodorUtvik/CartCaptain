@@ -4,6 +4,7 @@ import static userinterfacetools.TextBasedUI.formatGroceryHeader;
 
 import entities.FoodItem;
 import generaltools.InputHandler;
+import generaltools.Selections;
 import java.util.Iterator;
 import registers.FoodItemRegister;
 
@@ -47,16 +48,16 @@ public class UserInterfaceMethods {
     TextBasedUI.inputNameMessage();
     String groceryName = inputHandler.readString();
     // 1. Kjøtt, Meieri, Frukt, Grønnsaker, Brød, Korn, Krydder, Søtsaker, Drikke, Annet
-    TextBasedUI.inputTypeMessage();
-    String groceryType = inputHandler.readString();
+    String groceryType = Selections.selectFoodType();
     //Gram, dl, stk
-    TextBasedUI.inputUnitMessage();
-    String groceryUnit = inputHandler.readString();
+    String groceryUnit = Selections.selectUnit();
     TextBasedUI.inputQuantityMessage();
     int groceryQuantity = inputHandler.readInt();
     FoodItem foodItem = new FoodItem(groceryName, groceryType, groceryUnit, groceryQuantity);
     return foodItem;
   }
+
+
 
   /**
    * Adds a new grocery item to the shopping list. It prompts the user for item details
