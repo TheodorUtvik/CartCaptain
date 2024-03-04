@@ -20,8 +20,8 @@ import java.util.Iterator;
 
 public class UserInterfaceRecipe {
 
-  private RecipeRegister recipeRegister;
-  private InputHandler inputHandler;
+  private static RecipeRegister recipeRegister;
+  private static InputHandler inputHandler;
 
   public UserInterfaceRecipe(RecipeRegister recipeRegister, InputHandler inputHandler) {
     this.recipeRegister = recipeRegister;
