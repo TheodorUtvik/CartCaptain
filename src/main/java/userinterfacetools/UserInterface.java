@@ -22,6 +22,7 @@ public class UserInterface {
 
 
   public void start() {
+    System.out.println();
     TextBasedUI.welcomeMessage();
     boolean running = true;
     while (running) {
@@ -86,19 +87,19 @@ public class UserInterface {
     TextBasedUI.fridgePrint();
     switch (menuChoice.nextInt()) {
       case 1:
-        uiMethod.addGroceryToFridge();
+        uiMethod.addGrocery(foodItemRegister);
         break;
       case 2:
-        uiMethod.removeGroceryFromFridge();
+        uiMethod.removeGrocery(foodItemRegister);
         break;
       case 3:
-        uiMethod.printFoodInventory();
+        uiMethod.printList(foodItemRegister);
         break;
       case 4:
-        uiMethod.clearListFridge();
+        uiMethod.clearList(foodItemRegister, true);
         break;
       case 5:
-        uiMethod.changeQuantityFridge();
+        uiMethod.changeQuantity(foodItemRegister);
         break;
       case 6:
         start();
@@ -117,19 +118,19 @@ public class UserInterface {
     TextBasedUI.shoppingListPrint();
     switch (menuChoice.nextInt()) {
       case 1:
-        uiMethod.addGroceryToShoppingList();
+        uiMethod.addGrocery(foodItemRegister);
         break;
       case 2:
-        uiMethod.removeGroceryFromShoppingList();
+        uiMethod.removeGrocery(foodItemRegister);
         break;
       case 3:
-        uiMethod.printShoppingList();
+        uiMethod.printList(foodItemRegister);
         break;
       case 4:
-        uiMethod.clearListShoppingList();
+        uiMethod.clearList(foodItemRegister, false);
         break;
       case 5:
-        uiMethod.changeQuantityShoppingList();
+        uiMethod.changeQuantity(foodItemRegister);
         break;
       case 6:
         start();
