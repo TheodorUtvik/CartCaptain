@@ -11,12 +11,13 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * FileHandler provides methods for reading and writing <code>FoodItem</code> objects to and from a file.
+ * FileHandler provides methods for reading and writing <code>FoodItem</code> objects to and from a
+ * file.
  *
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
  * @version 0.0.2
- * @since 05.03.2024
  * @see FoodItem
+ * @since 05.03.2024
  */
 public class FileHandler {
 
@@ -55,7 +56,7 @@ public class FileHandler {
   /**
    * Writes a list of <code>FoodItem</code> objects to a file.
    *
-   * @param fileName the name of the file to write to
+   * @param fileName  the name of the file to write to
    * @param foodItems the list of <code>FoodItem</code> objects to write
    */
   public static void writeFoodToFile(String fileName, List<FoodItem> foodItems) {
@@ -63,7 +64,8 @@ public class FileHandler {
       for (FoodItem foodItem : foodItems) {
         String line = String.format("%s,%s,%s,%.2f%n", foodItem.getName(), foodItem.getUnit(),
             foodItem.getFoodType(), foodItem.getQuantity());
-        Files.write(Paths.get(fileName), line.getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
+        Files.write(Paths.get(fileName), line.getBytes(), StandardOpenOption.APPEND,
+            StandardOpenOption.CREATE);
       }
     } catch (IOException e) {
       System.err.println("Failed to write to file: " + e.getMessage());
