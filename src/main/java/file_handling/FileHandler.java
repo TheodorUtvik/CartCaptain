@@ -10,8 +10,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * FileHandler provides methods for reading and writing <code>FoodItem</code> objects to and from a file.
+ *
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ * @version 0.0.2
+ * @since 05.03.2024
+ * @see FoodItem
+ */
 public class FileHandler {
 
+  /**
+   * Reads a file and returns an iterator of <code>FoodItem</code> objects.
+   *
+   * @param fileName the name of the file to read
+   * @return an iterator of <code>FoodItem</code> objects
+   */
   public static Iterator<FoodItem> readFoodFromFile(String fileName) {
     List<FoodItem> foodItems = new ArrayList<>();
 
@@ -38,6 +52,12 @@ public class FileHandler {
     return foodItems.iterator();
   }
 
+  /**
+   * Writes a list of <code>FoodItem</code> objects to a file.
+   *
+   * @param fileName the name of the file to write to
+   * @param foodItems the list of <code>FoodItem</code> objects to write
+   */
   public static void writeFoodToFile(String fileName, List<FoodItem> foodItems) {
     try {
       for (FoodItem foodItem : foodItems) {
