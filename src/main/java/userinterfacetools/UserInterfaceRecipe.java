@@ -7,6 +7,7 @@ import static userinterfacetools.TextBasedUI.formatRecipe;
 import entities.FoodItem;
 import entities.Recipe;
 import generaltools.InputHandler;
+import java.util.List;
 import registers.RecipeRegister;
 
 import java.util.ArrayList;
@@ -26,10 +27,12 @@ public class UserInterfaceRecipe {
 
   private RecipeRegister recipeRegister;
   private InputHandler inputHandler;
+  private UserInterfaceMethods uim;
 
   public UserInterfaceRecipe() {
     this.recipeRegister = new RecipeRegister();
     this.inputHandler = new InputHandler();
+    this.uim = new UserInterfaceMethods();
   }
   public void initializeRecipe() {
     recipeRegister.intitializeRecipe();
@@ -42,14 +45,30 @@ public class UserInterfaceRecipe {
     String timeToCook = inputHandler.readString();
     TextBasedUI.cuisineType();
     String cuisineType = inputHandler.readString();
-    ArrayList<FoodItem> ingredients = new ArrayList<>();
+    ArrayList<String> ingredients;
+    ingredients = (ArrayList<String>) addIngridients();
     ArrayList<String> approach = new ArrayList<>();
     TextBasedUI.imgUrl();
     String image = inputHandler.readString();
 
-    Recipe recipe = new Recipe(name, timeToCook, cuisineType, ingredients, approach, image);
+    Recipe recipe = new Recipe(name, timeToCook, cuisineType,
+        ingredients, approach, image);
     recipeRegister.tryAddRecipe(recipe);
     TextBasedUI.recipeAdded();
+  }
+  public List<String> addIngridients() {
+    List<String> ingredients = new ArrayList<>();
+    boolean adding = true;
+    while (adding) {
+      FoodItem item = uim.inputGroceryDetails();
+      ingredients.add(formatGrocery(item));
+      TextBasedUI.addAnotherIngredient();
+      int inputFromUser = inputHandler.readInt();
+      if (inputFromUser == 2) {
+        adding = false;
+      }
+    }
+    return ingredients;
   }
 
   public void listRecipes() {

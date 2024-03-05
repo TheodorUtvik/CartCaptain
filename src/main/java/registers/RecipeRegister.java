@@ -72,7 +72,7 @@ public class RecipeRegister {
     return this.register.values().stream().filter(item -> item.getCuisineType().equals(type))
         .iterator();
   }
-  ArrayList<FoodItem> testIngredients = new ArrayList<>();
+  ArrayList<String> testIngredients = new ArrayList<>();
   ArrayList<String> testApproach = new ArrayList<>();
 
   Recipe recipe = new Recipe("name", "timeToCook", "cuisineType", testIngredients, testApproach, "image");

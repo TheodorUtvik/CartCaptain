@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List; // Corrected import
 import registers.FoodItemRegister;
 import userinterfacetools.UserInterface;
+import userinterfacetools.UserInterfaceMethods;
 
 public class Main {
   public static void main(String[] args) {

@@ -91,6 +91,12 @@ public class TextBasedUI {
   public static void allItemsMovedToFridge() {
     System.out.println("Alle varene er flyttet til kjøleskapet.");
   }
+  public static void addAnotherIngredient() {
+    System.out.println("Vil du legge til en annen ingrediens?");
+    System.out.println("1. Ja");
+    System.out.println("2. Nei");
+  }
+
 
   public static void inputQuantityChange() {
     System.out.println("Skriv inn det nye antallet av varen:");
