@@ -24,7 +24,7 @@ public class FoodItem {
   /**
    * The quantity of the food item.
    */
-  private int quantity;
+  private double quantity;
 
   /**
    * Constructs a new FoodItem with the specified name, quantity, and unit.
@@ -34,7 +34,7 @@ public class FoodItem {
    * @param unit     the unit of the food item
    * @param foodType the type of the food item
    */
-  public FoodItem(String name, String foodType, String unit, int quantity) {
+  public FoodItem(String name, String foodType, String unit, double quantity) {
     this.name = name;
     this.foodType = foodType;
     this.unit = unit;
@@ -105,7 +105,7 @@ public class FoodItem {
    * @return the quantity of the food item
    */
 
-  public int getQuantity() {
+  public double getQuantity() {
     return quantity;
   }
 
@@ -115,7 +115,7 @@ public class FoodItem {
    * @param quantity the new quantity of the food item
    */
 
-  public void setQuantity(int quantity) {
+  public void setQuantity(double quantity) {
     this.quantity = quantity;
   }
 
