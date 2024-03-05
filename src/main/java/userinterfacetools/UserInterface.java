@@ -15,7 +15,6 @@ public class UserInterface {
   }
 
 
-
   public void start() {
     uiMethod.initializeFridge();
     uiMethod.initializeShoppingList();
@@ -147,7 +146,7 @@ public class UserInterface {
 
   private void addGroceryFridge() {
     TextBasedUI.addGroceryToFridgeMenu();
-    switch (menuChoice.nextInt()){
+    switch (menuChoice.nextInt()) {
       case 1:
         uiMethod.addOneGroceryFridge();
         break;
