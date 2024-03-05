@@ -1,6 +1,7 @@
 package userinterfacetools;
 
 import static userinterfacetools.TextBasedUI.*;
+
 import entities.FoodItem;
 import generaltools.InputHandler;
 import generaltools.Selections;
@@ -22,6 +23,7 @@ public class UserInterfaceMethods {
     //this.groceryList.initialize();
     //this.fridge.initialize();
   }
+
   private FoodItemRegister setGroceryList() {
     if (groceryList == null) {
       groceryList = new FoodItemRegister();
@@ -29,6 +31,7 @@ public class UserInterfaceMethods {
     }
     return groceryList;
   }
+
   private FoodItemRegister setFridge() {
     if (fridge == null) {
       fridge = new FoodItemRegister();
@@ -36,16 +39,18 @@ public class UserInterfaceMethods {
     }
     return fridge;
   }
+
   public void initializeFridge() {
     fridge.initialize();
   }
+
   public void initializeShoppingList() {
     groceryList.initialize();
   }
 
   /**
-   * Prompts the user to input details for a grocery item, including its name, food type, unit, and quantity.
-   * These inputs are then used to create a new FoodItem object.
+   * Prompts the user to input details for a grocery item, including its name, food type, unit, and
+   * quantity. These inputs are then used to create a new FoodItem object.
    *
    * @return FoodItem The newly created FoodItem object with user-provided details.
    */
@@ -64,16 +69,15 @@ public class UserInterfaceMethods {
   }
 
 
-
   /**
-   * Adds a new grocery item to the shopping list. It prompts the user for item details
-   * and checks if the item already exists in the list. If the item is new, it is added;
-   * otherwise, an existing item message is displayed.
+   * Adds a new grocery item to the shopping list. It prompts the user for item details and checks
+   * if the item already exists in the list. If the item is new, it is added; otherwise, an existing
+   * item message is displayed.
    */
   public void addGrocery(FoodItemRegister register) {
     FoodItem item = inputGroceryDetails();
 
-    if(!register.tryAddFoodItem(item)){
+    if (!register.tryAddFoodItem(item)) {
 
       TextBasedUI.existsInList();
       return;
@@ -120,37 +124,73 @@ public class UserInterfaceMethods {
       clearShoppingListMessage();
     }
   }
+
   public void printFridge() {
     printList(fridge);
   }
+
   public void printShoppingList() {
     printList(groceryList);
   }
+
   public void addGroceryShoppingList() {
     addGrocery(groceryList);
   }
+
   public void removeGroceryShoppingList() {
     removeGrocery(groceryList);
   }
+
   public void changeQuantityShoppingList() {
     changeQuantity(groceryList);
   }
+
   public void clearShoppingList() {
     clearList(groceryList, false);
   }
+
   public void clearFridge() {
     clearList(fridge, true);
   }
+
   public void addGroceryFridge() {
     addGrocery(fridge);
   }
+
   public void removeGroceryFridge() {
     removeGrocery(fridge);
   }
+
   public void changeQuantityFridge() {
     changeQuantity(fridge);
   }
 
+  public void addOneGroceryFridge() {
+    TextBasedUI.inputNameToAdd();
+    String name = inputHandler.readString();
+
+    FoodItem item = groceryList.findFoodItem(name);
+    if (item != null) {
+      groceryList.removeFoodItem(name);
+
+      fridge.tryAddFoodItem(item);
+
+      itemMovedToFridge();
+    } else {
+      itemNotInList();
+    }
+  }
+
+  public void addAllGroceryFridge() {
+    Iterator<FoodItem> iterator = groceryList.getFoodItems();
+    while (iterator.hasNext()) {
+      FoodItem item = iterator.next();
+      fridge.tryAddFoodItem(item);
+    }
+    groceryList.removeAllItems();
+
+    allItemsMovedToFridge();
+  }
 
 
 }

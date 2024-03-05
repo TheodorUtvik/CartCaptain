@@ -2,6 +2,7 @@ package userinterfacetools;
 
 import entities.FoodItem;
 import entities.Recipe;
+import java.sql.SQLOutput;
 
 public class TextBasedUI {
 
@@ -67,6 +68,9 @@ public class TextBasedUI {
   public static void inputNameMessage() {
     System.out.println("Skriv inn navnet på varen du vil legge til:");
   }
+  public static void inputNameToAdd() {
+    System.out.println("Skriv inn navnet på varen du vil legge til i kjøleskapet:");
+  }
 
   public static void inputNameDelete() {
     System.out.println("Skriv inn navnet på varen du vil fjerne:");
@@ -78,6 +82,15 @@ public class TextBasedUI {
 
   public static void inputUnitMessage() {
     System.out.println("Skriv inn enheten av varen du vil legge til:");
+  }
+  public static void itemMovedToFridge() {
+    System.out.println("Varen er flyttet til kjøleskapet.");
+  }
+  public static void itemNotInList() {
+    System.out.println("Varen er ikke i handlelisten.");
+  }
+  public static void allItemsMovedToFridge() {
+    System.out.println("Alle varene er flyttet til kjøleskapet.");
   }
 
   public static void inputQuantityChange() {
@@ -111,7 +124,8 @@ public class TextBasedUI {
     System.out.println("3. Skriv ut handleliste");
     System.out.println("4. Tøm handleliste");
     System.out.println("5. Endre antall");
-    System.out.println("6. Hjem");
+    System.out.println("6. Legg til i kjøleskap og fjern fra handleliste");
+    System.out.println("7. Hjem");
     System.out.println("0. Avslutt");
   }
 
@@ -132,6 +146,12 @@ public class TextBasedUI {
     System.out.println("4. Søk etter oppskrift");
     System.out.println("4. Hjem");
     System.out.println("0. Avslutt");
+  }
+  public static void addGroceryToFridgeMenu() {
+    System.out.println("1. Legg til en vare i kjøleskapet");
+    System.out.println("2. Legg til hele handlelisten i kjøleskapet");
+    System.out.println("3. Hjem");
+    //System.out.println("0. Avslutt");
   }
 
   public static void dropDownPrint() {

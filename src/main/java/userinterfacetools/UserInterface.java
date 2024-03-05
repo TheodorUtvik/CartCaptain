@@ -131,6 +131,9 @@ public class UserInterface {
         uiMethod.changeQuantityShoppingList();
         break;
       case 6:
+        addGroceryFridge();
+        break;
+      case 7:
         start();
         break;
       case 0:
@@ -139,6 +142,24 @@ public class UserInterface {
       default:
         System.out.println("Invalid choice. Try again.");
         goToShoppingList();
+    }
+  }
+
+  private void addGroceryFridge() {
+    TextBasedUI.addGroceryToFridgeMenu();
+    switch (menuChoice.nextInt()){
+      case 1:
+        uiMethod.addOneGroceryFridge();
+        break;
+      case 2:
+        uiMethod.addAllGroceryFridge();
+        break;
+      case 3:
+        start();
+        break;
+      default:
+        System.out.println("Invalid choice. Try again.");
+        addGroceryFridge();
     }
   }
 
