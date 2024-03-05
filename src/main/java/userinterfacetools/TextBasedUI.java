@@ -91,10 +91,23 @@ public class TextBasedUI {
   public static void itemNotInList() {
     System.out.println("Varen er ikke i handlelisten.");
   }
-
+  public static void addApproach() {
+    System.out.println("Skriv inn fremgangsmåte:");
+  }
+  public static void addAnotherStep() {
+    System.out.println("Vil du legge til et annet steg?");
+    System.out.println("1. Ja");
+    System.out.println("2. Nei");
+  }
   public static void allItemsMovedToFridge() {
     System.out.println("Alle varene er flyttet til kjøleskapet.");
   }
+  public static void addAnotherIngredient() {
+    System.out.println("Vil du legge til en annen ingrediens?");
+    System.out.println("1. Ja");
+    System.out.println("2. Nei");
+  }
+
 
   public static void inputQuantityChange() {
     System.out.println("Skriv inn det nye antallet av varen:");

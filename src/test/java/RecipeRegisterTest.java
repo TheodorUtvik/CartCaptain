@@ -17,8 +17,8 @@ public class RecipeRegisterTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-      ArrayList<FoodItem> ingredients1 = new ArrayList<>();
-      ArrayList<FoodItem> ingredients2 = new ArrayList<>();
+      ArrayList<String> ingredients1 = new ArrayList<>();
+      ArrayList<String> ingredients2 = new ArrayList<>();
 
       ArrayList<String> approach1 = new ArrayList<>();
       ArrayList<String> approach2 = new ArrayList<>();
