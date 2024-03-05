@@ -12,10 +12,6 @@ public class Main {
   public static void main(String[] args) {
     //FoodItemRegister foodItemRegister = new FoodItemRegister();
 
-    UserInterfaceMethods uiMethods = new UserInterfaceMethods();
-    UserInterface ui = new UserInterface();
-    ui.start();
-
     // Assuming getFoodItems() returns an Iterator<FoodItem>
     //Iterator<FoodItem> foodItemIterator = foodItemRegister.getFoodItems();
 
