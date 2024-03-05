@@ -1,9 +1,12 @@
 package userinterfacetools;
 
+import static file_handling.FileHandler.writeFoodToFile;
 import static userinterfacetools.TextBasedUI.*;
 import entities.FoodItem;
 import generaltools.InputHandler;
 import generaltools.Selections;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Iterator;
 import registers.FoodItemRegister;
 
@@ -72,12 +75,15 @@ public class UserInterfaceMethods {
    */
   public void addGrocery(FoodItemRegister register) {
     FoodItem item = inputGroceryDetails();
+    List<FoodItem> foodItemList = new ArrayList<>();
+    foodItemList.add(item);
 
     if(!register.tryAddFoodItem(item)){
 
       TextBasedUI.existsInList();
       return;
     }
+    writeFoodToFile("src/main/resources/shoppingList.csv", foodItemList);
     groceryAdded();
   }
 
