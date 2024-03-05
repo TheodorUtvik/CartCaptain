@@ -1,6 +1,8 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.List;
 
 /**
  * Entity class for a recipe which is to be included in the program.  The class includes fields:

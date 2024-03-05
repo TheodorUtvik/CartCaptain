@@ -47,7 +47,8 @@ public class UserInterfaceRecipe {
     String cuisineType = inputHandler.readString();
     ArrayList<String> ingredients;
     ingredients = (ArrayList<String>) addIngridients();
-    ArrayList<String> approach = new ArrayList<>();
+    ArrayList<String> approach;
+    approach = (ArrayList<String>) addApproach();
     TextBasedUI.imgUrl();
     String image = inputHandler.readString();
 
@@ -69,6 +70,21 @@ public class UserInterfaceRecipe {
       }
     }
     return ingredients;
+  }
+  public List<String> addApproach() {
+    List<String> approach = new ArrayList<>();
+    boolean adding = true;
+    while (adding) {
+      TextBasedUI.addApproach();
+      String step = inputHandler.readString();
+      approach.add(step);
+      TextBasedUI.addAnotherStep();
+      int inputFromUser = inputHandler.readInt();
+      if (inputFromUser == 2) {
+        adding = false;
+      }
+    }
+    return approach;
   }
 
   public void listRecipes() {
