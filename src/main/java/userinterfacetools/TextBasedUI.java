@@ -8,8 +8,7 @@ public class TextBasedUI {
   public static final String DRY = "Tørr";
   public static final String MEAT = "Kjøtt";
   public static final String BREAD = "Brød";
-  public static final String FRUIT = "Frukt";
-  public static final String VEGETABLE = "Grønnsaker";
+  public static final String FRUITANDGREEN = "Frukt & Grønt";
   public static final String SPICE = "Krydder";
   public static final String GRAIN = "Korn";
   public static final String SWEETS = "Søtsaker";
@@ -24,8 +23,8 @@ public class TextBasedUI {
   public static void printSelectFoodType() {
     System.out.println("Vennligst velg type for varen:");
     System.out.println("1. Meieri");
-    System.out.println("2. Frukt");
-    System.out.println("3. Grønnsaker");
+    System.out.println("2. Frukt & Grønt");
+    System.out.println("3. Tørr");
     System.out.println("4. Kjøtt");
     System.out.println("5. Brød");
     System.out.println("6. Korn");

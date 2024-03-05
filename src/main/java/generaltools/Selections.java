@@ -16,8 +16,8 @@ public class Selections {
 
     switch (selection) {
       case 1: return TextBasedUI.DAIRY;
-      case 2: return TextBasedUI.FRUIT;
-      case 3: return TextBasedUI.VEGETABLE;
+      case 2: return TextBasedUI.FRUITANDGREEN;
+      case 3: return TextBasedUI.DRY;
       case 4: return TextBasedUI.MEAT;
       case 5: return TextBasedUI.BREAD;
       case 6: return TextBasedUI.GRAIN;
