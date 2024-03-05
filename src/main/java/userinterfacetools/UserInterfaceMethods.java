@@ -12,9 +12,9 @@ import registers.FoodItemRegister;
 
 public class UserInterfaceMethods {
 
-  FoodItemRegister groceryList;
-  FoodItemRegister fridge;
-  InputHandler inputHandler;
+  private FoodItemRegister groceryList;
+  private FoodItemRegister fridge;
+  private final InputHandler inputHandler;
 
   public UserInterfaceMethods() {
     //this.groceryList = new FoodItemRegister();
@@ -38,6 +38,12 @@ public class UserInterfaceMethods {
       fridge.initialize();
     }
     return fridge;
+  }
+  public void initializeFridge() {
+    fridge.initialize();
+  }
+  public void initializeShoppingList() {
+    groceryList.initialize();
   }
 
   /**
