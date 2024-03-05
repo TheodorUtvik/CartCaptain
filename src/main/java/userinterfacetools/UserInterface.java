@@ -6,25 +6,20 @@ import registers.FoodItemRegister;
 public class UserInterface {
 
   Scanner menuChoice = new Scanner(System.in);
-  private FoodItemRegister foodItemRegister;
   private UserInterfaceMethods uiMethod;
+  private UserInterfaceRecipe uiRecipe;
 
   public UserInterface() {
-    this.foodItemRegister = new FoodItemRegister();
     this.uiMethod = new UserInterfaceMethods();
+    this.uiRecipe = new UserInterfaceRecipe();
   }
-  public void initializeFridge() {
-    uiMethod.fridge.initialize();
-  }
-  public void initializeShoppingList() {
-    uiMethod.groceryList.initialize();
-  }
+
 
 
   public void start() {
-    //initializeFridge();
-    //initializeShoppingList();
-    System.out.println();
+    uiMethod.initializeFridge();
+    uiMethod.initializeShoppingList();
+    uiRecipe.initializeRecipe();
     TextBasedUI.welcomeMessage();
     boolean running = true;
     while (running) {
@@ -58,16 +53,16 @@ public class UserInterface {
     TextBasedUI.recipePrint();
     switch (menuChoice.nextInt()) {
       case 1:
-        //addRecipe();
+        uiRecipe.addRecipe();
         break;
       case 2:
-        //removeRecipe();
+        uiRecipe.removeRecipe();
         break;
       case 3:
-        //printRecipes();
+        uiRecipe.listRecipes();
         break;
       case 4:
-        //clearList();
+        uiRecipe.searchRecipe();
         break;
       case 5:
         //changeQuantity();

@@ -1,22 +1,15 @@
 package generaltools;
 
+import static userinterfacetools.TextBasedUI.printSelectFoodType;
+import static userinterfacetools.TextBasedUI.printSelectUnit;
+
 import userinterfacetools.TextBasedUI;
 
 public class Selections {
 
 
   public static String selectFoodType() {
-    System.out.println("Please select the type of food item:");
-    System.out.println("1. Meieri");
-    System.out.println("2. Frukt");
-    System.out.println("3. Grønnsaker");
-    System.out.println("4. Kjøtt");
-    System.out.println("5. Brød");
-    System.out.println("6. Korn");
-    System.out.println("7. Krydder");
-    System.out.println("8. Søtsaker");
-    System.out.println("9. Drikke");
-    System.out.println("10. Annet");
+    printSelectFoodType();
 
     InputHandler inputHandler = new InputHandler();
     int selection = inputHandler.readInt();
@@ -37,11 +30,7 @@ public class Selections {
   }
 
   public static String selectUnit() {
-    System.out.println("Please select the unit of the food item:");
-    System.out.println("1. kg");
-    System.out.println("2. dl");
-    System.out.println("3. stk");
-    System.out.println("4. g");
+    printSelectUnit();
 
     InputHandler inputHandler = new InputHandler();
     int selection = inputHandler.readInt();

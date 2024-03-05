@@ -27,14 +27,14 @@ public class RecipeRegisterTest {
       recipe1 = new Recipe("Pancakes", "1 hour", "test1", ingredients1, approach1, "test1");
       recipe2 = new Recipe("Pizza", "2 hours", "test2", ingredients2, approach2, "test2");
 
-      register.addRecipe(recipe1);
-      register.addRecipe(recipe2);
+      register.tryAddRecipe(recipe1);
+      register.tryAddRecipe(recipe2);
     }
 
     @Test
     void addRecipe() {
       Recipe recipe3 = new Recipe("Pasta", "30 minutes", "test3", new ArrayList<>(), new ArrayList<>(), "test3");
-      register.addRecipe(recipe3);
+      register.tryAddRecipe(recipe3);
 
       assertEquals(recipe3, register.findRecipe("Pasta"));
     }

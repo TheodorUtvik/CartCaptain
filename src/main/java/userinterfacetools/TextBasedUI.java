@@ -1,6 +1,7 @@
 package userinterfacetools;
 
 import entities.FoodItem;
+import entities.Recipe;
 
 public class TextBasedUI {
 
@@ -20,6 +21,28 @@ public class TextBasedUI {
   public static final String DL = "dl";
   public static final String STK = "stk";
   public static final String GRAM = "g";
+
+  public static void printSelectFoodType() {
+    System.out.println("Vennligst velg type for varen:");
+    System.out.println("1. Meieri");
+    System.out.println("2. Frukt");
+    System.out.println("3. Grønnsaker");
+    System.out.println("4. Kjøtt");
+    System.out.println("5. Brød");
+    System.out.println("6. Korn");
+    System.out.println("7. Krydder");
+    System.out.println("8. Søtsaker");
+    System.out.println("9. Drikke");
+    System.out.println("10. Annet");
+  }
+
+  public static void printSelectUnit() {
+    System.out.println("Vennligst velg enhet for varen:");
+    System.out.println("1. kg");
+    System.out.println("2. dl");
+    System.out.println("3. stk");
+    System.out.println("4. g");
+  }
 
   public static void welcomeMessage() {
     System.out.println("Velkommen til dagligvareappen!");
@@ -51,17 +74,6 @@ public class TextBasedUI {
 
   public static void inputQuantityMessage() {
     System.out.println("Skriv inn antall av varen du vil legge til:");
-  }
-
-  public static void inputTypeMessage() {
-    System.out.println("Skriv inn matchende nummer til typen av varen du vil legge til:");
-    System.out.println("1. Frukt");
-    System.out.println("2. Grønnsaker");
-    System.out.println("3. Meieri");
-    System.out.println("4. Kjøtt");
-    System.out.println("5. Brød");
-    System.out.println("6. Korn");
-    System.out.println("7. Krydder");
   }
 
   public static void inputUnitMessage() {
@@ -117,6 +129,7 @@ public class TextBasedUI {
     System.out.println("1. Legg til oppskrift");
     System.out.println("2. Fjern oppskrift");
     System.out.println("3. Skriv ut oppskrifter");
+    System.out.println("4. Søk etter oppskrift");
     System.out.println("4. Hjem");
     System.out.println("0. Avslutt");
   }
@@ -128,6 +141,30 @@ public class TextBasedUI {
     System.out.println("4. Hjem");
     System.out.println("0. Avslutt");
   }
+  public static void recipeName(){
+    System.out.println("Enter recipe name:");
+  }
+  public static void timeToCook(){
+    System.out.println("Enter time to cook:");
+  }
+  public static void cuisineType(){
+    System.out.println("Enter cuisine type:");
+  }
+  public static void imgUrl(){
+    System.out.println("Enter image URL:");
+  }
+  public static void recipeAdded(){
+    System.out.println("Recipe added successfully!");
+  }
+  public static void recipeNameRemove(){
+    System.out.println("Enter the name of the recipe to remove:");
+  }
+  public static void recipeRemoveSuccess(){
+    System.out.println("Recipe removed successfully!");
+  }
+  public static void recipeNotFound(){
+    System.out.println("Recipe not found.");
+  }
 
   public static String formatGrocery(FoodItem foodItem) {
     StringBuilder sb = new StringBuilder();
@@ -135,6 +172,20 @@ public class TextBasedUI {
         .append("Type: ").append(foodItem.getFoodType()).append(" | ")
         .append("Enhet: ").append(foodItem.getUnit()).append(" | ")
         .append("Antall: ").append(foodItem.getQuantity());
+
+    String decLine = "\n" + "-".repeat(sb.length());
+    sb.append(decLine);
+
+    return sb.toString();
+  }
+  public static String formatRecipe(Recipe recipe) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Oppskrift: ").append(recipe.getRecipeName()).append(" | ")
+        .append("Tilberedningstid: ").append(recipe.getTimeToCookRecipe()).append(" | ")
+        .append("Type: ").append(recipe.getCuisineType()).append(" | ")
+        .append("Ingredienser: ").append(recipe.getIngredients()).append(" | ")
+        .append("Fremgangsmåte: ").append(recipe.getApproach()).append(" | ")
+        .append("Bilde: ").append(recipe.getImage());
 
     String decLine = "\n" + "-".repeat(sb.length());
     sb.append(decLine);
@@ -160,7 +211,6 @@ public class TextBasedUI {
       // Return the combined header and decorative line
       return header + decLine;
     }
-
   }
 
 
