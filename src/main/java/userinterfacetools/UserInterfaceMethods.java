@@ -22,9 +22,9 @@ import registers.FoodItemRegister;
 
 public class UserInterfaceMethods {
 
-  FoodItemRegister groceryList;
-  FoodItemRegister fridge;
-  InputHandler inputHandler;
+  private FoodItemRegister groceryList;
+  private FoodItemRegister fridge;
+  private final InputHandler inputHandler;
 
   /**
   * Constructs a new instance of UserInterfaceMethods, initializing two FoodItemRegister instances
@@ -34,6 +34,12 @@ public class UserInterfaceMethods {
     this.groceryList = new FoodItemRegister();
     this.fridge = new FoodItemRegister();
     this.inputHandler = new InputHandler();
+  }
+  public void initializeFridge() {
+    fridge.initialize();
+  }
+  public void initializeShoppingList() {
+    groceryList.initialize();
   }
 
   /**

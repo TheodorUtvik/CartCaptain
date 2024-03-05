@@ -1,5 +1,7 @@
 package registers;
 
+import entities.FoodItem;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,10 +33,16 @@ public class RecipeRegister {
    *
    * @param recipe the recipe to add
    */
-  public void addRecipe(Recipe recipe) {
+  public boolean tryAddRecipe(Recipe recipe) {
+    if(register.containsKey(recipe.getRecipeName())) {
+      return false;
+    }
     this.register.put(recipe.getRecipeName(), recipe);
+    return true;
   }
-
+  public Iterator<Recipe> getRecipes() {
+    return register.values().iterator();
+  }
   /**
    * Removes a recipe from the register.
    *
@@ -64,8 +72,18 @@ public class RecipeRegister {
     return this.register.values().stream().filter(item -> item.getCuisineType().equals(type))
         .iterator();
   }
-  public Collection<Recipe> getAllRecipes() {
-    return register.values();
+  ArrayList<FoodItem> testIngredients = new ArrayList<>();
+  ArrayList<String> testApproach = new ArrayList<>();
+
+  Recipe recipe = new Recipe("name", "timeToCook", "cuisineType", testIngredients, testApproach, "image");
+  Recipe recipe2 = new Recipe("name2", "timeToCook2", "cuisineType2", testIngredients, testApproach, "image2");
+  Recipe recipe3 = new Recipe("name3", "timeToCook3", "cuisineType3", testIngredients, testApproach, "image3");
+  Recipe recipe4 = new Recipe("name4", "timeToCook4", "cuisineType4", testIngredients, testApproach, "image4");
+  public void intitializeRecipe(){
+    tryAddRecipe(recipe);
+    tryAddRecipe(recipe2);
+    tryAddRecipe(recipe3);
+    tryAddRecipe(recipe4);
   }
 
 }

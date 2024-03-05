@@ -1,5 +1,9 @@
 package userinterfacetools;
 
+import static userinterfacetools.TextBasedUI.formatGrocery;
+import static userinterfacetools.TextBasedUI.formatGroceryHeader;
+import static userinterfacetools.TextBasedUI.formatRecipe;
+
 import entities.FoodItem;
 import entities.Recipe;
 import generaltools.InputHandler;
@@ -20,54 +24,59 @@ import java.util.Iterator;
 
 public class UserInterfaceRecipe {
 
-  private static RecipeRegister recipeRegister;
-  private static InputHandler inputHandler;
+  private RecipeRegister recipeRegister;
+  private InputHandler inputHandler;
 
-  public UserInterfaceRecipe(RecipeRegister recipeRegister, InputHandler inputHandler) {
-    this.recipeRegister = recipeRegister;
-    this.inputHandler = inputHandler;
+  public UserInterfaceRecipe() {
+    this.recipeRegister = new RecipeRegister();
+    this.inputHandler = new InputHandler();
+  }
+  public void initializeRecipe() {
+    recipeRegister.intitializeRecipe();
   }
 
-  public static void addRecipe() {
-    System.out.println("Enter recipe name:");
+  public void addRecipe() {
+    TextBasedUI.recipeName();
     String name = inputHandler.readString();
-    System.out.println("Enter time to cook:");
+    TextBasedUI.timeToCook();
     String timeToCook = inputHandler.readString();
-    System.out.println("Enter cuisine type:");
+    TextBasedUI.cuisineType();
     String cuisineType = inputHandler.readString();
     ArrayList<FoodItem> ingredients = new ArrayList<>();
     ArrayList<String> approach = new ArrayList<>();
-    System.out.println("Enter image URL:");
+    TextBasedUI.imgUrl();
     String image = inputHandler.readString();
 
     Recipe recipe = new Recipe(name, timeToCook, cuisineType, ingredients, approach, image);
-    recipeRegister.addRecipe(recipe);
-    System.out.println("Recipe added successfully!");
+    recipeRegister.tryAddRecipe(recipe);
+    TextBasedUI.recipeAdded();
   }
 
-  public static void listRecipes() {
-    for (Recipe recipe : recipeRegister.getAllRecipes()) {
-      System.out.println("Name: " + recipe.getRecipeName());
-      System.out.println("Time to Cook: " + recipe.getTimeToCookRecipe());
-      System.out.println("Cuisine Type: " + recipe.getCuisineType());
+  public void listRecipes() {
+      Iterator<Recipe> iterator = recipeRegister.getRecipes();
+      //System.out.println(formatRecipeHeader());
+      while (iterator.hasNext()) {
+        Recipe recipeList = iterator.next();
+        System.out.println(formatRecipe(recipeList));
+      }
     }
-  }
 
-  public static void removeRecipe() {
-    System.out.println("Enter the name of the recipe to remove:");
+  public void removeRecipe() {
+    TextBasedUI.recipeNameRemove();
     String name = inputHandler.readString();
     recipeRegister.removeRecipe(name);
-    System.out.println("Recipe removed successfully.");
+    TextBasedUI.recipeRemoveSuccess();
   }
 
-  public void findRecipe() {
-    System.out.println("Enter the name of the recipe to find:");
+  public void searchRecipe() {
+    TextBasedUI.recipeName();
     String name = inputHandler.readString();
     Recipe recipe = recipeRegister.findRecipe(name);
     if (recipe != null) {
-      System.out.println("Name: " + recipe.getRecipeName());
+
+      System.out.println(formatRecipe(recipe));
     } else {
-      System.out.println("Recipe not found.");
+      TextBasedUI.recipeNotFound();
     }
   }
 

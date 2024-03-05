@@ -127,8 +127,14 @@ public class Recipe {
   public void setApproach(ArrayList<String> approach) {
     this.approach = approach;
   }
+  public ArrayList<String> getApproach() {
+    return approach;
+  }
 
   public void setImage(String image) {
     this.image = image;
+  }
+  public String getImage() {
+    return image;
   }
 }
