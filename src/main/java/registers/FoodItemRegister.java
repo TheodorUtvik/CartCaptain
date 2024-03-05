@@ -39,7 +39,7 @@ public class FoodItemRegister {
    * @param foodItem the name of the food item
    */
   public boolean tryAddFoodItem(FoodItem foodItem) {
-    if(register.containsKey(foodItem.getName())) {
+    if (register.containsKey(foodItem.getName())) {
       return false;
     }
     this.register.put(foodItem.getName(), foodItem);
@@ -79,6 +79,11 @@ public class FoodItemRegister {
         .iterator();
   }
 
+  /**
+   * Returns an iterator of food items in the register.
+   *
+   * @return an iterator of food items
+   */
   public Iterator<FoodItem> getFoodItems() {
     return register.values().iterator();
   }
@@ -91,13 +96,14 @@ public class FoodItemRegister {
   FoodItem foodItem5 = new FoodItem("Cheese", "Dairy", "g", 500);
 
 
-  public void initialize(){
+  public void initialize() {
     tryAddFoodItem(foodItem);
     tryAddFoodItem(foodItem2);
     tryAddFoodItem(foodItem3);
     tryAddFoodItem(foodItem4);
     tryAddFoodItem(foodItem5);
   }
+
   public List<FoodItem> removeAllItems() {
     List<FoodItem> removedItems = new ArrayList<>(register.values());
     register.clear();

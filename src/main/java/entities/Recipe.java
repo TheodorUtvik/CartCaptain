@@ -13,8 +13,6 @@ import java.util.List;
  * <li>Approach</li>
  * <li>Image</li>
  *
- *
- * @version 0.0.2
  * @author Theodor Sjetnan Utvik
  * @version 0.0.2
  * @since 26.02.2024
@@ -126,16 +124,38 @@ public class Recipe {
     this.ingredients = ingredients;
   }
 
+  /**
+   * Sets the approach for the recipe. The approach is a list of strings.
+   *
+   * @param approach is the approach for the recipe.
+   */
   public void setApproach(ArrayList<String> approach) {
     this.approach = approach;
   }
+
+  /**
+   * Gets the approach for the recipe. The approach is a list of strings.
+   *
+   * @return the approach for the recipe.
+   */
   public ArrayList<String> getApproach() {
     return approach;
   }
 
+  /**
+   * Sets the image for the recipe.
+   *
+   * @param image is the image for the recipe.
+   */
   public void setImage(String image) {
     this.image = image;
   }
+
+  /**
+   * Gets the image for the recipe.
+   *
+   * @return the image for the recipe.
+   */
   public String getImage() {
     return image;
   }

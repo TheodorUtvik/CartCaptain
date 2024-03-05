@@ -67,6 +67,7 @@ public class TextBasedUI {
   public static void inputNameMessage() {
     System.out.println("Skriv inn navnet på varen du vil legge til:");
   }
+
   public static void inputNameToAdd() {
     System.out.println("Skriv inn navnet på varen du vil legge til i kjøleskapet:");
   }
@@ -82,9 +83,11 @@ public class TextBasedUI {
   public static void inputUnitMessage() {
     System.out.println("Skriv inn enheten av varen du vil legge til:");
   }
+
   public static void itemMovedToFridge() {
     System.out.println("Varen er flyttet til kjøleskapet.");
   }
+
   public static void itemNotInList() {
     System.out.println("Varen er ikke i handlelisten.");
   }
@@ -160,6 +163,7 @@ public class TextBasedUI {
     System.out.println("4. Hjem");
     System.out.println("0. Avslutt");
   }
+
   public static void addGroceryToFridgeMenu() {
     System.out.println("1. Legg til en vare i kjøleskapet");
     System.out.println("2. Legg til hele handlelisten i kjøleskapet");
@@ -174,28 +178,36 @@ public class TextBasedUI {
     System.out.println("4. Hjem");
     System.out.println("0. Avslutt");
   }
-  public static void recipeName(){
+
+  public static void recipeName() {
     System.out.println("Enter recipe name:");
   }
-  public static void timeToCook(){
+
+  public static void timeToCook() {
     System.out.println("Enter time to cook:");
   }
-  public static void cuisineType(){
+
+  public static void cuisineType() {
     System.out.println("Enter cuisine type:");
   }
-  public static void imgUrl(){
+
+  public static void imgUrl() {
     System.out.println("Enter image URL:");
   }
-  public static void recipeAdded(){
+
+  public static void recipeAdded() {
     System.out.println("Recipe added successfully!");
   }
-  public static void recipeNameRemove(){
+
+  public static void recipeNameRemove() {
     System.out.println("Enter the name of the recipe to remove:");
   }
-  public static void recipeRemoveSuccess(){
+
+  public static void recipeRemoveSuccess() {
     System.out.println("Recipe removed successfully!");
   }
-  public static void recipeNotFound(){
+
+  public static void recipeNotFound() {
     System.out.println("Recipe not found.");
   }
 
@@ -211,6 +223,7 @@ public class TextBasedUI {
 
     return sb.toString();
   }
+
   public static String formatRecipe(Recipe recipe) {
     StringBuilder sb = new StringBuilder();
     sb.append("Oppskrift: ").append(recipe.getRecipeName()).append(" | ")
@@ -228,22 +241,22 @@ public class TextBasedUI {
 
 
   public static String formatGroceryHeader() {
-      final String ANSI_BOLD = "\033[1m";
-      final String ANSI_RESET = "\033[0m";
-      final String ANSI_BLUE = "\033[34m";
+    final String ANSI_BOLD = "\033[1m";
+    final String ANSI_RESET = "\033[0m";
+    final String ANSI_BLUE = "\033[34m";
 
-      // Create the header string
-      String header = ANSI_BOLD + ANSI_BLUE + "Matvare | Mat type | Enhet | Antall" + ANSI_RESET;
+    // Create the header string
+    String header = ANSI_BOLD + ANSI_BLUE + "Matvare | Mat type | Enhet | Antall" + ANSI_RESET;
 
-      // Calculate the length of the header string without ANSI escape codes for accurate repetition
-      String headerWithoutAnsi = "Matvare | Mat type | Enhet | Antall";
+    // Calculate the length of the header string without ANSI escape codes for accurate repetition
+    String headerWithoutAnsi = "Matvare | Mat type | Enhet | Antall";
 
-      // Create the decorative line
-      String decLine = "\n" + ANSI_BLUE + "-".repeat(headerWithoutAnsi.length()) + ANSI_RESET;
+    // Create the decorative line
+    String decLine = "\n" + ANSI_BLUE + "-".repeat(headerWithoutAnsi.length()) + ANSI_RESET;
 
-      // Return the combined header and decorative line
-      return header + decLine;
-    }
+    // Return the combined header and decorative line
+    return header + decLine;
   }
+}
 
 
