@@ -5,6 +5,45 @@ import entities.Recipe;
 
 public class TextBasedUI {
 
+  public static final String DAIRY = "Meieri";
+  public static final String DRY = "Tørr";
+  public static final String MEAT = "Kjøtt";
+  public static final String BREAD = "Brød";
+  public static final String FRUIT = "Frukt";
+  public static final String VEGETABLE = "Grønnsaker";
+  public static final String SPICE = "Krydder";
+  public static final String GRAIN = "Korn";
+  public static final String SWEETS = "Søtsaker";
+  public static final String DRINK = "Drikke";
+  public static final String OTHER = "Annet";
+  public static final String INVALIDCHOICE = "Invalid choice";
+  public static final String KG = "kg";
+  public static final String DL = "dl";
+  public static final String STK = "stk";
+  public static final String GRAM = "g";
+
+  public static void printSelectFoodType() {
+    System.out.println("Vennligst velg type for varen:");
+    System.out.println("1. Meieri");
+    System.out.println("2. Frukt");
+    System.out.println("3. Grønnsaker");
+    System.out.println("4. Kjøtt");
+    System.out.println("5. Brød");
+    System.out.println("6. Korn");
+    System.out.println("7. Krydder");
+    System.out.println("8. Søtsaker");
+    System.out.println("9. Drikke");
+    System.out.println("10. Annet");
+  }
+
+  public static void printSelectUnit() {
+    System.out.println("Vennligst velg enhet for varen:");
+    System.out.println("1. kg");
+    System.out.println("2. dl");
+    System.out.println("3. stk");
+    System.out.println("4. g");
+  }
+
   public static void welcomeMessage() {
     System.out.println("Velkommen til dagligvareappen!");
   }
@@ -37,10 +76,6 @@ public class TextBasedUI {
     System.out.println("Skriv inn antall av varen du vil legge til:");
   }
 
-  public static void inputTypeMessage() {
-    System.out.println("Skriv inn typen av varen du vil legge til:");
-  }
-
   public static void inputUnitMessage() {
     System.out.println("Skriv inn enheten av varen du vil legge til:");
   }
@@ -51,6 +86,14 @@ public class TextBasedUI {
 
   public static void inputNameChange() {
     System.out.println("Skriv inn navnet på varen du vil endre:");
+  }
+
+  public static void clearFridgeMessage() {
+    System.out.println("Kjøleskapet er tømt.");
+  }
+
+  public static void clearShoppingListMessage() {
+    System.out.println("Handlelisten er tømt.");
   }
 
   public static void menuPrint() {
