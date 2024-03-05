@@ -9,8 +9,6 @@ public class Main {
 
     UserInterfaceMethods uiMethods = new UserInterfaceMethods();
     UserInterface ui = new UserInterface();
-    //ui.initializeFridge();
-    //ui.initializeShoppingList();
     ui.start();
 
 

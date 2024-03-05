@@ -1,6 +1,7 @@
 package userinterfacetools;
 
 import entities.FoodItem;
+import entities.Recipe;
 
 public class TextBasedUI {
 
@@ -128,6 +129,7 @@ public class TextBasedUI {
     System.out.println("1. Legg til oppskrift");
     System.out.println("2. Fjern oppskrift");
     System.out.println("3. Skriv ut oppskrifter");
+    System.out.println("4. Søk etter oppskrift");
     System.out.println("4. Hjem");
     System.out.println("0. Avslutt");
   }
@@ -139,6 +141,30 @@ public class TextBasedUI {
     System.out.println("4. Hjem");
     System.out.println("0. Avslutt");
   }
+  public static void recipeName(){
+    System.out.println("Enter recipe name:");
+  }
+  public static void timeToCook(){
+    System.out.println("Enter time to cook:");
+  }
+  public static void cuisineType(){
+    System.out.println("Enter cuisine type:");
+  }
+  public static void imgUrl(){
+    System.out.println("Enter image URL:");
+  }
+  public static void recipeAdded(){
+    System.out.println("Recipe added successfully!");
+  }
+  public static void recipeNameRemove(){
+    System.out.println("Enter the name of the recipe to remove:");
+  }
+  public static void recipeRemoveSuccess(){
+    System.out.println("Recipe removed successfully!");
+  }
+  public static void recipeNotFound(){
+    System.out.println("Recipe not found.");
+  }
 
   public static String formatGrocery(FoodItem foodItem) {
     StringBuilder sb = new StringBuilder();
@@ -146,6 +172,20 @@ public class TextBasedUI {
         .append("Type: ").append(foodItem.getFoodType()).append(" | ")
         .append("Enhet: ").append(foodItem.getUnit()).append(" | ")
         .append("Antall: ").append(foodItem.getQuantity());
+
+    String decLine = "\n" + "-".repeat(sb.length());
+    sb.append(decLine);
+
+    return sb.toString();
+  }
+  public static String formatRecipe(Recipe recipe) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Oppskrift: ").append(recipe.getRecipeName()).append(" | ")
+        .append("Tilberedningstid: ").append(recipe.getTimeToCookRecipe()).append(" | ")
+        .append("Type: ").append(recipe.getCuisineType()).append(" | ")
+        .append("Ingredienser: ").append(recipe.getIngredients()).append(" | ")
+        .append("Fremgangsmåte: ").append(recipe.getApproach()).append(" | ")
+        .append("Bilde: ").append(recipe.getImage());
 
     String decLine = "\n" + "-".repeat(sb.length());
     sb.append(decLine);
@@ -171,7 +211,6 @@ public class TextBasedUI {
       // Return the combined header and decorative line
       return header + decLine;
     }
-
   }
 
 
