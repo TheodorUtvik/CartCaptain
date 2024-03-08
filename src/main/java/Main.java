@@ -1,7 +1,9 @@
 import static file_handling.FileHandler.readFoodFromFile;
 import static file_handling.FileHandler.writeFoodToFile;
+import static file_handling.FileHandler.writeRecipeToFile;
 
 import entities.FoodItem;
+import entities.Recipe;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List; // Corrected import
