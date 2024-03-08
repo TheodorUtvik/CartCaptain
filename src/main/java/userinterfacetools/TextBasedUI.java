@@ -21,6 +21,30 @@ public class TextBasedUI {
   public static final String DL = "dl";
   public static final String STK = "stk";
   public static final String GRAM = "g";
+  public static final String FISH = "Fisk";
+  public static final String MEATTYPE = "Kjøtt";
+  public static final String VEGETARIAN = "Vegetar";
+  public static final String VEGAN = "Vegan";
+  public static final String PASTA = "Pasta";
+  public static final String SOUP = "Suppe";
+  public static final String SALAD = "Salat";
+  public static final String CAKE = "Kake";
+  public static final String BREAKFAST = "Frokost";
+
+
+  public static void printSelectCuisineType() {
+    System.out.println("Vennligst velg mattype for oppskriften:");
+    System.out.println("1. Fisk");
+    System.out.println("2. Kjøtt");
+    System.out.println("3. Vegetar");
+    System.out.println("4. Vegan");
+    System.out.println("5. Pasta");
+    System.out.println("6. Suppe");
+    System.out.println("7. Salat");
+    System.out.println("8. Kake");
+    System.out.println("9. Frokost");
+    System.out.println("10. Annet");
+  }
 
   public static void printSelectFoodType() {
     System.out.println("Vennligst velg type for varen:");
