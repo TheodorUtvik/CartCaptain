@@ -1,6 +1,8 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.List;
 
 /**
  * Entity class for a recipe which is to be included in the program.  The class includes fields:
@@ -11,8 +13,6 @@ import java.util.ArrayList;
  * <li>Approach</li>
  * <li>Image</li>
  *
- *
- * @version 0.0.2
  * @author Theodor Sjetnan Utvik
  * @version 0.0.2
  * @since 26.02.2024
@@ -23,13 +23,13 @@ public class Recipe {
   private String recipeName;
   private String timeToCookRecipe;
   private String cuisineType;
-  private ArrayList<FoodItem> ingredients;
+  private ArrayList<String> ingredients;
   private ArrayList<String> approach;
   private String image;
 
 
   public Recipe(String recipeName, String timeToCookRecipe, String cuisineType,
-      ArrayList<FoodItem> ingredients, ArrayList<String> approach, String image) {
+      ArrayList<String> ingredients, ArrayList<String> approach, String image) {
     setRecipeName(recipeName);
     setTimeToCookRecipe(timeToCookRecipe);
     setCuisineType(cuisineType);
@@ -111,7 +111,7 @@ public class Recipe {
    *
    * @return ingredients listed.
    */
-  public ArrayList<FoodItem> getIngredients() {
+  public ArrayList<String> getIngredients() {
     return ingredients;
   }
 
@@ -120,20 +120,42 @@ public class Recipe {
    *
    * @param ingredients
    */
-  public void setIngredients(ArrayList<FoodItem> ingredients) {
+  public void setIngredients(ArrayList<String> ingredients) {
     this.ingredients = ingredients;
   }
 
+  /**
+   * Sets the approach for the recipe. The approach is a list of strings.
+   *
+   * @param approach is the approach for the recipe.
+   */
   public void setApproach(ArrayList<String> approach) {
     this.approach = approach;
   }
+
+  /**
+   * Gets the approach for the recipe. The approach is a list of strings.
+   *
+   * @return the approach for the recipe.
+   */
   public ArrayList<String> getApproach() {
     return approach;
   }
 
+  /**
+   * Sets the image for the recipe.
+   *
+   * @param image is the image for the recipe.
+   */
   public void setImage(String image) {
     this.image = image;
   }
+
+  /**
+   * Gets the image for the recipe.
+   *
+   * @return the image for the recipe.
+   */
   public String getImage() {
     return image;
   }

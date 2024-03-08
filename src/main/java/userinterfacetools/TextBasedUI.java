@@ -2,6 +2,7 @@ package userinterfacetools;
 
 import entities.FoodItem;
 import entities.Recipe;
+import java.sql.SQLOutput;
 
 public class TextBasedUI {
 
@@ -9,8 +10,7 @@ public class TextBasedUI {
   public static final String DRY = "Tørr";
   public static final String MEAT = "Kjøtt";
   public static final String BREAD = "Brød";
-  public static final String FRUIT = "Frukt";
-  public static final String VEGETABLE = "Grønnsaker";
+  public static final String FRUITANDGREEN = "Frukt & Grønt";
   public static final String SPICE = "Krydder";
   public static final String GRAIN = "Korn";
   public static final String SWEETS = "Søtsaker";
@@ -21,12 +21,36 @@ public class TextBasedUI {
   public static final String DL = "dl";
   public static final String STK = "stk";
   public static final String GRAM = "g";
+  public static final String FISH = "Fisk";
+  public static final String MEATTYPE = "Kjøtt";
+  public static final String VEGETARIAN = "Vegetar";
+  public static final String VEGAN = "Vegan";
+  public static final String PASTA = "Pasta";
+  public static final String SOUP = "Suppe";
+  public static final String SALAD = "Salat";
+  public static final String CAKE = "Kake";
+  public static final String BREAKFAST = "Frokost";
+
+
+  public static void printSelectCuisineType() {
+    System.out.println("Vennligst velg mattype for oppskriften:");
+    System.out.println("1. Fisk");
+    System.out.println("2. Kjøtt");
+    System.out.println("3. Vegetar");
+    System.out.println("4. Vegan");
+    System.out.println("5. Pasta");
+    System.out.println("6. Suppe");
+    System.out.println("7. Salat");
+    System.out.println("8. Kake");
+    System.out.println("9. Frokost");
+    System.out.println("10. Annet");
+  }
 
   public static void printSelectFoodType() {
     System.out.println("Vennligst velg type for varen:");
     System.out.println("1. Meieri");
-    System.out.println("2. Frukt");
-    System.out.println("3. Grønnsaker");
+    System.out.println("2. Frukt & Grønt");
+    System.out.println("3. Tørr");
     System.out.println("4. Kjøtt");
     System.out.println("5. Brød");
     System.out.println("6. Korn");
@@ -68,6 +92,10 @@ public class TextBasedUI {
     System.out.println("Skriv inn navnet på varen du vil legge til:");
   }
 
+  public static void inputNameToAdd() {
+    System.out.println("Skriv inn navnet på varen du vil legge til i kjøleskapet:");
+  }
+
   public static void inputNameDelete() {
     System.out.println("Skriv inn navnet på varen du vil fjerne:");
   }
@@ -79,6 +107,31 @@ public class TextBasedUI {
   public static void inputUnitMessage() {
     System.out.println("Skriv inn enheten av varen du vil legge til:");
   }
+
+  public static void itemMovedToFridge() {
+    System.out.println("Varen er flyttet til kjøleskapet.");
+  }
+
+  public static void itemNotInList() {
+    System.out.println("Varen er ikke i handlelisten.");
+  }
+  public static void addApproach() {
+    System.out.println("Skriv inn fremgangsmåte:");
+  }
+  public static void addAnotherStep() {
+    System.out.println("Vil du legge til et annet steg?");
+    System.out.println("1. Ja");
+    System.out.println("2. Nei");
+  }
+  public static void allItemsMovedToFridge() {
+    System.out.println("Alle varene er flyttet til kjøleskapet.");
+  }
+  public static void addAnotherIngredient() {
+    System.out.println("Vil du legge til en annen ingrediens?");
+    System.out.println("1. Ja");
+    System.out.println("2. Nei");
+  }
+
 
   public static void inputQuantityChange() {
     System.out.println("Skriv inn det nye antallet av varen:");
@@ -111,7 +164,8 @@ public class TextBasedUI {
     System.out.println("3. Skriv ut handleliste");
     System.out.println("4. Tøm handleliste");
     System.out.println("5. Endre antall");
-    System.out.println("6. Hjem");
+    System.out.println("6. Legg til i kjøleskap og fjern fra handleliste");
+    System.out.println("7. Hjem");
     System.out.println("0. Avslutt");
   }
 
@@ -134,6 +188,13 @@ public class TextBasedUI {
     System.out.println("0. Avslutt");
   }
 
+  public static void addGroceryToFridgeMenu() {
+    System.out.println("1. Legg til en vare i kjøleskapet");
+    System.out.println("2. Legg til hele handlelisten i kjøleskapet");
+    System.out.println("3. Hjem");
+    //System.out.println("0. Avslutt");
+  }
+
   public static void dropDownPrint() {
     System.out.println("1. Handleliste");
     System.out.println("2. Kjøleskap");
@@ -141,28 +202,36 @@ public class TextBasedUI {
     System.out.println("4. Hjem");
     System.out.println("0. Avslutt");
   }
-  public static void recipeName(){
+
+  public static void recipeName() {
     System.out.println("Enter recipe name:");
   }
-  public static void timeToCook(){
+
+  public static void timeToCook() {
     System.out.println("Enter time to cook:");
   }
-  public static void cuisineType(){
+
+  public static void cuisineType() {
     System.out.println("Enter cuisine type:");
   }
-  public static void imgUrl(){
+
+  public static void imgUrl() {
     System.out.println("Enter image URL:");
   }
-  public static void recipeAdded(){
+
+  public static void recipeAdded() {
     System.out.println("Recipe added successfully!");
   }
-  public static void recipeNameRemove(){
+
+  public static void recipeNameRemove() {
     System.out.println("Enter the name of the recipe to remove:");
   }
-  public static void recipeRemoveSuccess(){
+
+  public static void recipeRemoveSuccess() {
     System.out.println("Recipe removed successfully!");
   }
-  public static void recipeNotFound(){
+
+  public static void recipeNotFound() {
     System.out.println("Recipe not found.");
   }
 
@@ -178,6 +247,7 @@ public class TextBasedUI {
 
     return sb.toString();
   }
+
   public static String formatRecipe(Recipe recipe) {
     StringBuilder sb = new StringBuilder();
     sb.append("Oppskrift: ").append(recipe.getRecipeName()).append(" | ")
@@ -195,22 +265,22 @@ public class TextBasedUI {
 
 
   public static String formatGroceryHeader() {
-      final String ANSI_BOLD = "\033[1m";
-      final String ANSI_RESET = "\033[0m";
-      final String ANSI_BLUE = "\033[34m";
+    final String ANSI_BOLD = "\033[1m";
+    final String ANSI_RESET = "\033[0m";
+    final String ANSI_BLUE = "\033[34m";
 
-      // Create the header string
-      String header = ANSI_BOLD + ANSI_BLUE + "Matvare | Mat type | Enhet | Antall" + ANSI_RESET;
+    // Create the header string
+    String header = ANSI_BOLD + ANSI_BLUE + "Matvare | Mat type | Enhet | Antall" + ANSI_RESET;
 
-      // Calculate the length of the header string without ANSI escape codes for accurate repetition
-      String headerWithoutAnsi = "Matvare | Mat type | Enhet | Antall";
+    // Calculate the length of the header string without ANSI escape codes for accurate repetition
+    String headerWithoutAnsi = "Matvare | Mat type | Enhet | Antall";
 
-      // Create the decorative line
-      String decLine = "\n" + ANSI_BLUE + "-".repeat(headerWithoutAnsi.length()) + ANSI_RESET;
+    // Create the decorative line
+    String decLine = "\n" + ANSI_BLUE + "-".repeat(headerWithoutAnsi.length()) + ANSI_RESET;
 
-      // Return the combined header and decorative line
-      return header + decLine;
-    }
+    // Return the combined header and decorative line
+    return header + decLine;
   }
+}
 
 
