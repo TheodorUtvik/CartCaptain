@@ -109,7 +109,6 @@ public class UserInterfaceRecipe {
    */
   public void listRecipes() {
     Iterator<Recipe> iterator = recipeRegister.getRecipes();
-    //System.out.println(formatRecipeHeader());
     while (iterator.hasNext()) {
       Recipe recipeList = iterator.next();
       System.out.println(formatRecipe(recipeList));
