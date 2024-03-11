@@ -62,8 +62,12 @@ public class RecipeRegister {
    *
    * @param name the name of the recipe to find
    * @return the recipe with the specified name
-   */
+  */
+
   public Recipe findRecipe(String name) {
+     if (!register.containsKey(name)) {
+       return null;
+     }
     return this.register.get(name);
   }
 

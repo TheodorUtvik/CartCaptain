@@ -63,7 +63,7 @@ public class FoodItemRegister {
    * @return the food item with the specified name
    */
   public FoodItem findFoodItem(String name) {
-    if (name == null) {
+    if (!this.register.containsKey(name)) {
       return null; // or throw an exception
     }
     return this.register.get(name);
