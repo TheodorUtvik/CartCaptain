@@ -18,6 +18,7 @@ import java.util.Scanner;
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
  * @version 0.0.2
  * @see FoodItem
+ * @see Recipe
  * @since 05.03.2024
  */
 public class FileHandler {
