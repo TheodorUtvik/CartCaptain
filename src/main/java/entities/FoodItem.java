@@ -123,12 +123,12 @@ public class FoodItem {
    * Prints the name, quantity, and unit of the food item.
    */
 
-  /*public String getDetails() {
+  public String getDetails() {
     StringBuilder detailsString = new StringBuilder();
     detailsString.append("Name: ").append(name);
     detailsString.append(", Quantity: ").append(quantity);
     detailsString.append(", Unit: ").append(unit);
     detailsString.append(", Type: ").append(foodType);
     return String.valueOf(detailsString);
-  } */
+  }
 }
