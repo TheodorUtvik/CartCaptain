@@ -18,7 +18,6 @@ public class MainApp extends Application {
               "/scenebuilderjavafxapp/CartCaptainFrontPage.fxml"))); // Replace "YourFXMLFileName.fxml" with the actual name of your FXML file
 
       Scene scene = new Scene(root);
-
       primaryStage.setTitle("Cart Captain"); // Set the window title here
       primaryStage.setScene(scene);
       primaryStage.show();

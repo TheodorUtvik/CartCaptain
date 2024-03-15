@@ -27,22 +27,22 @@ public class FridgeController {
   private ImageView hamburgerMenu;
 
   @FXML
-  private ToggleButton allCategories;
+  private Button allCategories;
 
   @FXML
-  private ToggleButton dairyCategory;
+  private Button dairyCategory;
 
   @FXML
-  private ToggleButton meatCategory;
+  private Button meatCategory;
 
   @FXML
-  private ToggleButton fishCategory;
+  private Button fishCategory;
 
   @FXML
-  private ToggleButton grainsCategory;
+  private Button grainsCategory;
 
   @FXML
-  private ToggleButton fruitAndVegetablesCategory;
+  private Button fruitAndVegetablesCategory;
 
   @FXML
   private ListView<String> fridgeListView;
