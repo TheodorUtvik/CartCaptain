@@ -1,7 +1,6 @@
 package userinterfacetools;
 
 import static userinterfacetools.TextBasedUI.formatGrocery;
-import static userinterfacetools.TextBasedUI.formatGroceryHeader;
 import static userinterfacetools.TextBasedUI.formatRecipe;
 
 import entities.FoodItem;
@@ -62,7 +61,7 @@ public class UserInterfaceRecipe {
     TextBasedUI.cuisineType();
     String cuisineType = inputHandler.readString();
     ArrayList<String> ingredients;
-    ingredients = (ArrayList<String>) addIngridients();
+    ingredients = (ArrayList<String>) addIngredients();
     ArrayList<String> approach;
     approach = (ArrayList<String>) addApproach();
     TextBasedUI.imgUrl();
@@ -73,7 +72,7 @@ public class UserInterfaceRecipe {
     recipeRegister.tryAddRecipe(recipe);
     TextBasedUI.recipeAdded();
   }
-  public List<String> addIngridients() {
+  public List<String> addIngredients() {
     List<String> ingredients = new ArrayList<>();
     boolean adding = true;
     while (adding) {

@@ -159,13 +159,11 @@ public class FileHandler {
    * @param fileName the name of the file to delete
    * @return true if the file was deleted, false otherwise.
    */
-  public static boolean deleteFile(String fileName) {
+  public static void deleteFile(String fileName) {
     try {
       Files.delete(Paths.get(fileName));
-      return true;
     } catch (IOException e) {
       System.err.println("Failed to delete file: " + e.getMessage());
-      return false;
     }
   }
 
