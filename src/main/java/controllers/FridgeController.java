@@ -4,14 +4,12 @@ import static controllers.SceneUtils.changeScene;
 
 import entities.FoodItem;
 import file_handling.FileHandler;
-import java.io.File;
 import java.util.Iterator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -53,6 +51,10 @@ public class FridgeController {
   @FXML
   private Button recipeButton;
 
+  /**
+   * Init method that runs when the FXML file is loaded.
+   * It populates the ListView with all food items in the fridge.
+   */
   @FXML
   private void initialize() { // This method should be triggered by a listener on the TextField's textProperty
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
@@ -63,6 +65,9 @@ public class FridgeController {
     }
   }
 
+  /**
+   * Displays all food items in the fridge.
+   */
   @FXML
   public void categoryAll(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
@@ -74,6 +79,9 @@ public class FridgeController {
     }
   }
 
+  /**
+   * Displays all food items in the fridge that are categorized as dairy.
+   */
   @FXML
   public void categoryDairy(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
@@ -87,6 +95,9 @@ public class FridgeController {
     }
   }
 
+  /**
+   * Displays all food items in the fridge that are categorized as meat.
+   */
   @FXML
   public void categoryMeat(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
@@ -100,6 +111,10 @@ public class FridgeController {
     }
   }
 
+  /**
+   * Displays all food items in the fridge that are categorized as fish.
+   */
+  @FXML
   public void categoryFish(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
@@ -112,6 +127,9 @@ public class FridgeController {
     }
   }
 
+  /**
+   * Displays all food items in the fridge that are categorized as grains.
+   */
   @FXML
   public void categoryGrains(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
@@ -125,6 +143,9 @@ public class FridgeController {
     }
   }
 
+  /**
+   * Displays all food items in the fridge that are categorized as fruit and vegetables.
+   */
   @FXML
   public void categoryFruitAndVegetables(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
@@ -138,6 +159,10 @@ public class FridgeController {
     }
   }
 
+  /**
+   * Toggles the visibility of the category buttons.
+   * If the buttons are visible, they will be hidden and disabled.
+   */
   @FXML
   public void showMenu(MouseEvent event) {
     if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
@@ -157,12 +182,34 @@ public class FridgeController {
     }
   }
 
+  /**
+   * Displays all food items in the fridge that contain the search query given in the searchField.
+   */
+  @FXML
+  private void onSearchButtonClicked() {
+    fridgeListView.getItems().clear();
+    String searchQuery = searchField.getText().toLowerCase();
+    Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
+        "src/main/resources/foodItems.csv"); // Adjust the path as needed
+    while (allFoodItems.hasNext()) {
+      FoodItem foodItem = allFoodItems.next();
+      if (foodItem.getName().toLowerCase().contains(searchQuery)) {
+        fridgeListView.getItems().add(foodItem.getName());
+      }
+    }
+  }
 
+  /**
+   * Changes the scene to the front page.
+   */
   @FXML
   public void goHome(ActionEvent event) {
     changeScene(event, "/scenebuilderjavafxapp/CartCaptainFrontPage.fxml", "Front Page");
   }
 
+  /**
+   * Changes the scene to the recipes page.
+   */
   @FXML
   public void goRecipes(ActionEvent event) {
     changeScene(event, "/scenebuilderjavafxapp/RecipesFrontPage.fxml", "Recipe");
