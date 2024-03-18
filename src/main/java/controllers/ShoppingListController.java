@@ -5,16 +5,15 @@ import static controllers.SceneUtils.changeScene;
 import entities.FoodItem;
 import file_handling.FileHandler;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import userinterfacetools.UserInterfaceMethods;
 import javafx.fxml.Initializable;
 
 
@@ -26,6 +25,15 @@ public class ShoppingListController implements Initializable {
 
   @FXML
   public Button removeButton;
+
+  @FXML
+  public Button listToFileButton;
+
+  @FXML
+  public Button clearShoppingListButton;
+
+  @FXML
+  public TextField inputQuantityField;
 
   @FXML
   private void goBack(ActionEvent event) {
@@ -88,15 +96,32 @@ public class ShoppingListController implements Initializable {
    * This method will allow the user to add items to the shopping list. It will be triggered by a
    * button click. It should add the selected item to the shopping list, which is a new list of
    * strings. The shopping list should be displayed in a ListView. The user should be able to add
-   * multiple items to the shopping list.
+   * multiple items to the shopping list. When a user selects an item from the foodItemsView, the
+   * user should decide the quantity of the item to add to the shopping list.
    */
   @FXML
   private void onAddToShoppingListButtonClicked() {
     String selectedItem = foodItemsView.getSelectionModel().getSelectedItem();
-    if (selectedItem != null && !shoppingListView.getItems().contains(selectedItem)) {
-      shoppingListView.getItems().add(selectedItem);
+    String inputQuantityText = inputQuantityField.getText();
+    double quantity = 1;
+
+    if(!inputQuantityText.isEmpty())
+      try {
+        quantity = Integer.parseInt(inputQuantityText);
+        if (quantity <= 0) {
+          throw new NumberFormatException("Quantity must be positive");
+        }
+      } catch (NumberFormatException e) {
+        System.err.println("Invalid quantity: " + e.getMessage());
+        return;
+      }
+    String itemWithQuantity = selectedItem + ", " + quantity;
+    if (selectedItem != null && !shoppingListView.getItems().contains(itemWithQuantity)) {
+      shoppingListView.getItems().add(itemWithQuantity);
     }
+    inputQuantityField.setText("");
   }
+
 
   /**
    * This method will allow the user to remove items from the shopping list. It will be triggered by a
@@ -110,5 +135,25 @@ public class ShoppingListController implements Initializable {
     }
   }
 
+  /**
+   * This method will allow the user to save the shopping list to a file. It will be triggered by a
+   * button click. It should save the shopping list to a file with the name "shoppingList.csv". Each
+   * item in the shopping list should be on a new line in the file.
+   */
+  @FXML
+  private void onSaveShoppingListButtonClicked() {
+    List<String> shoppingList = new ArrayList<>(shoppingListView.getItems());
+    FileHandler.writeShoppingListToFile("src/main/resources/shoppingList.csv", shoppingList);
+    shoppingListView.getItems().clear();
+  }
 
+  /**
+   * This method will allow the user to clear the shopping list. It will be triggered by a button
+   * click. It should clear the shopping list.
+   */
+  @FXML
+  private void onClearShoppingListButtonClicked() {
+    shoppingListView.getItems().clear();
+
+  }
 }
