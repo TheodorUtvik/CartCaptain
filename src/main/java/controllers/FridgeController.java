@@ -51,6 +51,10 @@ public class FridgeController {
   @FXML
   private Button recipeButton;
 
+  private String foodItemDisplay(FoodItem foodItem) {
+    return foodItem.getName() + " - " + foodItem.getQuantity() + " " + foodItem.getUnit();
+  }
+
   /**
    * Init method that runs when the FXML file is loaded.
    * It populates the ListView with all food items in the fridge.
@@ -61,7 +65,7 @@ public class FridgeController {
         "src/main/resources/foodItems.csv"); // Adjust the path as needed
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
-      fridgeListView.getItems().add(foodItem.getName());
+      fridgeListView.getItems().add(foodItemDisplay(foodItem));
     }
   }
 
@@ -75,7 +79,7 @@ public class FridgeController {
         "src/main/resources/foodItems.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
-      fridgeListView.getItems().add(foodItem.getName());
+      fridgeListView.getItems().add(foodItemDisplay(foodItem));
     }
   }
 
@@ -90,7 +94,7 @@ public class FridgeController {
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Meieri")) {
-        fridgeListView.getItems().add(foodItem.getName());
+        fridgeListView.getItems().add(foodItemDisplay(foodItem));
       }
     }
   }
@@ -106,7 +110,7 @@ public class FridgeController {
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Kjøtt")) {
-        fridgeListView.getItems().add(foodItem.getName());
+        fridgeListView.getItems().add(foodItemDisplay(foodItem));
       }
     }
   }
@@ -122,7 +126,7 @@ public class FridgeController {
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Fisk")) {
-        fridgeListView.getItems().add(foodItem.getName());
+        fridgeListView.getItems().add(foodItemDisplay(foodItem));
       }
     }
   }
@@ -138,7 +142,7 @@ public class FridgeController {
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Korn")) {
-        fridgeListView.getItems().add(foodItem.getName());
+        fridgeListView.getItems().add(foodItemDisplay(foodItem));
       }
     }
   }
@@ -154,7 +158,7 @@ public class FridgeController {
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Frukt & Grønt")) {
-        fridgeListView.getItems().add(foodItem.getName());
+        fridgeListView.getItems().add(foodItemDisplay(foodItem));
       }
     }
   }
@@ -194,7 +198,7 @@ public class FridgeController {
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getName().toLowerCase().contains(searchQuery)) {
-        fridgeListView.getItems().add(foodItem.getName());
+        fridgeListView.getItems().add(foodItemDisplay(foodItem));
       }
     }
   }
