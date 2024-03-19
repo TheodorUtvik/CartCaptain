@@ -15,6 +15,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.fxml.Initializable;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 
 
 public class ShoppingListController implements Initializable {
@@ -67,7 +69,15 @@ public class ShoppingListController implements Initializable {
         }
       }
     });
+    inputQuantityField.setOnKeyPressed(event -> {
+      if (event.getCode() == KeyCode.ENTER) {
+        addSelectedItemWithQuantity();
+        inputQuantityField.setVisible(false);
+        inputQuantityField.clear();
+      }
+    });
   }
+
 
   /**
    * This method should be triggered by a listener on the TextField's textProperty to update the
@@ -99,28 +109,30 @@ public class ShoppingListController implements Initializable {
    * multiple items to the shopping list. When a user selects an item from the foodItemsView, the
    * user should decide the quantity of the item to add to the shopping list.
    */
-  @FXML
-  private void onAddToShoppingListButtonClicked() {
+  private void addSelectedItemWithQuantity() {
     String selectedItem = foodItemsView.getSelectionModel().getSelectedItem();
-    String inputQuantityText = inputQuantityField.getText();
-    double quantity = 1;
+    if (selectedItem == null) return;
 
-    if(!inputQuantityText.isEmpty())
+    int quantity = 1; // Default quantity
+    if (!inputQuantityField.getText().isEmpty()) {
       try {
-        quantity = Integer.parseInt(inputQuantityText);
-        if (quantity <= 0) {
-          throw new NumberFormatException("Quantity must be positive");
-        }
+        quantity = Math.max(1, Integer.parseInt(inputQuantityField.getText()));
       } catch (NumberFormatException e) {
-        System.err.println("Invalid quantity: " + e.getMessage());
-        return;
+        System.err.println("Invalid quantity, defaulting to 1.");
       }
-    String itemWithQuantity = selectedItem + ", " + quantity;
-    if (selectedItem != null && !shoppingListView.getItems().contains(itemWithQuantity)) {
+    }
+    String itemWithQuantity = String.format("%s - %d", selectedItem, quantity);
+    if (!shoppingListView.getItems().contains(itemWithQuantity)) {
       shoppingListView.getItems().add(itemWithQuantity);
     }
-    inputQuantityField.setText("");
   }
+
+  @FXML
+  private void showInputFieldForQuantity() {
+    inputQuantityField.setVisible(true);
+    inputQuantityField.requestFocus(); // Focus on the TextField to immediately start typing
+  }
+
 
 
   /**
