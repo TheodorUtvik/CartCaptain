@@ -20,7 +20,7 @@
             <Font name="Arial" size="25.0" />
          </font>
       </Text>
-      <ListView fx:id="fridgeListView" layoutX="71.0" layoutY="176.0" prefHeight="173.0" prefWidth="441.0" />
+         <ListView fx:id="fridgeListView" layoutX="71.0" layoutY="176.0" prefHeight="173.0" prefWidth="441.0" />
       <HBox alignment="CENTER" layoutX="71.0" layoutY="128.0" prefHeight="31.0" prefWidth="441.0">
          <children>
             <Button mnemonicParsing="false" onAction="#categoryAll" text="Alle" />
