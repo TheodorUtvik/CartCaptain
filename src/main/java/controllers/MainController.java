@@ -55,7 +55,7 @@ public class MainController {
   private void onRecipes() {
     try {
       FXMLLoader loader = new FXMLLoader(
-          getClass().getResource("/scenebuilderjavafxapp/RecipesFrontPage.fxml"));
+          getClass().getResource("/scenebuilderjavafxapp/recipePage.fxml"));
       Parent recipesRoot = loader.load();
 
       Stage stage = (Stage) recipesButton.getScene().getWindow();

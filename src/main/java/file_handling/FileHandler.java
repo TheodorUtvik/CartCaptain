@@ -167,4 +167,13 @@ public class FileHandler {
     }
   }
 
+  public static List<String> readLinesFromFile(String fileName) {
+    List<String> lines = new ArrayList<>();
+    try {
+      lines = Files.readAllLines(Paths.get(fileName));
+    } catch (IOException e) {
+      System.err.println("Failed to read the file: " + e.getMessage());
+    }
+    return lines;
+  }
 }
