@@ -15,12 +15,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 
 
 public class ShoppingListController implements Initializable {
 
+  @FXML
+  public ImageView homeButtonImage;
 
   @FXML
   public Button addButton;
@@ -51,12 +54,20 @@ public class ShoppingListController implements Initializable {
   @FXML
   private ListView<String> shoppingListView;
 
+  @FXML
+  private Button homeButton;
+
+  @FXML
+  private Button recipeButton;
+
+
   /**
    * Initializes the controller class. This method is automatically called after the fxml file has
    * been loaded.
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    homeButtonImage.setVisible(false); // Start with the home button invisible
     searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
       searchBarTextChanged(); // This will be called every time the text in searchBar changes
     });
@@ -89,6 +100,7 @@ public class ShoppingListController implements Initializable {
     foodItemsView.getItems().clear();
     searchBarTextChanged();
   }
+
   private void searchBarTextChanged() { // This method should be triggered by a listener on the TextField's textProperty
     foodItemsView.getItems().clear();
     String searchQuery = searchBar.getText().toLowerCase();
@@ -96,7 +108,7 @@ public class ShoppingListController implements Initializable {
         "src/main/resources/foodItems.csv"); // Adjust the path as needed
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
-      if (foodItem.getName().toLowerCase().contains(searchQuery)){
+      if (foodItem.getName().toLowerCase().contains(searchQuery)) {
         foodItemsView.getItems().add(foodItem.getName());
       }
     }
@@ -111,7 +123,8 @@ public class ShoppingListController implements Initializable {
    */
   private void addSelectedItemWithQuantity() {
     String selectedItem = foodItemsView.getSelectionModel().getSelectedItem();
-    if (selectedItem == null) return;
+    if (selectedItem == null)
+      return;
 
     int quantity = 1; // Default quantity
     if (!inputQuantityField.getText().isEmpty()) {
@@ -134,10 +147,9 @@ public class ShoppingListController implements Initializable {
   }
 
 
-
   /**
-   * This method will allow the user to remove items from the shopping list. It will be triggered by a
-   * button click. It should remove the selected item from the shopping list.
+   * This method will allow the user to remove items from the shopping list. It will be triggered by
+   * a button click. It should remove the selected item from the shopping list.
    */
   @FXML
   private void onRemoveFromShoppingListButtonClicked() {
@@ -167,5 +179,69 @@ public class ShoppingListController implements Initializable {
   private void onClearShoppingListButtonClicked() {
     shoppingListView.getItems().clear();
 
+  }
+
+  /**
+   * Toggles the visibility of the category buttons. If the buttons are visible, they will be hidden
+   * and disabled.
+   */
+  /*@FXML
+  public void showMenu(MouseEvent event) {
+    if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
+      if (homeButton.isVisible()) {
+        // If buttons are visible, hide them and disable them
+        homeButton.setVisible(false);
+        recipeButton.setVisible(false);
+        homeButton.setDisable(true);
+        recipeButton.setDisable(true);
+      } else {
+        // If buttons are not visible, show them and enable them
+        homeButton.setVisible(true);
+        recipeButton.setVisible(true);
+        homeButton.setDisable(false);
+        recipeButton.setDisable(false);
+      }
+    }
+  } */
+  @FXML
+  public void showMenu(MouseEvent event) {
+    if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
+      boolean isMenuVisible = homeButtonImage.isVisible();
+      // Toggle visibility of buttons and image view
+      homeButtonImage.setVisible(!isMenuVisible);
+      recipeButton.setVisible(!isMenuVisible);
+      homeButtonImage.setVisible(!isMenuVisible); // Make the home image visible when menu is shown
+
+      // Enable or disable based on current state
+      homeButton.setDisable(isMenuVisible);
+      recipeButton.setDisable(isMenuVisible);
+      homeButtonImage.setDisable(isMenuVisible); // Ensure the image is interactable when visible
+    }
+  }
+
+  @FXML
+  public void goHomeImage(MouseEvent event) {
+    if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
+      // Directly using changeScene method with a mocked ActionEvent if necessary
+      changeScene(new ActionEvent(), "/scenebuilderjavafxapp/CartCaptainFrontPage.fxml",
+          "Front Page");
+    }
+  }
+
+
+  /**
+   * Changes the scene to the front page.
+   */
+  @FXML
+  public void goHome(ActionEvent event) {
+    changeScene(event, "/scenebuilderjavafxapp/CartCaptainFrontPage.fxml", "Front Page");
+  }
+
+  /**
+   * Changes the scene to the recipes page.
+   */
+  @FXML
+  public void goRecipes(ActionEvent event) {
+    changeScene(event, "/scenebuilderjavafxapp/RecipesFrontPage.fxml", "Recipe");
   }
 }
