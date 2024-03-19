@@ -3,6 +3,7 @@ package file_handling;
 import entities.FoodItem;
 import entities.Recipe;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -176,4 +177,18 @@ public class FileHandler {
     }
     return lines;
   }
+
+  /**
+   * Writes a shopping list to a file.
+   *
+   */
+    public static void writeShoppingListToFile(String fileName, List<String> shoppingList) {
+      List<String> lines = new ArrayList<>(shoppingList); // Preparing the lines to write
+      try {
+        Files.write(Paths.get(fileName), lines, StandardCharsets.UTF_8,
+            StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+      } catch (IOException e) {
+        System.err.println("Failed to write to file: " + e.getMessage());
+      }
+    }
 }

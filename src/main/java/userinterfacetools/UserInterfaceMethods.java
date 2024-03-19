@@ -51,7 +51,7 @@ public class UserInterfaceMethods {
     //this.groceryList = new FoodItemRegister();
     //this.fridge = new FoodItemRegister();
     this.inputHandler = new InputHandler();
-    setGroceryList();
+    getGroceryList();
     setFridge();
     //this.groceryList.initialize();
     //this.fridge.initialize();
@@ -63,7 +63,7 @@ public class UserInterfaceMethods {
    *
    * @return FoodItemRegister The grocery list.
    */
-  private FoodItemRegister setGroceryList() {
+  public FoodItemRegister getGroceryList() {
     if (groceryList == null) {
       groceryList = new FoodItemRegister();
       groceryList.initialize();

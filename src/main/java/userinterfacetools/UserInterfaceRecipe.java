@@ -1,6 +1,8 @@
 package userinterfacetools;
 
 import static userinterfacetools.TextBasedUI.formatGrocery;
+import static userinterfacetools.TextBasedUI.formatGroceryForRecipe;
+import static userinterfacetools.TextBasedUI.formatGroceryHeader;
 import static userinterfacetools.TextBasedUI.formatRecipe;
 
 import entities.FoodItem;
@@ -77,7 +79,7 @@ public class UserInterfaceRecipe {
     boolean adding = true;
     while (adding) {
       FoodItem item = uim.inputGroceryDetails();
-      ingredients.add(formatGrocery(item));
+      ingredients.add(formatGroceryForRecipe(item));
       TextBasedUI.addAnotherIngredient();
       int inputFromUser = inputHandler.readInt();
       if (inputFromUser == 2) {
@@ -121,6 +123,10 @@ public class UserInterfaceRecipe {
   public void removeRecipe() {
     TextBasedUI.recipeNameRemove();
     String name = inputHandler.readString();
+    if(recipeRegister.findRecipe(name) == null) {
+      TextBasedUI.recipeNotFound();
+      return;
+    }
     recipeRegister.removeRecipe(name);
     TextBasedUI.recipeRemoveSuccess();
   }

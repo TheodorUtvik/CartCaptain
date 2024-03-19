@@ -245,7 +245,18 @@ public class TextBasedUI {
     String decLine = "\n" + "-".repeat(sb.length());
     sb.append(decLine);
 
-    return sb.toString();
+    return String.valueOf(sb);
+  }
+  public static String formatGroceryForRecipe(FoodItem foodItem) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Matvare: ").append(foodItem.getName()).append(" | ")
+        .append("Enhet: ").append(foodItem.getUnit()).append(" | ")
+        .append("Antall: ").append(foodItem.getQuantity());
+
+    String decLine = "\n" + "-".repeat(sb.length());
+    sb.append(decLine);
+
+    return String.valueOf(sb);
   }
 
   public static String formatRecipe(Recipe recipe) {
@@ -260,7 +271,7 @@ public class TextBasedUI {
     String decLine = "\n" + "-".repeat(sb.length());
     sb.append(decLine);
 
-    return sb.toString();
+    return String.valueOf(sb);
   }
 
 
