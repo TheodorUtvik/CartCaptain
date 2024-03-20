@@ -131,4 +131,13 @@ public class FoodItem {
     detailsString.append(", Type: ").append(foodType);
     return String.valueOf(detailsString);
   }
+
+  public String getDetails2() {
+    StringBuilder detailsString = new StringBuilder();
+    detailsString.append(name);
+    detailsString.append(", Kvt: ").append(quantity);
+    detailsString.append(", Enhet: ").append(unit);
+    detailsString.append(", Type: ").append(foodType);
+    return String.valueOf(detailsString);
+  }
 }

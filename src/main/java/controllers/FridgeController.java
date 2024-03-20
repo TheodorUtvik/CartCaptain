@@ -228,6 +228,6 @@ public class FridgeController {
    */
   @FXML
   public void goShoppingList(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/FridgeFrontPage.fxml", "Fridge");
+    changeScene(event, "/scenebuilderjavafxapp/ShoppingListFrontPage.fxml", "Shopping List");
   }
 }

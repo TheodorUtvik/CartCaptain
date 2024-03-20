@@ -1,7 +1,6 @@
 package controllers;
 
 import static controllers.SceneUtils.changeScene;
-import static controllers.SceneUtils.changeSceneWithImage;
 
 import entities.FoodItem;
 import file_handling.FileHandler;
@@ -16,7 +15,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.fxml.Initializable;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
@@ -98,7 +96,7 @@ public class ShoppingListController implements Initializable {
     searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
       searchBarTextChanged(); // This will be called every time the text in searchBar changes
     });
-    // Any other initialization code can go here
+
     foodItemsView.setOnMouseClicked(event -> {
       if (event.getClickCount() == 2) {
         String selectedItem = foodItemsView.getSelectionModel().getSelectedItem();
@@ -107,6 +105,7 @@ public class ShoppingListController implements Initializable {
         }
       }
     });
+
     inputQuantityField.setOnKeyPressed(event -> {
       if (event.getCode() == KeyCode.ENTER) {
         addSelectedItemWithQuantity();
@@ -114,6 +113,18 @@ public class ShoppingListController implements Initializable {
         inputQuantityField.clear();
       }
     });
+
+    try {
+      Iterator<FoodItem> foodItemsIterator = FileHandler.readFoodFromFile("src/main/resources/shoppingList.csv");
+      while (foodItemsIterator.hasNext()) {
+        FoodItem item = foodItemsIterator.next();
+        shoppingListView.getItems().add(item.getDetails2()); // Assuming getDetails2() method exists and returns a string.
+      }
+    } catch (Exception e) {
+      System.err.println("Error initializing shopping list view: " + e.getMessage());
+      e.printStackTrace();
+      // Consider showing an error message to the user, logging the error, or taking other recovery actions here.
+    }
   }
 
 
@@ -212,24 +223,6 @@ public class ShoppingListController implements Initializable {
    * Toggles the visibility of the category buttons. If the buttons are visible, they will be hidden
    * and disabled.
    */
-  /*@FXML
-  public void showMenu(MouseEvent event) {
-    if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-      if (homeButton.isVisible()) {
-        // If buttons are visible, hide them and disable them
-        homeButton.setVisible(false);
-        recipeButton.setVisible(false);
-        homeButton.setDisable(true);
-        recipeButton.setDisable(true);
-      } else {
-        // If buttons are not visible, show them and enable them
-        homeButton.setVisible(true);
-        recipeButton.setVisible(true);
-        homeButton.setDisable(false);
-        recipeButton.setDisable(false);
-      }
-    }
-  } */
   public void showMenu(MouseEvent event) {
     if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
       boolean isMenuVisible = homeButton.isVisible();
