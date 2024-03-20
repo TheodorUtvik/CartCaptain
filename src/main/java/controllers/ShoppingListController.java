@@ -1,6 +1,7 @@
 package controllers;
 
 import static controllers.SceneUtils.changeScene;
+import static controllers.SceneUtils.changeSceneWithImage;
 
 import entities.FoodItem;
 import file_handling.FileHandler;
@@ -15,15 +16,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 
 public class ShoppingListController implements Initializable {
 
   @FXML
   public ImageView homeButtonImage;
+
+  @FXML
+  public ImageView recipeButtonImage;
+
+  @FXML
+  public ImageView fridgeButtonImage;
 
   @FXML
   public Button addButton;
@@ -49,6 +58,20 @@ public class ShoppingListController implements Initializable {
   private TextField searchBar;
 
   @FXML
+  private Button searchButton;
+
+  @FXML
+  private Button backButton;
+  @FXML
+  private Text header;
+
+  @FXML
+  private Text header2;
+
+  @FXML
+  private ImageView hamburgerMenu;
+
+  @FXML
   private ListView<String> foodItemsView;
 
   @FXML
@@ -59,6 +82,10 @@ public class ShoppingListController implements Initializable {
 
   @FXML
   private Button recipeButton;
+
+  @FXML
+  private Button fridgeButton;
+
 
 
   /**
@@ -203,31 +230,22 @@ public class ShoppingListController implements Initializable {
       }
     }
   } */
-  @FXML
   public void showMenu(MouseEvent event) {
     if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-      boolean isMenuVisible = homeButtonImage.isVisible();
-      // Toggle visibility of buttons and image view
-      homeButtonImage.setVisible(!isMenuVisible);
+      boolean isMenuVisible = homeButton.isVisible();
+      homeButton.setVisible(!isMenuVisible);
+      fridgeButton.setVisible(!isMenuVisible);
       recipeButton.setVisible(!isMenuVisible);
-      homeButtonImage.setVisible(!isMenuVisible); // Make the home image visible when menu is shown
 
-      // Enable or disable based on current state
+      homeButtonImage.setVisible(!isMenuVisible);
+      fridgeButtonImage.setVisible(!isMenuVisible);
+      recipeButtonImage.setVisible(!isMenuVisible);
+
       homeButton.setDisable(isMenuVisible);
+      fridgeButton.setDisable(isMenuVisible);
       recipeButton.setDisable(isMenuVisible);
-      homeButtonImage.setDisable(isMenuVisible); // Ensure the image is interactable when visible
     }
   }
-
-  @FXML
-  public void goHomeImage(MouseEvent event) {
-    if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-      // Directly using changeScene method with a mocked ActionEvent if necessary
-      changeScene(new ActionEvent(), "/scenebuilderjavafxapp/CartCaptainFrontPage.fxml",
-          "Front Page");
-    }
-  }
-
 
   /**
    * Changes the scene to the front page.
@@ -243,5 +261,13 @@ public class ShoppingListController implements Initializable {
   @FXML
   public void goRecipes(ActionEvent event) {
     changeScene(event, "/scenebuilderjavafxapp/RecipesFrontPage.fxml", "Recipe");
+  }
+
+  /**
+   * Changes the scene to the fridge page.
+   */
+  @FXML
+  public void goFridge(ActionEvent event) {
+    changeScene(event, "/scenebuilderjavafxapp/FridgeFrontPage.fxml", "Fridge");
   }
 }
