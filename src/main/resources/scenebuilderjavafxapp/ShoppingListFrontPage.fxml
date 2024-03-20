@@ -39,7 +39,7 @@
       <children>
         <ImageView fx:id="hamburgerMenu" fitHeight="25.0" fitWidth="30.0" onMousePressed="#showMenu" pickOnBounds="true" preserveRatio="true">
           <image>
-            <Image url="@../images/hamburgermeny.png" />
+            <Image url="@../images/menu-burger.png" />
           </image>
         </ImageView>
         <Button fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#goHome" visible="false">
