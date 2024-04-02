@@ -220,7 +220,7 @@ public class FridgeController {
    */
   @FXML
   public void goRecipes(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/RecipesFrontPage.fxml", "Recipe");
+    changeScene(event, "/scenebuilderjavafxapp/recipePage.fxml", "Recipe");
   }
 
   /**
