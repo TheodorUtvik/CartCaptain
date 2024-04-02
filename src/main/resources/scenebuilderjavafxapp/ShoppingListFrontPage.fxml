@@ -11,72 +11,51 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21"
-  xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShoppingListController">
-  <TextField fx:id="searchBar" layoutX="56.0" layoutY="116.0" prefHeight="25.0" prefWidth="133.0"/>
-  <ListView fx:id="foodItemsView" layoutX="51.0" layoutY="165.0" prefHeight="210.0"
-    prefWidth="143.0"/>
-  <Button fx:id="searchButton" layoutX="203.0" layoutY="116.0" mnemonicParsing="false"
-    onAction="#onSearchButtonClicked" prefHeight="25.0" prefWidth="54.0" text="Søk"/>
-  <Button fx:id="backButton" layoutX="478.0" layoutY="23.0" mnemonicParsing="false"
-    onAction="#goBack" text="Tilbake"/>
-  <Text fx:id="header" layoutX="211.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0"
-    text="Handleliste" wrappingWidth="186.8033905029297">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShoppingListController">
+  <TextField fx:id="searchBar" layoutX="56.0" layoutY="116.0" prefHeight="25.0" prefWidth="133.0" />
+  <ListView fx:id="foodItemsView" layoutX="51.0" layoutY="165.0" prefHeight="210.0" prefWidth="143.0" />
+  <Button fx:id="searchButton" layoutX="203.0" layoutY="116.0" mnemonicParsing="false" onAction="#onSearchButtonClicked" prefHeight="25.0" prefWidth="54.0" text="Søk" />
+  <Button fx:id="backButton" layoutX="478.0" layoutY="23.0" mnemonicParsing="false" onAction="#goBack" text="Tilbake" />
+  <Text fx:id="header" layoutX="211.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Handleliste" wrappingWidth="186.8033905029297">
     <font>
-      <Font size="37.0"/>
+      <Font size="37.0" />
     </font>
   </Text>
-  <Text fx:id="header2" layoutX="393.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0"
-    text="Varer i handlelisten" underline="true">
+  <Text fx:id="header2" layoutX="393.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Varer i handlelisten" underline="true">
     <font>
-      <Font size="20.0"/>
+      <Font size="20.0" />
     </font>
   </Text>
-  <ListView fx:id="shoppingListView" layoutX="378.0" layoutY="170.0" prefHeight="200.0"
-    prefWidth="200.0"/>
+  <ListView fx:id="shoppingListView" layoutX="378.0" layoutY="170.0" prefHeight="200.0" prefWidth="200.0" />
 
-  <Button fx:id="addButton" layoutX="259.0" layoutY="170.0" mnemonicParsing="false"
-    onAction="#showInputFieldForQuantity" text="Legg til vare"/>
-  <Button fx:id="removeButton" layoutX="270.0" layoutY="236.0" mnemonicParsing="false"
-    onAction="#onRemoveFromShoppingListButtonClicked" text="Fjern vare"/>
-  <Button fx:id="listToFileButton" layoutX="237.0" layoutY="282.0" mnemonicParsing="false"
-    onAction="#onSaveShoppingListButtonClicked" text="Legg til i handleliste fil"/>
-  <Button fx:id="clearShoppingListButton" layoutX="247.0" layoutY="327.0" mnemonicParsing="false"
-    onAction="#onClearShoppingListButtonClicked" text="Reset handleliste"/>
-  <TextField fx:id="inputQuantityField" layoutX="233.0" layoutY="200.0" prefHeight="25.0"
-    prefWidth="133.0" visible="false"/>
-  <Line endX="499.00006103515625" endY="-7.62939453125E-6" layoutX="101.0" layoutY="71.0"
-    startX="-100.0"/>
-  <VBox layoutX="6.0" layoutY="32.0" prefHeight="168.0" prefWidth="54.0">
-    <ImageView fx:id="hamburgerMenu" fitHeight="25.0" fitWidth="30.0" onMousePressed="#showMenu"
-      pickOnBounds="true" preserveRatio="true">
-      <Image url="@../images/menu-burger.png"/>
+  <Button fx:id="addButton" layoutX="259.0" layoutY="170.0" mnemonicParsing="false" onAction="#showInputFieldForQuantity" text="Legg til vare" />
+  <Button fx:id="removeButton" layoutX="270.0" layoutY="236.0" mnemonicParsing="false" onAction="#onRemoveFromShoppingListButtonClicked" text="Fjern vare" />
+  <Button fx:id="listToFileButton" layoutX="237.0" layoutY="282.0" mnemonicParsing="false" onAction="#onSaveShoppingListButtonClicked" text="Legg til i handleliste fil" />
+  <Button fx:id="clearShoppingListButton" layoutX="247.0" layoutY="327.0" mnemonicParsing="false" onAction="#onClearShoppingListButtonClicked" text="Reset handleliste" />
+  <TextField fx:id="inputQuantityField" layoutX="233.0" layoutY="200.0" prefHeight="25.0" prefWidth="133.0" visible="false" />
+  <Line endX="499.00006103515625" endY="-7.62939453125E-6" layoutX="101.0" layoutY="71.0" startX="-100.0" />
+  <VBox layoutX="14.0" layoutY="32.0" prefHeight="168.0" prefWidth="54.0">
+    <ImageView fx:id="hamburgerMenu" fitHeight="25.0" fitWidth="30.0" onMousePressed="#showMenu" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/menu-burger.png" />
     </ImageView>
-    <Button fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#goHome"
-      visible="false">
+    <Button fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#goHome" visible="false">
       <graphic>
-        <ImageView fx:id="homeButtonImage" fitHeight="150.0" fitWidth="30.0"
-          pickOnBounds="true" preserveRatio="true">
-          <Image url="@../images/house-chimney.png"/>
+        <ImageView fx:id="homeButtonImage" fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+          <Image url="@../images/house-chimney.png" />
         </ImageView>
       </graphic>
     </Button>
-    <Button fx:id="fridgeButton" disable="true" mnemonicParsing="false" onAction="#goFridge"
-      visible="false">
+    <Button fx:id="fridgeButton" disable="true" mnemonicParsing="false" onAction="#goFridge" visible="false">
       <graphic>
-        <ImageView fx:id="fridgeButtonImage" fitHeight="150.0" fitWidth="30.0"
-          pickOnBounds="true" preserveRatio="true">
-          <Image url="@../images/refrigerator.png"/>
+        <ImageView fx:id="fridgeButtonImage" fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+          <Image url="@../images/refrigerator.png" />
         </ImageView>
       </graphic>
     </Button>
-    <Button fx:id="recipeButton" disable="true" mnemonicParsing="false" onAction="#goRecipes"
-      visible="false">
+    <Button fx:id="recipeButton" disable="true" mnemonicParsing="false" onAction="#goRecipes" visible="false">
       <graphic>
-        <ImageView fx:id="recipeButtonImage" fitHeight="150.0" fitWidth="30.0"
-          pickOnBounds="true" preserveRatio="true">
-          <Image url="@../images/recipeIcon.png"/>
+        <ImageView fx:id="recipeButtonImage" fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+          <Image url="@../images/recipeIcon.png" />
         </ImageView>
       </graphic>
     </Button>
