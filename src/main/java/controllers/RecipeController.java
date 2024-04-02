@@ -161,7 +161,7 @@ public class RecipeController {
       Label label = new Label((i + 1) + ": " + item);
       if (wrapText) {
         label.setWrapText(true);
-        label.setMaxWidth(250); // Adjust as needed
+        label.setMaxWidth(250);
       }
       vBox.getChildren().add(label);
     }
