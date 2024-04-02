@@ -15,12 +15,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 
 public class ShoppingListController implements Initializable {
 
+  @FXML
+  public ImageView homeButtonImage;
+
+  @FXML
+  public ImageView recipeButtonImage;
+
+  @FXML
+  public ImageView fridgeButtonImage;
 
   @FXML
   public Button addButton;
@@ -46,10 +56,35 @@ public class ShoppingListController implements Initializable {
   private TextField searchBar;
 
   @FXML
+  private Button searchButton;
+
+  @FXML
+  private Button backButton;
+  @FXML
+  private Text header;
+
+  @FXML
+  private Text header2;
+
+  @FXML
+  private ImageView hamburgerMenu;
+
+  @FXML
   private ListView<String> foodItemsView;
 
   @FXML
   private ListView<String> shoppingListView;
+
+  @FXML
+  private Button homeButton;
+
+  @FXML
+  private Button recipeButton;
+
+  @FXML
+  private Button fridgeButton;
+
+
 
   /**
    * Initializes the controller class. This method is automatically called after the fxml file has
@@ -57,10 +92,11 @@ public class ShoppingListController implements Initializable {
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    homeButtonImage.setVisible(false); // Start with the home button invisible
     searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
       searchBarTextChanged(); // This will be called every time the text in searchBar changes
     });
-    // Any other initialization code can go here
+
     foodItemsView.setOnMouseClicked(event -> {
       if (event.getClickCount() == 2) {
         String selectedItem = foodItemsView.getSelectionModel().getSelectedItem();
@@ -69,6 +105,7 @@ public class ShoppingListController implements Initializable {
         }
       }
     });
+
     inputQuantityField.setOnKeyPressed(event -> {
       if (event.getCode() == KeyCode.ENTER) {
         addSelectedItemWithQuantity();
@@ -76,6 +113,18 @@ public class ShoppingListController implements Initializable {
         inputQuantityField.clear();
       }
     });
+
+    try {
+      Iterator<FoodItem> foodItemsIterator = FileHandler.readFoodFromFile("src/main/resources/shoppingList.csv");
+      while (foodItemsIterator.hasNext()) {
+        FoodItem item = foodItemsIterator.next();
+        shoppingListView.getItems().add(item.getDetails2()); // Assuming getDetails2() method exists and returns a string.
+      }
+    } catch (Exception e) {
+      System.err.println("Error initializing shopping list view: " + e.getMessage());
+      e.printStackTrace();
+      // Consider showing an error message to the user, logging the error, or taking other recovery actions here.
+    }
   }
 
 
@@ -89,6 +138,7 @@ public class ShoppingListController implements Initializable {
     foodItemsView.getItems().clear();
     searchBarTextChanged();
   }
+
   private void searchBarTextChanged() { // This method should be triggered by a listener on the TextField's textProperty
     foodItemsView.getItems().clear();
     String searchQuery = searchBar.getText().toLowerCase();
@@ -96,7 +146,7 @@ public class ShoppingListController implements Initializable {
         "src/main/resources/foodItems.csv"); // Adjust the path as needed
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
-      if (foodItem.getName().toLowerCase().contains(searchQuery)){
+      if (foodItem.getName().toLowerCase().contains(searchQuery)) {
         foodItemsView.getItems().add(foodItem.getName());
       }
     }
@@ -111,7 +161,8 @@ public class ShoppingListController implements Initializable {
    */
   private void addSelectedItemWithQuantity() {
     String selectedItem = foodItemsView.getSelectionModel().getSelectedItem();
-    if (selectedItem == null) return;
+    if (selectedItem == null)
+      return;
 
     int quantity = 1; // Default quantity
     if (!inputQuantityField.getText().isEmpty()) {
@@ -134,10 +185,9 @@ public class ShoppingListController implements Initializable {
   }
 
 
-
   /**
-   * This method will allow the user to remove items from the shopping list. It will be triggered by a
-   * button click. It should remove the selected item from the shopping list.
+   * This method will allow the user to remove items from the shopping list. It will be triggered by
+   * a button click. It should remove the selected item from the shopping list.
    */
   @FXML
   private void onRemoveFromShoppingListButtonClicked() {
@@ -167,5 +217,50 @@ public class ShoppingListController implements Initializable {
   private void onClearShoppingListButtonClicked() {
     shoppingListView.getItems().clear();
 
+  }
+
+  /**
+   * Toggles the visibility of the category buttons. If the buttons are visible, they will be hidden
+   * and disabled.
+   */
+  public void showMenu(MouseEvent event) {
+    if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
+      boolean isMenuVisible = homeButton.isVisible();
+      homeButton.setVisible(!isMenuVisible);
+      fridgeButton.setVisible(!isMenuVisible);
+      recipeButton.setVisible(!isMenuVisible);
+
+      homeButtonImage.setVisible(!isMenuVisible);
+      fridgeButtonImage.setVisible(!isMenuVisible);
+      recipeButtonImage.setVisible(!isMenuVisible);
+
+      homeButton.setDisable(isMenuVisible);
+      fridgeButton.setDisable(isMenuVisible);
+      recipeButton.setDisable(isMenuVisible);
+    }
+  }
+
+  /**
+   * Changes the scene to the front page.
+   */
+  @FXML
+  public void goHome(ActionEvent event) {
+    changeScene(event, "/scenebuilderjavafxapp/CartCaptainFrontPage.fxml", "Front Page");
+  }
+
+  /**
+   * Changes the scene to the recipes page.
+   */
+  @FXML
+  public void goRecipes(ActionEvent event) {
+    changeScene(event, "/scenebuilderjavafxapp/RecipesFrontPage.fxml", "Recipe");
+  }
+
+  /**
+   * Changes the scene to the fridge page.
+   */
+  @FXML
+  public void goFridge(ActionEvent event) {
+    changeScene(event, "/scenebuilderjavafxapp/FridgeFrontPage.fxml", "Fridge");
   }
 }

@@ -50,6 +50,16 @@ public class FridgeController {
 
   @FXML
   private Button recipeButton;
+  @FXML
+  private Button shoppingListButton;
+
+  public ImageView homeButtonImage;
+
+  @FXML
+  public ImageView recipeButtonImage;
+
+  @FXML
+  public ImageView shoppingListButtonImage;
 
   private String foodItemDisplay(FoodItem foodItem) {
     return foodItem.getName() + " - " + foodItem.getQuantity() + " " + foodItem.getUnit();
@@ -164,29 +174,6 @@ public class FridgeController {
   }
 
   /**
-   * Toggles the visibility of the category buttons.
-   * If the buttons are visible, they will be hidden and disabled.
-   */
-  @FXML
-  public void showMenu(MouseEvent event) {
-    if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-      if (homeButton.isVisible()) {
-        // If buttons are visible, hide them and disable them
-        homeButton.setVisible(false);
-        recipeButton.setVisible(false);
-        homeButton.setDisable(true);
-        recipeButton.setDisable(true);
-      } else {
-        // If buttons are not visible, show them and enable them
-        homeButton.setVisible(true);
-        recipeButton.setVisible(true);
-        homeButton.setDisable(false);
-        recipeButton.setDisable(false);
-      }
-    }
-  }
-
-  /**
    * Displays all food items in the fridge that contain the search query given in the searchField.
    */
   @FXML
@@ -200,6 +187,23 @@ public class FridgeController {
       if (foodItem.getName().toLowerCase().contains(searchQuery)) {
         fridgeListView.getItems().add(foodItemDisplay(foodItem));
       }
+    }
+  }
+
+  public void showMenu(MouseEvent event) {
+    if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
+      boolean isMenuVisible = homeButton.isVisible();
+      homeButton.setVisible(!isMenuVisible);
+      shoppingListButton.setVisible(!isMenuVisible);
+      recipeButton.setVisible(!isMenuVisible);
+
+      homeButtonImage.setVisible(!isMenuVisible);
+      shoppingListButtonImage.setVisible(!isMenuVisible);
+      recipeButtonImage.setVisible(!isMenuVisible);
+
+      homeButton.setDisable(isMenuVisible);
+      shoppingListButton.setDisable(isMenuVisible);
+      recipeButton.setDisable(isMenuVisible);
     }
   }
 
@@ -217,5 +221,13 @@ public class FridgeController {
   @FXML
   public void goRecipes(ActionEvent event) {
     changeScene(event, "/scenebuilderjavafxapp/recipePage.fxml", "Recipe");
+  }
+
+  /**
+   * Changes the scene to the shopping list page.
+   */
+  @FXML
+  public void goShoppingList(ActionEvent event) {
+    changeScene(event, "/scenebuilderjavafxapp/ShoppingListFrontPage.fxml", "Shopping List");
   }
 }
