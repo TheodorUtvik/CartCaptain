@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Button?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RecipeController">
-   <ScrollPane fitToWidth="true" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-      <VBox fx:id="recipeBox" alignment="CENTER" spacing="10">
-         <Text text="Oppskrifter" style="-fx-font-size: 20;">
-            <!-- Your dynamic content will be added here by the controller -->
-         </Text>
-         <!-- Additional VBox or content here, if needed -->
-      </VBox>
+   <ScrollPane layoutX="67.0" layoutY="85.0" prefHeight="290.0" prefWidth="458.0" fx:id="pane">
+      <VBox fx:id="recipeBox" alignment="CENTER" prefHeight="290.0" prefWidth="458.0"/>
    </ScrollPane>
+   <Text layoutX="249.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oppskrifter" textAlignment="CENTER">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Text>
+   <VBox layoutX="18.0" layoutY="26.0" prefHeight="105.0" prefWidth="29.0">
+      <children>
+         <ImageView fitHeight="25.0" fitWidth="30.0" onMousePressed="#showMenu" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/hamburgermeny.png" />
+            </image>
+         </ImageView>
+         <Button mnemonicParsing="false" text="Home" fx:id="homeButton" visible="false" disable="true" onAction="#goHome"/>
+         <Button mnemonicParsing="false" text="Oppskrifter" fx:id="recipeButton" visible="false" disable="true" onAction="#goRecipes"/>
+      </children>
+   </VBox>
 </AnchorPane>
