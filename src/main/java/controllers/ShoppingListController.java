@@ -4,8 +4,14 @@ import static controllers.SceneUtils.changeScene;
 
 import entities.FoodItem;
 import file_handling.FileHandler;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -83,6 +89,9 @@ public class ShoppingListController implements Initializable {
 
   @FXML
   private Button fridgeButton;
+  @FXML
+  private ListView<String> searchResultsListView;
+
 
 
 
@@ -94,7 +103,13 @@ public class ShoppingListController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     homeButtonImage.setVisible(false); // Start with the home button invisible
     searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-      searchBarTextChanged(); // This will be called every time the text in searchBar changes
+      // If there is text, show the search results list view.
+      if (!newValue.isEmpty()) {
+        foodItemsView.setVisible(true);
+        searchBarTextChanged(); // Update the list view with the filtered items
+      } else {
+        foodItemsView.setVisible(false); // Hide the list view when search bar is empty
+      }
     });
 
     foodItemsView.setOnMouseClicked(event -> {
@@ -109,21 +124,23 @@ public class ShoppingListController implements Initializable {
     inputQuantityField.setOnKeyPressed(event -> {
       if (event.getCode() == KeyCode.ENTER) {
         addSelectedItemWithQuantity();
+        onSaveShoppingListButtonClicked();
         inputQuantityField.setVisible(false);
         inputQuantityField.clear();
       }
     });
 
+
+
     try {
       Iterator<FoodItem> foodItemsIterator = FileHandler.readFoodFromFile("src/main/resources/shoppingList.csv");
       while (foodItemsIterator.hasNext()) {
         FoodItem item = foodItemsIterator.next();
-        shoppingListView.getItems().add(item.getDetails2()); // Assuming getDetails2() method exists and returns a string.
+        shoppingListView.getItems().add(item.getDetails2());
       }
     } catch (Exception e) {
       System.err.println("Error initializing shopping list view: " + e.getMessage());
       e.printStackTrace();
-      // Consider showing an error message to the user, logging the error, or taking other recovery actions here.
     }
   }
 
@@ -139,11 +156,11 @@ public class ShoppingListController implements Initializable {
     searchBarTextChanged();
   }
 
-  private void searchBarTextChanged() { // This method should be triggered by a listener on the TextField's textProperty
+  private void searchBarTextChanged() {
     foodItemsView.getItems().clear();
     String searchQuery = searchBar.getText().toLowerCase();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv"); // Adjust the path as needed
+        "src/main/resources/foodItems.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getName().toLowerCase().contains(searchQuery)) {
@@ -159,41 +176,65 @@ public class ShoppingListController implements Initializable {
    * multiple items to the shopping list. When a user selects an item from the foodItemsView, the
    * user should decide the quantity of the item to add to the shopping list.
    */
-  private void addSelectedItemWithQuantity() {
+  @FXML
+  private void onAddButtonClicked() {
     String selectedItem = foodItemsView.getSelectionModel().getSelectedItem();
-    if (selectedItem == null)
-      return;
+    if (selectedItem != null) {
+      showInputFieldForQuantity(selectedItem);
+    }
+  }
 
-    int quantity = 1; // Default quantity
-    if (!inputQuantityField.getText().isEmpty()) {
+  @FXML
+  private void showInputFieldForQuantity(String selectedItem) {
+    inputQuantityField.setVisible(true);
+    inputQuantityField.requestFocus();
+    inputQuantityField.setOnAction(event -> {
+      int quantity;
       try {
-        quantity = Math.max(1, Integer.parseInt(inputQuantityField.getText()));
+        quantity = Integer.parseInt(inputQuantityField.getText());
       } catch (NumberFormatException e) {
+        quantity = 1; // Default to 1 if input is not a number
         System.err.println("Invalid quantity, defaulting to 1.");
       }
-    }
-    String itemWithQuantity = String.format("%s - %d", selectedItem, quantity);
+      addItemWithQuantity(selectedItem, quantity);
+    });
+  }
+
+  private void addItemWithQuantity(String item, int quantity) {
+    String itemWithQuantity = String.format("%s - %d", item, quantity);
     if (!shoppingListView.getItems().contains(itemWithQuantity)) {
       shoppingListView.getItems().add(itemWithQuantity);
     }
   }
 
-  @FXML
-  private void showInputFieldForQuantity() {
-    inputQuantityField.setVisible(true);
-    inputQuantityField.requestFocus(); // Focus on the TextField to immediately start typing
+
+  private void addSelectedItemWithQuantity() {
+    String selectedItem = foodItemsView.getSelectionModel().getSelectedItem();
+    if (selectedItem == null) {
+      return;
+    }
+    int quantity;
+    try {
+      quantity = Integer.parseInt(inputQuantityField.getText());
+    } catch (NumberFormatException e) {
+      System.err.println("Invalid quantity entered. Please enter a valid number.");
+      return;
+    }
+    String itemWithQuantity = String.format("%s - %d", selectedItem, quantity);
+    if (!shoppingListView.getItems().contains(itemWithQuantity)) {
+      shoppingListView.getItems().add(itemWithQuantity);
+      updateCsvWithItem(itemWithQuantity);
+    }
   }
 
 
-  /**
-   * This method will allow the user to remove items from the shopping list. It will be triggered by
-   * a button click. It should remove the selected item from the shopping list.
-   */
-  @FXML
-  private void onRemoveFromShoppingListButtonClicked() {
-    String selectedItem = shoppingListView.getSelectionModel().getSelectedItem();
-    if (selectedItem != null) {
-      shoppingListView.getItems().remove(selectedItem);
+  private void updateCsvWithItem(String itemWithQuantity) {
+    try {
+      String filePath = "src/main/resources/shoppingList.csv";
+      List<String> lines = Arrays.asList(itemWithQuantity);
+      Files.write(Paths.get(filePath), lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    } catch (IOException e) {
+      System.err.println("Failed to update the CSV file: " + e.getMessage());
     }
   }
 
@@ -206,7 +247,25 @@ public class ShoppingListController implements Initializable {
   private void onSaveShoppingListButtonClicked() {
     List<String> shoppingList = new ArrayList<>(shoppingListView.getItems());
     FileHandler.writeShoppingListToFile("src/main/resources/shoppingList.csv", shoppingList);
-    shoppingListView.getItems().clear();
+  }
+
+  @FXML
+  private void onRemoveFromShoppingListButtonClicked() {
+    String selectedItem = shoppingListView.getSelectionModel().getSelectedItem();
+    if (selectedItem != null) {
+      shoppingListView.getItems().remove(selectedItem);
+      removeItemFromCsv(selectedItem);
+    }
+  }
+
+  private void removeItemFromCsv(String item) {
+    try {
+      List<String> lines = FileHandler.readLinesFromFile("src/main/resources/shoppingList.csv");
+      lines.remove(item);
+      Files.write(Paths.get("src/main/resources/shoppingList.csv"), lines, StandardCharsets.UTF_8);
+    } catch (IOException e) {
+      System.err.println("Failed to remove item from CSV: " + e.getMessage());
+    }
   }
 
   /**
@@ -239,6 +298,9 @@ public class ShoppingListController implements Initializable {
       recipeButton.setDisable(isMenuVisible);
     }
   }
+
+
+
 
   /**
    * Changes the scene to the front page.

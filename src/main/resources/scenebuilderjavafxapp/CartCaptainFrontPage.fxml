@@ -14,7 +14,7 @@
       <HBox alignment="CENTER" prefHeight="351.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <Button fx:id="shoppingListButton" mnemonicParsing="false" onAction="#onShoppingList" prefHeight="190.0" prefWidth="90.0">
             <padding>
-               <Insets bottom=git p"20.0" left="20.0" right="20.0" top="20.0" />
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
             <graphic>
                <ImageView fx:id="shoppingListImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
