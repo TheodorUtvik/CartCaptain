@@ -7,16 +7,30 @@ import file_handling.FileHandler;
 import java.util.Iterator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class FridgeController {
 
   @FXML
   private TextField searchField;
+
+  @FXML
+  private ChoiceBox<Button> choiceBox;
+
+  @FXML
+  private Button changeAmountButton;
 
   @FXML
   private Button searchButton;
@@ -63,6 +77,82 @@ public class FridgeController {
 
   private String foodItemDisplay(FoodItem foodItem) {
     return foodItem.getName() + " - " + foodItem.getQuantity() + " " + foodItem.getUnit();
+  }
+
+  @FXML
+  public void changeAmount(ActionEvent event) {
+    String selectedItem = fridgeListView.getSelectionModel().getSelectedItem();
+    String[] itemDetails = selectedItem.split(" - ");
+    String itemName = itemDetails[0];
+    String[] itemQuantity = itemDetails[1].split(" ");
+    showAmountChangeDialog(itemName, itemQuantity);
+  }
+
+  private void showAmountChangeDialog(String itemName, String[] itemQuantity) {
+    Stage amountStage = new Stage();
+    BorderPane pane = new BorderPane();
+
+    VBox box = new VBox();
+    box.setAlignment(Pos.CENTER);
+    box.setSpacing(10);
+
+    TextField amountField = new TextField();
+    amountField.promptTextProperty().setValue("Ny mengde...");
+    amountField.setMaxWidth(200);
+
+    Text amountText = new Text("Her kan du endre mengden " + itemName + " fra " + itemQuantity[0] + " " + itemQuantity[1]);
+    Text errorText = new Text();
+    errorText.setVisible(false);
+    errorText.setStyle("-fx-fill: red");
+
+    HBox saveButtons = new HBox();
+    saveButtons.setAlignment(Pos.CENTER);
+    saveButtons.setSpacing(10);
+    Button saveButton = new Button("Lagre");
+    Button cancelButton = new Button("Avbryt");
+    Button removeButton = new Button("Slett");
+    saveButtons.getChildren().addAll(cancelButton, saveButton, removeButton);
+
+    cancelButton.setOnAction(event -> amountStage.close());
+    saveButton.setOnAction(event -> {
+      try {
+        String newAmount = amountField.getText();
+        FileHandler.changeFoodItemQuantity("src/main/resources/foodItems.csv", itemName,
+            newAmount);
+      updateFridgeListView();
+      } catch (Exception e) {
+        errorText.setText("En feil oppsto. Vennligs skriv inn et gyldig tall.");
+        errorText.setVisible(true);
+      }
+    });
+    removeButton.setOnAction(event -> {
+      try {
+        FileHandler.removeFoodItem("src/main/resources/foodItems.csv", itemName);
+        updateFridgeListView();
+        amountStage.close();
+      } catch (Exception e) {
+        errorText.setText("Kunne ikke slette " + itemName + ".");
+        errorText.setVisible(true);
+      }
+    });
+
+    box.getChildren().addAll(amountText, amountField, saveButtons, errorText);
+    pane.setCenter(box);
+
+    Scene scene = new Scene(pane, 300, 200);
+    amountStage.setScene(scene);
+    amountStage.setTitle("Endre antall " + itemName);
+    amountStage.show();
+  }
+
+  private void updateFridgeListView() {
+    fridgeListView.getItems().clear();
+    Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
+        "src/main/resources/foodItems.csv");
+    while (allFoodItems.hasNext()) {
+      FoodItem foodItem = allFoodItems.next();
+      fridgeListView.getItems().add(foodItemDisplay(foodItem));
+    }
   }
 
   /**
