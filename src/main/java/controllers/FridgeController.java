@@ -27,6 +27,9 @@ public class FridgeController {
   private TextField searchField;
 
   @FXML
+  private Text itemError;
+
+  @FXML
   private ChoiceBox<Button> choiceBox;
 
   @FXML
@@ -82,6 +85,11 @@ public class FridgeController {
   @FXML
   public void changeAmount(ActionEvent event) {
     String selectedItem = fridgeListView.getSelectionModel().getSelectedItem();
+    if (selectedItem == null) {
+      itemError.setStyle("-fx-fill: red");
+      itemError.setVisible(true);
+      return;
+    }
     String[] itemDetails = selectedItem.split(" - ");
     String itemName = itemDetails[0];
     String[] itemQuantity = itemDetails[1].split(" ");
@@ -117,6 +125,9 @@ public class FridgeController {
     saveButton.setOnAction(event -> {
       try {
         String newAmount = amountField.getText();
+        if (newAmountFaulty(newAmount)) {
+          throw new NumberFormatException("Invalid number format.");
+        }
         FileHandler.changeFoodItemQuantity("src/main/resources/foodItems.csv", itemName,
             newAmount);
       updateFridgeListView();
@@ -145,6 +156,15 @@ public class FridgeController {
     amountStage.show();
   }
 
+  private boolean newAmountFaulty(String newAmount) {
+    try {
+      Double.parseDouble(newAmount);
+    } catch (NumberFormatException e) {
+      return true;
+    }
+    return false;
+  }
+
   private void updateFridgeListView() {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
@@ -161,6 +181,7 @@ public class FridgeController {
    */
   @FXML
   private void initialize() { // This method should be triggered by a listener on the TextField's textProperty
+    itemError.setVisible(false);
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
         "src/main/resources/foodItems.csv"); // Adjust the path as needed
     while (allFoodItems.hasNext()) {
