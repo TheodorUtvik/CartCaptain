@@ -53,5 +53,5 @@
       </graphic>
     </Button>
   </VBox>
-  <ListView fx:id="foodItemsView" layoutX="230.0" layoutY="115.0" prefHeight="206.0" prefWidth="143.0" visible="false" />
+  <ListView fx:id="foodItemsView" layoutX="220.0" layoutY="115.0" prefHeight="206.0" prefWidth="159.0" visible="false" />
 </AnchorPane>

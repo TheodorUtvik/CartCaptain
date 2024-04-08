@@ -109,15 +109,6 @@ public class ShoppingListController implements Initializable {
       }
     });
 
-    foodItemsView.setOnMouseClicked(event -> {
-      if (event.getClickCount() == 2) {
-        String selectedItem = foodItemsView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null && !shoppingListView.getItems().contains(selectedItem)) {
-          shoppingListView.getItems().add(selectedItem);
-        }
-      }
-    });
-
     inputQuantityField.setOnKeyPressed(event -> {
       if (event.getCode() == KeyCode.ENTER) {
         addSelectedItemWithQuantity();
