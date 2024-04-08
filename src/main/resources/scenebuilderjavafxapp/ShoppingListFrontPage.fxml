@@ -13,19 +13,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShoppingListController">
   <TextField fx:id="searchBar" layoutX="220.0" layoutY="90.0" prefHeight="25.0" prefWidth="159.0" promptText="Søk etter varer" />
-  <Button fx:id="searchButton" layoutX="398.0" layoutY="90.0" mnemonicParsing="false" onAction="#onSearchButtonClicked" prefHeight="25.0" prefWidth="54.0" text="Legg til vare" />
+  <Button fx:id="addButton" layoutX="398.0" layoutY="90.0" mnemonicParsing="false" onAction="#onAddButtonClicked" prefHeight="25.0" prefWidth="85.0" text="Legg til vare" />
   <Text fx:id="header" layoutX="211.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Handleliste" wrappingWidth="186.8033905029297">
     <font>
       <Font size="37.0" />
     </font>
   </Text>
-  <ListView fx:id="shoppingListView" layoutX="200.0" layoutY="140.0" prefHeight="235.0" prefWidth="200.0" />
+  <ListView fx:id="shoppingListView" layoutX="168.0" layoutY="140.0" prefHeight="235.0" prefWidth="253.0" />
 
-  <Button fx:id="addButton" layoutX="464.0" layoutY="140.0" mnemonicParsing="false" onAction="#onAddButtonClicked" text="Legg til vare" />
-  <Button fx:id="removeButton" layoutX="471.0" layoutY="187.0" mnemonicParsing="false" onAction="#onRemoveFromShoppingListButtonClicked" text="Fjern vare" />
-  <Button fx:id="listToFileButton" layoutX="437.0" layoutY="321.0" mnemonicParsing="false" onAction="#onSaveShoppingListButtonClicked" text="Legg til i handleliste fil" />
-  <Button fx:id="clearShoppingListButton" layoutX="41.0" layoutY="199.0" mnemonicParsing="false" onAction="#onClearShoppingListButtonClicked" text="Reset handleliste" />
-  <TextField fx:id="inputQuantityField" layoutX="460.0" layoutY="90.0" prefHeight="25.0" prefWidth="50.0" promptText="Kvantitet" visible="false" />
+  <!-- Button fx:id="addButton" layoutX="464.0" layoutY="140.0" mnemonicParsing="false" onAction="#onAddButtonClicked" text="Legg til vare" /-->
+  <Button fx:id="removeButton" layoutX="436.0" layoutY="205.0" mnemonicParsing="false" onAction="#onRemoveFromShoppingListButtonClicked" text="Fjern vare" />
+  <!--Button fx:id="listToFileButton" layoutX="437.0" layoutY="346.0" mnemonicParsing="false" onAction="#onSaveShoppingListButtonClicked" text="Legg til i handleliste fil" /-->
+  <Button fx:id="clearShoppingListButton" layoutX="41.0" layoutY="346.0" mnemonicParsing="false" onAction="#onClearShoppingListButtonClicked" text="Tøm handleliste" />
+  <TextField fx:id="inputQuantityField" layoutX="420.0" layoutY="120.0" prefHeight="25.0" prefWidth="50.0" promptText="Kvantitet" visible="false" />
   <Line endX="499.00006103515625" endY="-7.62939453125E-6" layoutX="101.0" layoutY="71.0" startX="-100.0" />
   <VBox layoutX="14.0" layoutY="32.0" prefHeight="168.0" prefWidth="54.0">
     <ImageView fx:id="hamburgerMenu" fitHeight="25.0" fitWidth="30.0" onMousePressed="#showMenu" pickOnBounds="true" preserveRatio="true">

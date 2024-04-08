@@ -130,18 +130,10 @@ public class ShoppingListController implements Initializable {
       }
     });
 
+    // Populate the shopping list with items from the CSV file
+    List<String> shoppingList = FileHandler.readLinesFromFile("src/main/resources/shoppingList.csv");
+    shoppingListView.getItems().addAll(shoppingList);
 
-
-    try {
-      Iterator<FoodItem> foodItemsIterator = FileHandler.readFoodFromFile("src/main/resources/shoppingList.csv");
-      while (foodItemsIterator.hasNext()) {
-        FoodItem item = foodItemsIterator.next();
-        shoppingListView.getItems().add(item.getDetails2());
-      }
-    } catch (Exception e) {
-      System.err.println("Error initializing shopping list view: " + e.getMessage());
-      e.printStackTrace();
-    }
   }
 
 
@@ -270,12 +262,18 @@ public class ShoppingListController implements Initializable {
 
   /**
    * This method will allow the user to clear the shopping list. It will be triggered by a button
-   * click. It should clear the shopping list.
+   * click. It should clear the shopping list. It will clear the csv file as well.
    */
   @FXML
   private void onClearShoppingListButtonClicked() {
     shoppingListView.getItems().clear();
+    String filePath = "src/main/resources/shoppingList.csv";
 
+    try {
+      Files.write(Paths.get(filePath), "".getBytes()); // Clear the content without deleting the file
+    } catch (IOException e) {
+      System.err.println("Failed to clear the CSV file: " + e.getMessage());
+    }
   }
 
   /**
