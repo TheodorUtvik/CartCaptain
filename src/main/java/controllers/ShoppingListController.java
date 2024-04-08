@@ -24,8 +24,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 
+/**
+ * ShoppingListController is the controller class for the shopping list page. It allows the user to
+ * add items to a shopping list, save the shopping list to a file, and clear the shopping list.
+ * ShoppingListController is responsible for handling user input and updating the view. It uses
+ * FileHandler to read and write data to and from files. ShoppingListController implements the
+ * <code>Initializable</code> interface to initialize the controller class.
+ *
+ * @see FileHandler
+ * @see Initializable
+ * @see FoodItem
+ * @since 05.03.2024
+ * @version 0.0.1
+ * @author Theodor Sjetnan Utvik, Sigurd Riseth
+ */
 
 public class ShoppingListController implements Initializable {
 
@@ -45,35 +58,15 @@ public class ShoppingListController implements Initializable {
   public Button removeButton;
 
   @FXML
-  public Button listToFileButton;
-
-  @FXML
   public Button clearShoppingListButton;
 
   @FXML
   public TextField inputQuantityField;
-
   @FXML
-  private void goBack(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/CartCaptainFrontPage.fxml", "Front Page");
-  }
+  public ImageView hamburgerMenu;
 
   @FXML
   private TextField searchBar;
-
-  @FXML
-  private Button searchButton;
-
-  @FXML
-  private Button backButton;
-  @FXML
-  private Text header;
-
-  @FXML
-  private Text header2;
-
-  @FXML
-  private ImageView hamburgerMenu;
 
   @FXML
   private ListView<String> foodItemsView;
@@ -89,15 +82,19 @@ public class ShoppingListController implements Initializable {
 
   @FXML
   private Button fridgeButton;
-  @FXML
-  private ListView<String> searchResultsListView;
-
-
-
 
   /**
    * Initializes the controller class. This method is automatically called after the fxml file has
    * been loaded.
+   * The method sets the home button image to invisible, and adds a listener to the search bar text
+   * property. The listener will update the list view with the filtered items every time the text in
+   * the search bar changes. The method also populates the shopping list with items from the CSV
+   * file.
+   *
+   * @param location  the location used to resolve relative paths for the root object, or null if the
+   *                  location is not known.
+   * @param resources the resources used to localize the root object, or null if the root object was
+   *                  not localized.
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -138,16 +135,11 @@ public class ShoppingListController implements Initializable {
 
 
   /**
-   * This method should be triggered by a listener on the TextField's textProperty to update the
-   * ListView with the search results. It should be called every time the text in the TextField
-   * changes.
+   * This method will filter the food items based on the search query in the search bar. It will be
+   * triggered by a listener on the search bar text property. It should update the foodItemsView with
+   * the filtered items. The food items should be read from the file "foodItems.csv". The search
+   * should be case-insensitive.
    */
-  @FXML
-  private void onSearchButtonClicked() {
-    foodItemsView.getItems().clear();
-    searchBarTextChanged();
-  }
-
   private void searchBarTextChanged() {
     foodItemsView.getItems().clear();
     String searchQuery = searchBar.getText().toLowerCase();
@@ -176,6 +168,14 @@ public class ShoppingListController implements Initializable {
     }
   }
 
+  /**
+   * This method allows the input field for quantity to be shown when the user selects an item from
+   * the food items view. The input field will be shown when the user adds an item in the
+   * food items view. The input field will be hidden when the user presses the enter key.
+   * The method will also add the selected item with the quantity to the shopping list.
+   *
+   * @param selectedItem the item selected by the user
+   */
   @FXML
   private void showInputFieldForQuantity(String selectedItem) {
     inputQuantityField.setVisible(true);
@@ -192,6 +192,13 @@ public class ShoppingListController implements Initializable {
     });
   }
 
+  /**
+   * This method will add the selected item with the quantity to the shopping list, with the right
+   * format, so the file later can be read.
+   *
+   * @param item the item to add
+   * @param quantity the quantity of the item
+   */
   private void addItemWithQuantity(String item, int quantity) {
     String itemWithQuantity = String.format("%s - %d", item, quantity);
     if (!shoppingListView.getItems().contains(itemWithQuantity)) {
@@ -200,6 +207,11 @@ public class ShoppingListController implements Initializable {
   }
 
 
+  /**
+   * This method ensurer the selected item is added to the shopping list with the quantity specified
+   * by the user.
+   * If the quantity is not a number, the method will print an error message to the console.
+   */
   private void addSelectedItemWithQuantity() {
     String selectedItem = foodItemsView.getSelectionModel().getSelectedItem();
     if (selectedItem == null) {
@@ -220,6 +232,11 @@ public class ShoppingListController implements Initializable {
   }
 
 
+  /**
+   * This method will update the CSV file with the item and quantity added to the shopping list.
+   *
+   * @param itemWithQuantity the item with the quantity to add to the CSV file
+   */
   private void updateCsvWithItem(String itemWithQuantity) {
     try {
       String filePath = "src/main/resources/shoppingList.csv";
@@ -241,6 +258,10 @@ public class ShoppingListController implements Initializable {
     FileHandler.writeShoppingListToFile("src/main/resources/shoppingList.csv", shoppingList);
   }
 
+/**
+   * This method will allow the user to remove items from the shopping list. It will be triggered by
+   * a button click. It should remove the selected item from the shopping list.
+   */
   @FXML
   private void onRemoveFromShoppingListButtonClicked() {
     String selectedItem = shoppingListView.getSelectionModel().getSelectedItem();
@@ -250,6 +271,11 @@ public class ShoppingListController implements Initializable {
     }
   }
 
+  /**
+   * This method will remove the selected item from the CSV file.
+   *
+   * @param item the item to remove from the CSV file
+   */
   private void removeItemFromCsv(String item) {
     try {
       List<String> lines = FileHandler.readLinesFromFile("src/main/resources/shoppingList.csv");
@@ -297,9 +323,6 @@ public class ShoppingListController implements Initializable {
     }
   }
 
-
-
-
   /**
    * Changes the scene to the front page.
    */
@@ -313,7 +336,7 @@ public class ShoppingListController implements Initializable {
    */
   @FXML
   public void goRecipes(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/RecipesFrontPage.fxml", "Recipe");
+    changeScene(event, "/scenebuilderjavafxapp/recipePage.fxml", "Recipe");
   }
 
   /**

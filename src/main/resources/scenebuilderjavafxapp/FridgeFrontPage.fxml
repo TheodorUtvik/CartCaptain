@@ -32,40 +32,37 @@
          </children>
       </HBox>
       <VBox layoutX="6.0" layoutY="32.0" prefHeight="168.0" prefWidth="54.0">
-         <children>
-            <ImageView fx:id="hamburgerMenu" fitHeight="25.0" fitWidth="30.0" onMousePressed="#showMenu" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/menu-burger.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#goHome" visible="false">
-               <graphic>
-                  <ImageView fx:id="homeButtonImage" fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/house-chimney.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="shoppingListButton" disable="true" mnemonicParsing="false" onAction="#goShoppingList" visible="false">
-               <graphic>
-                  <ImageView fx:id="shoppingListButtonImage" fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/shopping-cartIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="recipeButton" disable="true" mnemonicParsing="false" onAction="#goRecipes" visible="false">
-               <graphic>
-                  <ImageView fx:id="recipeButtonImage" fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/recipeIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
+         <ImageView fx:id="hamburgerMenu" fitHeight="25.0" fitWidth="30.0"
+           onMousePressed="#showMenu" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/menu-burger.png"/>
+         </ImageView>
+         <Button fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#goHome"
+           visible="false">
+            <graphic>
+               <ImageView fx:id="homeButtonImage" fitHeight="150.0" fitWidth="30.0"
+                 pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../images/house-chimney.png"/>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button fx:id="shoppingListButton" disable="true" mnemonicParsing="false"
+           onAction="#goShoppingList" visible="false">
+            <graphic>
+               <ImageView fx:id="shoppingListButtonImage" fitHeight="150.0" fitWidth="30.0"
+                 pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../images/shopping-cartIcon.png"/>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button fx:id="recipeButton" disable="true" mnemonicParsing="false" onAction="#goRecipes"
+           visible="false">
+            <graphic>
+               <ImageView fx:id="recipeButtonImage" fitHeight="150.0" fitWidth="30.0"
+                 pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../images/recipeIcon.png"/>
+               </ImageView>
+            </graphic>
+         </Button>
       </VBox>
    </children>
 </AnchorPane>
