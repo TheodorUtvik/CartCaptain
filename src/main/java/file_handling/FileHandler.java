@@ -160,14 +160,22 @@ public class FileHandler {
    * @param fileName the name of the file to delete
    * @return true if the file was deleted, false otherwise.
    */
-  public static boolean deleteFile(String fileName) {
+  public static void deleteFile(String fileName) {
     try {
       Files.delete(Paths.get(fileName));
-      return true;
     } catch (IOException e) {
       System.err.println("Failed to delete file: " + e.getMessage());
-      return false;
     }
+  }
+
+  public static List<String> readLinesFromFile(String fileName) {
+    List<String> lines = new ArrayList<>();
+    try {
+      lines = Files.readAllLines(Paths.get(fileName));
+    } catch (IOException e) {
+      System.err.println("Failed to read the file: " + e.getMessage());
+    }
+    return lines;
   }
 
   /**
@@ -178,9 +186,12 @@ public class FileHandler {
       List<String> lines = new ArrayList<>(shoppingList); // Preparing the lines to write
       try {
         Files.write(Paths.get(fileName), lines, StandardCharsets.UTF_8,
-            StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
       } catch (IOException e) {
         System.err.println("Failed to write to file: " + e.getMessage());
       }
     }
+
+
+
 }
