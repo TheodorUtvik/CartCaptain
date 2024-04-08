@@ -192,6 +192,45 @@ public class FileHandler {
       }
     }
 
+  /**
+   * Changes the quantity of a food item in the shopping list.
+   * Output will be item name, unit, food type, quantity.
+   *
+   * @param itemName path of the file to edit
+   * @param newQuantity the new quantity of the food item
+   * @throws Exception if the item is not found
+   */
+  public static void changeFoodItemQuantity(String path, String itemName, String newQuantity) throws Exception {
+    List<String> lines = readLinesFromFile(path);
+    boolean itemFound = false;
+    for (int i = 0; i < lines.size(); i++) {
+      String[] item = lines.get(i).split(",");
+      if (item[0].equals(itemName)) {
+        lines.set(i, itemName + "," + item[1] + "," + item[2] + "," + newQuantity);
+        itemFound = true;
+        break;
+      }
+    }
+    if (!itemFound) {
+      throw new Exception("Item not found.");
+    }
+    writeShoppingListToFile(path, lines);
+  }
 
-
+  public static void removeFoodItem(String path, String itemName) {
+    List<String> lines = readLinesFromFile(path);
+    boolean itemFound = false;
+    for (int i = 0; i < lines.size(); i++) {
+      String[] itemQuantity = lines.get(i).split(",");
+      if (itemQuantity[0].equals(itemName)) {
+        lines.remove(i);
+        itemFound = true;
+        break;
+      }
+    }
+    if (!itemFound) {
+      System.err.println("Item not found.");
+    }
+    writeShoppingListToFile(path, lines);
+  }
 }

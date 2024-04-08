@@ -13,14 +13,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FridgeController">
    <children>
-      <TextField layoutX="139.0" layoutY="66.0" prefHeight="26.0" prefWidth="234.0" promptText="Søk etter matvare..." fx:id="searchField"/>
-      <Button layoutX="402.0" layoutY="66.0" mnemonicParsing="false" text="Søk" onAction="#onSearchButtonClicked" fx:id="searchButton"/>
+      <TextField fx:id="searchField" layoutX="139.0" layoutY="66.0" prefHeight="26.0" prefWidth="234.0" promptText="Søk etter matvare..." />
+      <Button fx:id="searchButton" layoutX="402.0" layoutY="66.0" mnemonicParsing="false" onAction="#onSearchButtonClicked" text="Søk" />
       <Text layoutX="245.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kjøleskap">
          <font>
             <Font name="Arial" size="25.0" />
          </font>
       </Text>
-         <ListView fx:id="fridgeListView" layoutX="71.0" layoutY="176.0" prefHeight="173.0" prefWidth="441.0" />
+      <ListView fx:id="fridgeListView" layoutX="71.0" layoutY="176.0" prefHeight="173.0" prefWidth="441.0" />
       <HBox alignment="CENTER" layoutX="71.0" layoutY="128.0" prefHeight="31.0" prefWidth="441.0">
          <children>
             <Button mnemonicParsing="false" onAction="#categoryAll" text="Alle" />
@@ -64,5 +64,7 @@
             </graphic>
          </Button>
       </VBox>
+      <Button fx:id="changeAmountButton" layoutX="225.0" layoutY="349.0" onAction="#changeAmount" prefWidth="150.0" text="Endre antall" />
+      <Text layoutX="402.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vennligst velg en vare først." fx:id="itemError"/>
    </children>
 </AnchorPane>
