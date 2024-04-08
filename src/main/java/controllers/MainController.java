@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class MainController {
@@ -18,6 +19,13 @@ public class MainController {
 
   @FXML
   private Button recipesButton;
+
+  @FXML
+  private ImageView shoppingListImage;
+  @FXML
+  private ImageView fridgeImage;
+  @FXML
+  private ImageView recipesImage;
 
   @FXML
   private void onShoppingList() {
@@ -55,7 +63,7 @@ public class MainController {
   private void onRecipes() {
     try {
       FXMLLoader loader = new FXMLLoader(
-          getClass().getResource("/scenebuilderjavafxapp/RecipesFrontPage.fxml"));
+          getClass().getResource("/scenebuilderjavafxapp/recipePage.fxml"));
       Parent recipesRoot = loader.load();
 
       Stage stage = (Stage) recipesButton.getScene().getWindow();

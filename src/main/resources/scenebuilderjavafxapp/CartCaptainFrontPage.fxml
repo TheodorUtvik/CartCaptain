@@ -3,27 +3,50 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <center>
-      <HBox alignment="CENTER" prefHeight="351.0" prefWidth="600.0" spacing="100.0" style="-fx-background-color: blue;" BorderPane.alignment="CENTER">
-         <Button fx:id="shoppingListButton" mnemonicParsing="false" onAction="#onShoppingList" text="Handleliste">
+      <HBox alignment="CENTER" prefHeight="351.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <Button fx:id="shoppingListButton" mnemonicParsing="false" onAction="#onShoppingList" prefHeight="190.0" prefWidth="90.0">
             <padding>
                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
+            <graphic>
+               <ImageView fx:id="shoppingListImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../images/CartKunstListe.png" />
+                  </image>
+               </ImageView>
+            </graphic>
          </Button>
-         <Button fx:id="fridgeButton" mnemonicParsing="false" onAction="#onFridge" text="Kjøleskap">
+         <Button fx:id="fridgeButton" mnemonicParsing="false" onAction="#onFridge" prefHeight="190.0" prefWidth="133.0">
             <padding>
                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
+            <graphic>
+               <ImageView fx:id="fridgeImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../images/CartKunstKjøleskap.png" />
+                  </image>
+               </ImageView>
+            </graphic>
          </Button>
-         <Button fx:id="recipesButton" mnemonicParsing="false" onAction="#onRecipes" text="Oppskrifter">
+         <Button fx:id="recipesButton" mnemonicParsing="false" onAction="#onRecipes" prefHeight="190.0" prefWidth="90.0">
             <padding>
                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
+            <graphic>
+               <ImageView fx:id="recipesImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../images/CartKunstOppskrift.png" />
+                  </image>
+               </ImageView>
+            </graphic>
          </Button>
       </HBox>
    </center>

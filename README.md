@@ -1,4 +1,4 @@
-<img src="Images/LogoCartCaptain1.png" alt="CartCaptain" width="300">
+<img src="src/main/resources/images/LogoCartCaptain1.png" alt="CartCaptain" width="300">
 
 # CartCaptain - Kitchen Inventory System
 This file uses Mark Down syntax. For more information see [here](https://www.markdownguide.org/basic-syntax/).
