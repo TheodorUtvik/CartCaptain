@@ -23,16 +23,43 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * RecipeController is the controller for the recipe page in the application. It handles the logic for
+ * displaying recipes, opening a recipe page with details, and navigating to other pages in the
+ * application.
+ *
+ * @see Recipe
+ * @see FileHandler
+ * @since 12.03.2024
+ * @version 0.0.2
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ */
+
 public class RecipeController {
+
+  @FXML
+  public ImageView hamburgerMenu;
+  @FXML
+  public ImageView homeButtonImage;
+  @FXML
+  public Button fridgeButton;
+  @FXML
+  public ImageView fridgeButtonImage;
+  @FXML
+  public ImageView shoppingListButtonImage;
+  @FXML
+  public Button shoppingListButton;
   @FXML
   private ScrollPane pane;
   @FXML
   private VBox recipeBox;
   @FXML
   private Button homeButton;
-  @FXML
-  private Button recipeButton;
 
+  /***
+   * Initializes the recipe page by reading the recipes from the recipes.csv file and creating a VBox
+   * for each recipe.
+   */
   @FXML
   private void initialize() {
     pane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -65,29 +92,34 @@ public class RecipeController {
   }
 
   /**
-   * Toggles the visibility of the category buttons.
-   * If the buttons are visible, they will be hidden and disabled.
+   * Toggles the visibility of the category buttons. If the buttons are visible, they will be hidden
+   * and disabled.
    */
-  @FXML
   public void showMenu(MouseEvent event) {
     if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-      if (homeButton.isVisible()) {
-        // If buttons are visible, hide them and disable them
-        homeButton.setVisible(false);
-        recipeButton.setVisible(false);
-        homeButton.setDisable(true);
-        recipeButton.setDisable(true);
-      } else {
-        // If buttons are not visible, show them and enable them
-        homeButton.setVisible(true);
-        recipeButton.setVisible(true);
-        homeButton.setDisable(false);
-        recipeButton.setDisable(false);
-      }
+      boolean isMenuVisible = homeButton.isVisible();
+      homeButton.setVisible(!isMenuVisible);
+      fridgeButton.setVisible(!isMenuVisible);
+      shoppingListButton.setVisible(!isMenuVisible);
+
+      homeButtonImage.setVisible(!isMenuVisible);
+      fridgeButtonImage.setVisible(!isMenuVisible);
+      shoppingListButtonImage.setVisible(!isMenuVisible);
+
+      homeButton.setDisable(isMenuVisible);
+      fridgeButton.setDisable(isMenuVisible);
+      shoppingListButton.setDisable(isMenuVisible);
     }
   }
 
 
+  /**
+   * Converts a recipe to a VBox. The VBox contains an ImageView with the recipe image and a Text
+   * with the recipe name.
+   *
+   * @param recipe the recipe to convert
+   * @return a VBox with the recipe image and name
+   */
   @FXML
   private VBox recipeToVBox(Recipe recipe) {
     VBox vBox = new VBox();
@@ -105,6 +137,13 @@ public class RecipeController {
     return vBox;
   }
 
+  /**
+   * Opens a new stage with the recipe details. The stage contains the recipe image, name,
+   * ingredients, and approach. The ingredients are displayed in a vertical box with a title,
+   * and the approach is displayed in a vertical box with a title.
+   *
+   * @param recipe the recipe to display
+   */
   private void openRecipePage(Recipe recipe) {
     Stage recipeStage = new Stage();
     BorderPane recipePane = new BorderPane();
@@ -147,6 +186,14 @@ public class RecipeController {
     recipeStage.show();
   }
 
+  /**
+   * Creates a vertical box with labels. The box contains a title and a list of items.
+   *
+   * @param title the title of the box
+   * @param items the items to display
+   * @param wrapText whether the text should wrap
+   * @return a VBox with the title and items
+   */
   private VBox createVerticalBoxWithLabels(String title, List<String> items, boolean wrapText) {
     VBox vBox = new VBox();
     vBox.setSpacing(10);
@@ -169,8 +216,6 @@ public class RecipeController {
     return vBox;
   }
 
-
-
   /**
    * Changes the scene to the front page.
    */
@@ -183,8 +228,16 @@ public class RecipeController {
    * Changes the scene to the recipes page.
    */
   @FXML
-  public void goRecipes(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/recipePage.fxml", "Recipe");
+  public void goShoppingList(ActionEvent event) {
+    changeScene(event, "/scenebuilderjavafxapp/ShoppingListFrontPage.fxml", "Recipe");
+  }
+
+  /**
+   * Changes the scene to the fridge page.
+   */
+  @FXML
+  public void goFridge(ActionEvent event) {
+    changeScene(event, "/scenebuilderjavafxapp/FridgeFrontPage.fxml", "Fridge");
   }
 
 

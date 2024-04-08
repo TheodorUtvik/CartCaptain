@@ -21,6 +21,18 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * FridgeController is the controller for the fridge page in the application. It handles the logic for
+ * displaying food items in the fridge, searching for food items, and categorizing food items.
+ * It also provides functionality for navigating to other pages in the application.
+ *
+ * @see FoodItem
+ * @see FileHandler
+ * @since 05.03.2024
+ * @version 0.0.2
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ */
+
 public class FridgeController {
 
   @FXML
@@ -301,6 +313,9 @@ public class FridgeController {
     }
   }
 
+  /**
+   * Displays the hamburger menu when the user clicks on the hamburger icon.
+   */
   public void showMenu(MouseEvent event) {
     if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
       boolean isMenuVisible = homeButton.isVisible();
