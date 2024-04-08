@@ -132,7 +132,7 @@ public class FridgeController {
             newAmount);
       updateFridgeListView();
       } catch (Exception e) {
-        errorText.setText("En feil oppsto. Vennligs skriv inn et gyldig tall.");
+        errorText.setText("En feil oppsto. Vennligst skriv inn et gyldig tall.");
         errorText.setVisible(true);
       }
     });
