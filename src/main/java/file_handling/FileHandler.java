@@ -57,32 +57,13 @@ public class FileHandler {
   }
 
   /**
-   * Writes a list of <code>FoodItem</code> objects to a file.
-   *
-   * @param fileName  the name of the file to write to
-   * @param foodItems the list of <code>FoodItem</code> objects to write
-   */
-  public static void writeFoodToFile(String fileName, List<FoodItem> foodItems) {
-    try {
-      for (FoodItem foodItem : foodItems) {
-        String line = String.format("%s,%s,%s,%.2f%n", foodItem.getName(), foodItem.getUnit(),
-            foodItem.getFoodType(), foodItem.getQuantity());
-        Files.write(Paths.get(fileName), line.getBytes(), StandardOpenOption.APPEND,
-            StandardOpenOption.CREATE);
-      }
-    } catch (IOException e) {
-      System.err.println("Failed to write to file: " + e.getMessage());
-    }
-  }
-
-  /**
    * Clears the content of a file.
    *
    * @param fileName the name of the file to clear
    */
   public static void clearFile(String fileName) {
     try {
-      Files.write(Paths.get(fileName), "".getBytes());
+      Files.write(Paths.get(fileName), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING);
     } catch (IOException e) {
       System.err.println("Failed to clear file: " + e.getMessage());
     }
@@ -177,19 +158,36 @@ public class FileHandler {
     }
     return lines;
   }
+  /**
+   * Writes a list of <code>FoodItem</code> objects to a file.
+   *
+   * @param fileName  the name of the file to write to
+   * @param foodItems the list of <code>FoodItem</code> objects to write
+   */
+  public static void writeFoodToFile(String fileName, List<String> foodItems) {
+    try {
+      for (String foodItem : foodItems) {
+        foodItem = foodItem + "\n";
+        Files.write(Paths.get(fileName), foodItem.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+      }
+    } catch (IOException e) {
+      System.err.println("Failed to write to file: " + e.getMessage());
+    }
+  }
+
 
   /**
    * Writes a shopping list to a file.
    */
-    public static void writeShoppingListToFile(String fileName, List<String> shoppingList) {
-      List<String> lines = new ArrayList<>(shoppingList); // Preparing the lines to write
-      try {
-        Files.write(Paths.get(fileName), lines, StandardCharsets.UTF_8,
-            StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-      } catch (IOException e) {
-        System.err.println("Failed to write to file: " + e.getMessage());
-      }
+  public static void writeShoppingListToFile(String fileName, List<String> shoppingList) {
+    List<String> lines = new ArrayList<>(shoppingList); // Preparing the lines to write
+    try {
+      Files.write(Paths.get(fileName), lines, StandardCharsets.UTF_8,
+          StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    } catch (IOException e) {
+      System.err.println("Failed to write to file: " + e.getMessage());
     }
+  }
 
   /**
    * Changes the quantity of a food item in the shopping list.
@@ -213,7 +211,8 @@ public class FileHandler {
     if (!itemFound) {
       throw new Exception("Item not found.");
     }
-    writeShoppingListToFile(path, lines);
+    clearFile(path);
+    writeFoodToFile(path, lines);
   }
 
   public static void removeFoodItem(String path, String itemName) {
@@ -230,6 +229,7 @@ public class FileHandler {
     if (!itemFound) {
       System.err.println("Item not found.");
     }
-    writeShoppingListToFile(path, lines);
+    clearFile(path);
+    writeFoodToFile(path, lines);
   }
 }
