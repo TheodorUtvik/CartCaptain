@@ -21,13 +21,6 @@ public class MainController {
   private Button recipesButton;
 
   @FXML
-  private ImageView shoppingListImage;
-  @FXML
-  private ImageView fridgeImage;
-  @FXML
-  private ImageView recipesImage;
-
-  @FXML
   private void onShoppingList() {
     try {
       FXMLLoader loader = new FXMLLoader(

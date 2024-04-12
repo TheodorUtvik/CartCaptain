@@ -180,7 +180,6 @@ public class FileHandler {
 
   /**
    * Writes a shopping list to a file.
-   *
    */
     public static void writeShoppingListToFile(String fileName, List<String> shoppingList) {
       List<String> lines = new ArrayList<>(shoppingList); // Preparing the lines to write
