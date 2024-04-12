@@ -135,7 +135,7 @@ public class UserInterfaceMethods {
       TextBasedUI.existsInList();
       return;
     }
-    writeFoodToFile("src/main/resources/shoppingList.csv", foodItemList);
+    //writeFoodToFile("src/main/resources/shoppingList.csv", foodItemList);
     groceryAdded();
   }
 
