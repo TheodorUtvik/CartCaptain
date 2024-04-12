@@ -186,7 +186,7 @@ public class FileHandler {
       List<String> lines = new ArrayList<>(shoppingList); // Preparing the lines to write
       try {
         Files.write(Paths.get(fileName), lines, StandardCharsets.UTF_8,
-            StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            StandardOpenOption.CREATE, StandardOpenOption.APPEND);
       } catch (IOException e) {
         System.err.println("Failed to write to file: " + e.getMessage());
       }

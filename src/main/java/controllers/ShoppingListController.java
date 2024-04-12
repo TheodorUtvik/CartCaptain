@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.util.Iterator;
 import java.util.List;
@@ -83,6 +84,9 @@ public class ShoppingListController implements Initializable {
   @FXML
   private Button fridgeButton;
 
+  @FXML
+  private Label quantityLabel;
+
   /**
    * Initializes the controller class. This method is automatically called after the fxml file has
    * been loaded.
@@ -99,6 +103,7 @@ public class ShoppingListController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     homeButtonImage.setVisible(false); // Start with the home button invisible
+    quantityLabel.setVisible(false);
     searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
       // If there is text, show the search results list view.
       if (!newValue.isEmpty()) {
@@ -115,6 +120,7 @@ public class ShoppingListController implements Initializable {
         onSaveShoppingListButtonClicked();
         inputQuantityField.setVisible(false);
         inputQuantityField.clear();
+
       }
     });
 
@@ -171,6 +177,7 @@ public class ShoppingListController implements Initializable {
   private void showInputFieldForQuantity(String selectedItem) {
     inputQuantityField.setVisible(true);
     inputQuantityField.requestFocus();
+    quantityLabel.setVisible(true);
     inputQuantityField.setOnAction(event -> {
       int quantity;
       try {
@@ -180,6 +187,7 @@ public class ShoppingListController implements Initializable {
         System.err.println("Invalid quantity, defaulting to 1.");
       }
       addItemWithQuantity(selectedItem, quantity);
+      quantityLabel.setVisible(false);
     });
   }
 
