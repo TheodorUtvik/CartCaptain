@@ -164,19 +164,26 @@ public class RecipeController {
 
     headerVBox.getChildren().addAll(recipeImage, recipeNameLabel);
 
+    Label itemsAddedLabel = new Label("Ingredienser lagt til i handleliste");
+    itemsAddedLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+    itemsAddedLabel.setVisible(false);
+
     HBox contents = new HBox();
     contents.setSpacing(30);
     VBox ingredientsVBox = createVerticalBoxWithLabels("Ingredienser", recipe.getIngredients(), false);
     VBox approachVBox = createVerticalBoxWithLabels("Fremgangsmåte", recipe.getApproach(), true);
     Button purchaseButton = new Button("Legg til i handleliste");
     purchaseButton.setOnAction(event -> {
-      FileHandler.writeShoppingListToFile("src/main/resources/shoppingList.csv", recipe.getIngredients());
+      FileHandler.writeShoppingListToFile("src/main/resources/shoppingList.csv",
+          recipe.getIngredients());
+      itemsAddedLabel.setVisible(true);
     });
+
     ingredientsVBox.getChildren().add(purchaseButton);
     contents.getChildren().addAll(ingredientsVBox, approachVBox);
     contents.setAlignment(Pos.TOP_CENTER);
 
-    mainVBox.getChildren().addAll(headerVBox, contents);
+    mainVBox.getChildren().addAll(headerVBox, contents, itemsAddedLabel);
     recipePane.setCenter(mainVBox);
 
     Scene recipeScene = new Scene(recipePane, 1000, 800);
