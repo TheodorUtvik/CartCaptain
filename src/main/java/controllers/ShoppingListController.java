@@ -188,6 +188,7 @@ public class ShoppingListController implements Initializable {
       }
       addItemWithQuantity(selectedItem, quantity);
       quantityLabel.setVisible(false);
+      foodItemsView.setVisible(false);
     });
   }
 
