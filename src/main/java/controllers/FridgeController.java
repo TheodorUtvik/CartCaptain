@@ -158,7 +158,7 @@ public class FridgeController {
         if (newAmountFaulty(newAmount)) {
           throw new NumberFormatException("Invalid number format.");
         }
-        FileHandler.changeFoodItemQuantity("src/main/resources/foodItems.csv", itemName,
+        FileHandler.changeFoodItemQuantity("src/main/resources/Fridge.csv", itemName,
             newAmount);
       updateFridgeListView();
       } catch (Exception e) {
@@ -168,7 +168,7 @@ public class FridgeController {
     });
     removeButton.setOnAction(event -> {
       try {
-        FileHandler.removeFoodItem("src/main/resources/foodItems.csv", itemName);
+        FileHandler.removeFoodItem("src/main/resources/Fridge.csv", itemName);
         updateFridgeListView();
         amountStage.close();
       } catch (Exception e) {
@@ -207,7 +207,7 @@ public class FridgeController {
   private void updateFridgeListView() {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       fridgeListView.getItems().add(foodItemDisplay(foodItem));
@@ -222,7 +222,7 @@ public class FridgeController {
   private void initialize() { // This method should be triggered by a listener on the TextField's textProperty
     itemError.setVisible(false);
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv"); // Adjust the path as needed
+        "src/main/resources/Fridge.csv"); // Adjust the path as needed
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       fridgeListView.getItems().add(foodItemDisplay(foodItem));
@@ -236,7 +236,7 @@ public class FridgeController {
   public void categoryAll(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       fridgeListView.getItems().add(foodItemDisplay(foodItem));
@@ -250,7 +250,7 @@ public class FridgeController {
   public void categoryDairy(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Meieri")) {
@@ -266,7 +266,7 @@ public class FridgeController {
   public void categoryMeat(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Kjøtt")) {
@@ -282,7 +282,7 @@ public class FridgeController {
   public void categoryFish(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Fisk")) {
@@ -298,7 +298,7 @@ public class FridgeController {
   public void categoryGrains(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Korn")) {
@@ -314,7 +314,7 @@ public class FridgeController {
   public void categoryFruitAndVegetables(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Frukt & Grønt")) {
@@ -331,7 +331,7 @@ public class FridgeController {
     fridgeListView.getItems().clear();
     String searchQuery = searchField.getText().toLowerCase();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv"); // Adjust the path as needed
+        "src/main/resources/Fridge.csv"); // Adjust the path as needed
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getName().toLowerCase().contains(searchQuery)) {
