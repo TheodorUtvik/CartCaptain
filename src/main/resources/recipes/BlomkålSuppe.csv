@@ -1,7 +1,7 @@
-Suppe
+Blomkålsuppe
 30
 Suppe
-image
+src/main/resources/images/blomkålsuppe.png
 Blomkål, 1, stk
 Løk, 1, stk
 Vann, 8, dl
@@ -9,7 +9,7 @@ Melk, 2, dl
 Bacon, 200, g
 Vårløk, 2, stk
 Brød, 1, stk
-Kylling buljong, 2, stk
+Kyllingbuljong, 2, stk
 
 Kutt blomkål i små biter og hakk løk.
 Ha blomkål og løk i en kjele med vann og buljong.

@@ -35,65 +35,76 @@ import javafx.stage.Stage;
 
 public class FridgeController {
 
+  /**
+   * The search field for searching for food items in the fridge.
+   */
   @FXML
   private TextField searchField;
 
+  /**
+   * The text that displays an error message if the user tries to change the amount of a food item
+   * without selecting one.
+   */
   @FXML
   private Text itemError;
 
-  @FXML
-  private ChoiceBox<Button> choiceBox;
-
-  @FXML
-  private Button changeAmountButton;
-
-  @FXML
-  private Button searchButton;
-
-  @FXML
-  private ImageView hamburgerMenu;
-
-  @FXML
-  private Button allCategories;
-
-  @FXML
-  private Button dairyCategory;
-
-  @FXML
-  private Button meatCategory;
-
-  @FXML
-  private Button fishCategory;
-
-  @FXML
-  private Button grainsCategory;
-
-  @FXML
-  private Button fruitAndVegetablesCategory;
-
+  /**
+   * The ListView that displays all food items in the fridge.
+   */
   @FXML
   private ListView<String> fridgeListView;
 
+  /**
+   * The button for navigating to the home page.
+   */
   @FXML
   private Button homeButton;
 
+  /**
+   * The button for navigating to the recipe page.
+   */
   @FXML
   private Button recipeButton;
+
+  /**
+   * The button for navigating to the shopping list page.
+   */
   @FXML
   private Button shoppingListButton;
 
+  /**
+   * The image for the home button.
+   */
+  @FXML
   public ImageView homeButtonImage;
 
+  /**
+   * The image for the recipe button.
+   */
   @FXML
   public ImageView recipeButtonImage;
 
+  /**
+   * The image for the shopping list button.
+   */
   @FXML
   public ImageView shoppingListButtonImage;
 
+  /**
+   * Displays the food item in the following format: "name - quantity unit".
+   *
+   * @param foodItem the food item to display
+   * @return a string representation of the food item
+   */
   private String foodItemDisplay(FoodItem foodItem) {
     return foodItem.getName() + " - " + foodItem.getQuantity() + " " + foodItem.getUnit();
   }
 
+  /**
+   * Reads the selected items and opens a menu for editing it using <code>showAmountChangeDialog()</code>.
+   *
+   * @param event the event that triggers the method
+   */
   @FXML
   public void changeAmount(ActionEvent event) {
     String selectedItem = fridgeListView.getSelectionModel().getSelectedItem();
@@ -108,7 +119,14 @@ public class FridgeController {
     showAmountChangeDialog(itemName, itemQuantity);
   }
 
-  private void showAmountChangeDialog(String itemName, String[] itemQuantity) {
+  /**
+   * Opens a dialog for changing the amount of a food item in the fridge.
+   * Also allows the user to remove the food item from the fridge.
+   *
+   * @param itemName the name of the food item
+   * @param itemQuantity the initial quantity of the food item
+   */
+  private void showAmountChangeDialog(String itemName, String[] itemQuantity) { //TODO: refaktorer
     Stage amountStage = new Stage();
     BorderPane pane = new BorderPane();
 
@@ -140,7 +158,7 @@ public class FridgeController {
         if (newAmountFaulty(newAmount)) {
           throw new NumberFormatException("Invalid number format.");
         }
-        FileHandler.changeFoodItemQuantity("src/main/resources/foodItems.csv", itemName,
+        FileHandler.changeFoodItemQuantity("src/main/resources/Fridge.csv", itemName,
             newAmount);
       updateFridgeListView();
       } catch (Exception e) {
@@ -150,7 +168,7 @@ public class FridgeController {
     });
     removeButton.setOnAction(event -> {
       try {
-        FileHandler.removeFoodItem("src/main/resources/foodItems.csv", itemName);
+        FileHandler.removeFoodItem("src/main/resources/Fridge.csv", itemName);
         updateFridgeListView();
         amountStage.close();
       } catch (Exception e) {
@@ -168,6 +186,12 @@ public class FridgeController {
     amountStage.show();
   }
 
+  /**
+   * Checks if a string is parseable to a double.
+   *
+   * @param newAmount the string to check
+   * @return true if the string is not parseable to a double, false otherwise
+   */
   private boolean newAmountFaulty(String newAmount) {
     try {
       Double.parseDouble(newAmount);
@@ -177,10 +201,13 @@ public class FridgeController {
     return false;
   }
 
+  /**
+   * Updates the ListView with all food items in the fridge.
+   */
   private void updateFridgeListView() {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       fridgeListView.getItems().add(foodItemDisplay(foodItem));
@@ -195,7 +222,7 @@ public class FridgeController {
   private void initialize() { // This method should be triggered by a listener on the TextField's textProperty
     itemError.setVisible(false);
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv"); // Adjust the path as needed
+        "src/main/resources/Fridge.csv"); // Adjust the path as needed
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       fridgeListView.getItems().add(foodItemDisplay(foodItem));
@@ -209,7 +236,7 @@ public class FridgeController {
   public void categoryAll(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       fridgeListView.getItems().add(foodItemDisplay(foodItem));
@@ -223,7 +250,7 @@ public class FridgeController {
   public void categoryDairy(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Meieri")) {
@@ -239,7 +266,7 @@ public class FridgeController {
   public void categoryMeat(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Kjøtt")) {
@@ -255,7 +282,7 @@ public class FridgeController {
   public void categoryFish(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Fisk")) {
@@ -271,7 +298,7 @@ public class FridgeController {
   public void categoryGrains(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Korn")) {
@@ -287,7 +314,7 @@ public class FridgeController {
   public void categoryFruitAndVegetables(ActionEvent actionEvent) {
     fridgeListView.getItems().clear();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv");
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getFoodType().equals("Frukt & Grønt")) {
@@ -304,7 +331,7 @@ public class FridgeController {
     fridgeListView.getItems().clear();
     String searchQuery = searchField.getText().toLowerCase();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/foodItems.csv"); // Adjust the path as needed
+        "src/main/resources/Fridge.csv"); // Adjust the path as needed
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getName().toLowerCase().contains(searchQuery)) {
