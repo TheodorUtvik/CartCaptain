@@ -1,5 +1,6 @@
 package registers;
 
+import file_handling.FileHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -62,7 +63,7 @@ public class FoodItemRegister {
    * @return the food item with the specified name
    */
   public FoodItem findFoodItem(String name) {
-    if (name == null) {
+    if (!this.register.containsKey(name)) {
       return null; // or throw an exception
     }
     return this.register.get(name);
@@ -89,19 +90,8 @@ public class FoodItemRegister {
   }
 
 
-  FoodItem foodItem = new FoodItem("Milk", "Dairy", "L", 1);
-  FoodItem foodItem2 = new FoodItem("Egg", "Dairy", "pcs", 12);
-  FoodItem foodItem3 = new FoodItem("Bread", "Bread", "pcs", 1);
-  FoodItem foodItem4 = new FoodItem("Butter", "Dairy", "g", 250);
-  FoodItem foodItem5 = new FoodItem("Cheese", "Dairy", "g", 500);
-
-
   public void initialize() {
-    tryAddFoodItem(foodItem);
-    tryAddFoodItem(foodItem2);
-    tryAddFoodItem(foodItem3);
-    tryAddFoodItem(foodItem4);
-    tryAddFoodItem(foodItem5);
+    FileHandler.readFoodFromFile("src/main/resources/foodItems.csv").forEachRemaining(this::tryAddFoodItem);
   }
 
   public List<FoodItem> removeAllItems() {

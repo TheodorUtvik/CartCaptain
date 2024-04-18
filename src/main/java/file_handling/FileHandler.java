@@ -3,6 +3,7 @@ package file_handling;
 import entities.FoodItem;
 import entities.Recipe;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -18,6 +19,7 @@ import java.util.Scanner;
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
  * @version 0.0.2
  * @see FoodItem
+ * @see Recipe
  * @since 05.03.2024
  */
 public class FileHandler {
@@ -55,32 +57,13 @@ public class FileHandler {
   }
 
   /**
-   * Writes a list of <code>FoodItem</code> objects to a file.
-   *
-   * @param fileName  the name of the file to write to
-   * @param foodItems the list of <code>FoodItem</code> objects to write
-   */
-  public static void writeFoodToFile(String fileName, List<FoodItem> foodItems) {
-    try {
-      for (FoodItem foodItem : foodItems) {
-        String line = String.format("%s,%s,%s,%.2f%n", foodItem.getName(), foodItem.getUnit(),
-            foodItem.getFoodType(), foodItem.getQuantity());
-        Files.write(Paths.get(fileName), line.getBytes(), StandardOpenOption.APPEND,
-            StandardOpenOption.CREATE);
-      }
-    } catch (IOException e) {
-      System.err.println("Failed to write to file: " + e.getMessage());
-    }
-  }
-
-  /**
    * Clears the content of a file.
    *
    * @param fileName the name of the file to clear
    */
   public static void clearFile(String fileName) {
     try {
-      Files.write(Paths.get(fileName), "".getBytes());
+      Files.write(Paths.get(fileName), "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING);
     } catch (IOException e) {
       System.err.println("Failed to clear file: " + e.getMessage());
     }
@@ -158,14 +141,95 @@ public class FileHandler {
    * @param fileName the name of the file to delete
    * @return true if the file was deleted, false otherwise.
    */
-  public static boolean deleteFile(String fileName) {
+  public static void deleteFile(String fileName) {
     try {
       Files.delete(Paths.get(fileName));
-      return true;
     } catch (IOException e) {
       System.err.println("Failed to delete file: " + e.getMessage());
-      return false;
     }
   }
 
+  public static List<String> readLinesFromFile(String fileName) {
+    List<String> lines = new ArrayList<>();
+    try {
+      lines = Files.readAllLines(Paths.get(fileName));
+    } catch (IOException e) {
+      System.err.println("Failed to read the file: " + e.getMessage());
+    }
+    return lines;
+  }
+  /**
+   * Writes a list of <code>FoodItem</code> objects to a file.
+   *
+   * @param fileName  the name of the file to write to
+   * @param foodItems the list of <code>FoodItem</code> objects to write
+   */
+  public static void writeFoodToFile(String fileName, List<String> foodItems) {
+    try {
+      for (String foodItem : foodItems) {
+        foodItem = foodItem + "\n";
+        Files.write(Paths.get(fileName), foodItem.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+      }
+    } catch (IOException e) {
+      System.err.println("Failed to write to file: " + e.getMessage());
+    }
+  }
+
+
+  /**
+   * Writes a shopping list to a file.
+   */
+  public static void writeShoppingListToFile(String fileName, List<String> shoppingList) {
+    List<String> lines = new ArrayList<>(shoppingList); // Preparing the lines to write
+    try {
+      Files.write(Paths.get(fileName), lines, StandardCharsets.UTF_8,
+          StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    } catch (IOException e) {
+      System.err.println("Failed to write to file: " + e.getMessage());
+    }
+  }
+
+  /**
+   * Changes the quantity of a food item in the shopping list.
+   * Output will be item name, unit, food type, quantity.
+   *
+   * @param itemName path of the file to edit
+   * @param newQuantity the new quantity of the food item
+   * @throws Exception if the item is not found
+   */
+  public static void changeFoodItemQuantity(String path, String itemName, String newQuantity) throws Exception {
+    List<String> lines = readLinesFromFile(path);
+    boolean itemFound = false;
+    for (int i = 0; i < lines.size(); i++) {
+      String[] item = lines.get(i).split(",");
+      if (item[0].equals(itemName)) {
+        lines.set(i, itemName + "," + item[1] + "," + item[2] + "," + newQuantity);
+        itemFound = true;
+        break;
+      }
+    }
+    if (!itemFound) {
+      throw new Exception("Item not found.");
+    }
+    clearFile(path);
+    writeFoodToFile(path, lines);
+  }
+
+  public static void removeFoodItem(String path, String itemName) {
+    List<String> lines = readLinesFromFile(path);
+    boolean itemFound = false;
+    for (int i = 0; i < lines.size(); i++) {
+      String[] itemQuantity = lines.get(i).split(",");
+      if (itemQuantity[0].equals(itemName)) {
+        lines.remove(i);
+        itemFound = true;
+        break;
+      }
+    }
+    if (!itemFound) {
+      System.err.println("Item not found.");
+    }
+    clearFile(path);
+    writeFoodToFile(path, lines);
+  }
 }

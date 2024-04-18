@@ -1,6 +1,7 @@
 package userinterfacetools;
 
 import static userinterfacetools.TextBasedUI.formatGrocery;
+import static userinterfacetools.TextBasedUI.formatGroceryForRecipe;
 import static userinterfacetools.TextBasedUI.formatGroceryHeader;
 import static userinterfacetools.TextBasedUI.formatRecipe;
 
@@ -62,7 +63,7 @@ public class UserInterfaceRecipe {
     TextBasedUI.cuisineType();
     String cuisineType = inputHandler.readString();
     ArrayList<String> ingredients;
-    ingredients = (ArrayList<String>) addIngridients();
+    ingredients = (ArrayList<String>) addIngredients();
     ArrayList<String> approach;
     approach = (ArrayList<String>) addApproach();
     TextBasedUI.imgUrl();
@@ -73,12 +74,12 @@ public class UserInterfaceRecipe {
     recipeRegister.tryAddRecipe(recipe);
     TextBasedUI.recipeAdded();
   }
-  public List<String> addIngridients() {
+  public List<String> addIngredients() {
     List<String> ingredients = new ArrayList<>();
     boolean adding = true;
     while (adding) {
       FoodItem item = uim.inputGroceryDetails();
-      ingredients.add(formatGrocery(item));
+      ingredients.add(formatGroceryForRecipe(item));
       TextBasedUI.addAnotherIngredient();
       int inputFromUser = inputHandler.readInt();
       if (inputFromUser == 2) {
@@ -122,6 +123,10 @@ public class UserInterfaceRecipe {
   public void removeRecipe() {
     TextBasedUI.recipeNameRemove();
     String name = inputHandler.readString();
+    if(recipeRegister.findRecipe(name) == null) {
+      TextBasedUI.recipeNotFound();
+      return;
+    }
     recipeRegister.removeRecipe(name);
     TextBasedUI.recipeRemoveSuccess();
   }

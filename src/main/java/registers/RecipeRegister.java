@@ -1,6 +1,8 @@
 package registers;
 
 import entities.FoodItem;
+import file_handling.FileHandler;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,12 +22,14 @@ public class RecipeRegister {
    * The register of recipes.
    */
   private final HashMap<String, Recipe> register;
+  private int recipeCount;
 
   /**
    * Constructs a new empty RecipeRegister.
    */
   public RecipeRegister() {
     this.register = new HashMap<>();
+    recipeCount = 0;
   }
 
   /**
@@ -38,6 +42,7 @@ public class RecipeRegister {
       return false;
     }
     this.register.put(recipe.getRecipeName(), recipe);
+    recipeCount++;
     return true;
   }
   public Iterator<Recipe> getRecipes() {
@@ -57,8 +62,12 @@ public class RecipeRegister {
    *
    * @param name the name of the recipe to find
    * @return the recipe with the specified name
-   */
+  */
+
   public Recipe findRecipe(String name) {
+     if (!register.containsKey(name)) {
+       return null;
+     }
     return this.register.get(name);
   }
 
@@ -72,18 +81,11 @@ public class RecipeRegister {
     return this.register.values().stream().filter(item -> item.getCuisineType().equals(type))
         .iterator();
   }
-  ArrayList<String> testIngredients = new ArrayList<>();
-  ArrayList<String> testApproach = new ArrayList<>();
 
-  Recipe recipe = new Recipe("name", "timeToCook", "cuisineType", testIngredients, testApproach, "image");
-  Recipe recipe2 = new Recipe("name2", "timeToCook2", "cuisineType2", testIngredients, testApproach, "image2");
-  Recipe recipe3 = new Recipe("name3", "timeToCook3", "cuisineType3", testIngredients, testApproach, "image3");
-  Recipe recipe4 = new Recipe("name4", "timeToCook4", "cuisineType4", testIngredients, testApproach, "image4");
   public void intitializeRecipe(){
-    tryAddRecipe(recipe);
-    tryAddRecipe(recipe2);
-    tryAddRecipe(recipe3);
-    tryAddRecipe(recipe4);
+    //for (int i = 0; i < recipeCount; i++) {
+    //  FileHandler.readFoodFromFile("src/main/resources/recipe" + i + ".csv").forEachRemaining(this::tryAddRecipe);
+    //}
   }
 
 }

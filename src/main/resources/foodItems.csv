@@ -1,10 +1,102 @@
-Egg,pcs,Dairy,12.00
-Butter,g,Dairy,250.00
-Cheese,g,Dairy,500.00
-Milk,L,Dairy,1.00
-Bread,pcs,Bread,1.00
-Egg,pcs,Dairy,12.00
-Butter,g,Dairy,250.00
-Cheese,g,Dairy,500.00
-Milk,L,Dairy,1.00
-Bread,pcs,Bread,1.00
+Melk, L, Meieri, 1.00
+Brød, stykk, Korn, 2.0  
+Kålrot, gram, Frukt & Grønt, 500.00  
+Laks, gram, Fisk, 200.00  
+Kylling, gram, Kjøtt, 400.00  
+Kjøttdeig, gram, Kjøtt, 500.00  
+Epler, gram, Frukt & Grønt, 200.00  
+Appelsinjuice, L, Drikkevarer, 1.00  
+Havregryn, gram, Korn, 500.00  
+Yoghurt, gram, Meieri, 150.00  
+Paprika, gram, Frukt & Grønt, 100.00  
+Tomater, gram, Frukt & Grønt, 200.00  
+Poteter, gram, Frukt & Grønt, 1000.00  
+Ørret, gram, Fisk, 300.00  
+Pølser, gram, Kjøtt, 500.00  
+Ris, gram, Korn, 1000.00
+Pasta, gram, Korn, 500.00  
+Sjokolade, gram, Snacks, 100.00  
+Potetgull, gram, Snacks, 150.00  
+Ost, gram, Meieri, 200.00  
+Egg, stykk, Meieri, 12.00  
+Kaffe, gram, Drikkevarer, 500.00  
+Te, gram, Drikkevarer, 200.00  
+Vann, L, Drikkevarer, 1.50  
+Sild, gram, Fisk, 300.00  
+Torsk, gram, Fisk, 400.00  
+Blåbær, gram, Frukt & Grønt, 250.00  
+Granateple, gram, Frukt & Grønt, 500.00  
+Mandelmelk, L, Drikkevarer, 1.00  
+Kikert, gram, Tørrvarer, 500.00  
+Linser, gram, Tørrvarer, 500.00  
+Quinoa, gram, Tørrvarer, 400.00  
+Tofu, gram, Vegetar, 200.00  
+Tempeh, gram, Vegetar, 300.00  
+Hummus, gram, Snacks, 250.00  
+Olivenolje, ml, Krydder & Oljer, 500.00  
+Balsamico, ml, Krydder & Oljer, 250.00  
+Solsikkefrø, gram, Snacks, 200.00  
+Kapers, gram, Krydder & Oljer, 100.00  
+Mørk sjokolade, gram, Snacks, 100.00  
+Avokado, gram, Frukt & Grønt, 200.00  
+Kokosmelk, L, Drikkevarer, 0.40  
+Agurk, gram, Frukt & Grønt, 250.00  
+Spinat, gram, Frukt & Grønt, 200.00  
+Banan, gram, Frukt & Grønt, 150.00  
+Søtpotet, gram, Frukt & Grønt, 500.00  
+Fetaost, gram, Meieri, 200.00  
+Parmesan, gram, Meieri, 100.00  
+Rugbrød, stykk, Korn, 1.00  
+Knekkebrød, stykk, Korn, 10.00  
+Rødbeter, gram, Frukt & Grønt, 500.00  
+Gulrot, gram, Frukt & Grønt, 300.00  
+Brokkoli, gram, Frukt & Grønt, 300.00  
+Blomkål, gram, Frukt & Grønt, 500.00  
+Kiwi, gram, Frukt & Grønt, 100.00  
+Gresskar, gram, Frukt & Grønt, 1000.00  
+Koriander, gram, Krydder & Urter, 50.00  
+Basilikum, gram, Krydder & Urter, 50.00  
+Mynte, gram, Krydder & Urter, 50.00  
+Rosmarin, gram, Krydder & Urter, 50.00  
+Timian, gram, Krydder & Urter, 50.00  
+Persille, gram, Krydder & Urter, 50.00  
+Soyasaus, ml, Krydder & Oljer, 250.00  
+Sriracha, ml, Krydder & Oljer, 200.00  
+Cashewnøtter, gram, Snacks, 200.00  
+Valnøtter, gram, Snacks, 200.00  
+Pistasjnøtter, gram, Snacks, 150.00  
+Makrell i tomat, gram, Fisk, 200.00  
+Falafel, gram, Vegetar, 250.00  
+Kokosnøttolje, ml, Krydder & Oljer, 250.00  
+Grønn te, gram, Drikkevarer, 100.00  
+Kombucha, L, Drikkevarer, 0.50  
+Aubergine, gram, Frukt & Grønt, 300.00  
+Asparges, gram, Frukt & Grønt, 250.00  
+Artisjokk, gram, Frukt & Grønt, 400.00  
+Chorizo, gram, Kjøtt, 250.00  
+Røkt laks, gram, Fisk, 200.00  
+Geitost, gram, Meieri, 150.00  
+Havremelk, L, Drikkevarer, 1.00  
+Risvin, ml, Drikkevarer, 750.00  
+Sake, ml, Drikkevarer, 500.00  
+Durumhvete, gram, Korn, 500.00  
+Bulgur, gram, Korn, 500.00  
+Couscous, gram, Korn, 500.00  
+Sesamfrø, gram, Krydder & Urter, 200.00  
+Kurkuma, gram, Krydder & Urter, 100.00  
+Cayennepepper, gram, Krydder & Urter, 100.00  
+Garam masala, gram, Krydder & Urter, 100.00
+aprikapulver, gram, Krydder & Urter, 100.00  
+Mandel, gram, Snacks, 200.00  
+Hasselnøtt, gram, Snacks, 200.00  
+Pekannøtt, gram, Snacks, 150.00  
+Seifilet, gram, Fisk, 400.00  
+Skatevinge, gram, Fisk, 300.00  
+Tunfisk på boks, gram, Fisk, 200.00  
+Vegansk ost, gram, Vegetar, 200.00  
+Veganske pølser, gram, Vegetar, 250.00  
+Matcha, gram, Drikkevarer, 100.00  
+Kaldpresset juice, L, Drikkevarer, 0.50  
+Kjøttboller, gram, Kjøtt, 500.00  
+Kyllingvinge, gram, Kjøtt, 500.00  
+Kyllinglår, gram, Kjøtt, 500.00
