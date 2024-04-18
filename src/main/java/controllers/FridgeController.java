@@ -147,8 +147,8 @@ public class FridgeController {
     saveButtons.setAlignment(Pos.CENTER);
     saveButtons.setSpacing(10);
     Button saveButton = new Button("Lagre");
-    Button cancelButton = new Button("Avbryt");
-    Button removeButton = new Button("Slett");
+    Button cancelButton = new Button("Lukk");
+    Button removeButton = new Button("Slett vare");
     saveButtons.getChildren().addAll(cancelButton, saveButton, removeButton);
 
     cancelButton.setOnAction(event -> amountStage.close());

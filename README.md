@@ -1,13 +1,16 @@
 <img src="src/main/resources/images/LogoCartCaptain1.png" alt="CartCaptain" width="300">
 
 # CartCaptain - Kitchen Inventory System
-This file uses Mark Down syntax. For more information see [here](https://www.markdownguide.org/basic-syntax/).
+
+Kitchen inventory management tool developed by Group 9 in IDATG1005 - Software Engineering at NTNU Gjøvik.
 
 Group Members: Theodor Sjetnan Utvik, Sigurd Riseth, Halvard Nordberg, Simon Snildal
 
 ## Project description
 
-This project...
+CartCaptain is a kitchen inventory management tool that helps users keep track of their food items
+and recipes. The application allows users to add, remove, and update food items, as well as manage 
+a shopping list. Users can add items to the shopping list either manually or by selecting recipes.
 
 [//]: # (TODO: Write a short description of your project/product here.)
 
@@ -19,30 +22,39 @@ The project structure is displayed in the directory tree below.
 .
 ├── src
 │   ├── main
+│   │   ├── resources
+│   │   │   └── // Images, csv-files, and other resources
 │   │   └── java
-│   │       └── edu.ntnu.stud
-│   │           ├── station
-│   │           │   └── Station.java
-│   │           ├── traindeparture
-│   │           │   └── TrainDeparture.java
-│   │           ├── userinterface
-│   │           │   ├── InputReader.java
-│   │           │   ├── Printer.java
-│   │           │   └── userinterfacetools.UserInterface.java
-│   │           └── TrainDispatchApp.java
+│   │       ├── application
+│   │       │   ├── Main.java
+│   │       │   └── MainApp.java
+│   │       ├── controllers
+│   │       │   ├── FrideController.java
+│   │       │   ├── FrontPageController.java
+│   │       │   ├── MainController.java
+│   │       │   ├── RecipeController.java
+│   │       │   ├── SceneUtils.java
+│   │       │   └── ShoppingListController.java
+│   │       ├── entities
+│   │       │   ├── FoodItem.java
+│   │       │   └── Recipe.java
+│   │       ├── file_handling
+│   │       │   └── FileHandler.java
+│   │       ├── generaltools
+│   │       │   ├── InputHandler.java
+│   │       │   └── Selections.java
+│   │       └── registers
+│   │           ├── FoodItemRegister.java
+│   │           └── RecipeRegister.java
 │   └── test
 │       └── java
-│           └── edu.ntnu.stud
-│               ├── station
-│               │   └── StationTest.java
-│               └── traindeparture
-│                   └── TrainDepartureTest.java
+│           ├── FoodItemRegisterTest.java
+│           └── RecipeRegisterTest.java
 ├── target
 │   └── // Compiled bytecode and generated JAR files
 ├── .gitignore
 ├── pom.xml
-├── README.md
-└── TrainDispatchSystem.iml
+└── README.md
 ```
 
 [//]: # (TODO: Describe the structure of your project here. How have you used packages in your structure. Where are all sourcefiles stored. Where are all JUnit-test classes stored. etc.)
