@@ -17,7 +17,7 @@
                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
             <graphic>
-               <ImageView fx:id="shoppingListImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fx:id="shoppingListImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" accessibleText="Shopping List">
                   <image>
                      <Image url="@../images/CartKunstListe.png" />
                   </image>
@@ -29,7 +29,7 @@
                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
             <graphic>
-               <ImageView fx:id="fridgeImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fx:id="fridgeImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" accessibleText="Fridge">
                   <image>
                      <Image url="@../images/CartKunstKjøleskap.png" />
                   </image>
@@ -41,7 +41,7 @@
                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
             <graphic>
-               <ImageView fx:id="recipesImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fx:id="recipesImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" accessibleText="Recipe">
                   <image>
                      <Image url="@../images/CartKunstOppskrift.png" />
                   </image>
