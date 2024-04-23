@@ -6,6 +6,17 @@ import static userinterfacetools.TextBasedUI.printSelectUnit;
 
 import userinterfacetools.TextBasedUI;
 
+/**
+ * Selections is a utility class for selecting different types of food and units. The class contains
+ * methods for selecting food types, units, and cuisine types.
+ *
+ * @author Theodor Sjetnan Utvik
+ * @version 0.0.1
+ * @see TextBasedUI
+ * @see InputHandler
+ * @since 09.02.2024
+ */
+
 public class Selections {
 
 
@@ -16,17 +27,28 @@ public class Selections {
     int selection = inputHandler.readInt();
 
     switch (selection) {
-      case 1: return TextBasedUI.DAIRY;
-      case 2: return TextBasedUI.FRUITANDGREEN;
-      case 3: return TextBasedUI.DRY;
-      case 4: return TextBasedUI.MEAT;
-      case 5: return TextBasedUI.BREAD;
-      case 6: return TextBasedUI.GRAIN;
-      case 7: return TextBasedUI.SPICE;
-      case 8: return TextBasedUI.SWEETS;
-      case 9: return TextBasedUI.DRINK;
-      case 10: return TextBasedUI.OTHER;
-      default: return TextBasedUI.INVALIDCHOICE;
+      case 1:
+        return TextBasedUI.DAIRY;
+      case 2:
+        return TextBasedUI.FRUITANDGREEN;
+      case 3:
+        return TextBasedUI.DRY;
+      case 4:
+        return TextBasedUI.MEAT;
+      case 5:
+        return TextBasedUI.BREAD;
+      case 6:
+        return TextBasedUI.GRAIN;
+      case 7:
+        return TextBasedUI.SPICE;
+      case 8:
+        return TextBasedUI.SWEETS;
+      case 9:
+        return TextBasedUI.DRINK;
+      case 10:
+        return TextBasedUI.OTHER;
+      default:
+        return TextBasedUI.INVALIDCHOICE;
     }
   }
 
@@ -37,11 +59,16 @@ public class Selections {
     int selection = inputHandler.readInt();
 
     switch (selection) {
-      case 1: return TextBasedUI.KG;
-      case 2: return TextBasedUI.DL;
-      case 3: return TextBasedUI.STK;
-      case 4: return TextBasedUI.GRAM;
-      default: return TextBasedUI.INVALIDCHOICE;
+      case 1:
+        return TextBasedUI.KG;
+      case 2:
+        return TextBasedUI.DL;
+      case 3:
+        return TextBasedUI.STK;
+      case 4:
+        return TextBasedUI.GRAM;
+      default:
+        return TextBasedUI.INVALIDCHOICE;
     }
   }
 
@@ -52,17 +79,28 @@ public class Selections {
     int selection = inputHandler.readInt();
 
     switch (selection) {
-      case 1: return TextBasedUI.FISH;
-      case 2: return TextBasedUI.MEATTYPE;
-      case 3: return TextBasedUI.VEGETARIAN;
-      case 4: return TextBasedUI.VEGAN;
-      case 5: return TextBasedUI.PASTA;
-      case 6: return TextBasedUI.SOUP;
-      case 7: return TextBasedUI.SALAD;
-      case 8: return TextBasedUI.CAKE;
-      case 9: return TextBasedUI.BREAKFAST;
-      case 10: return TextBasedUI.OTHER;
-      default: return TextBasedUI.INVALIDCHOICE;
+      case 1:
+        return TextBasedUI.FISH;
+      case 2:
+        return TextBasedUI.MEATTYPE;
+      case 3:
+        return TextBasedUI.VEGETARIAN;
+      case 4:
+        return TextBasedUI.VEGAN;
+      case 5:
+        return TextBasedUI.PASTA;
+      case 6:
+        return TextBasedUI.SOUP;
+      case 7:
+        return TextBasedUI.SALAD;
+      case 8:
+        return TextBasedUI.CAKE;
+      case 9:
+        return TextBasedUI.BREAKFAST;
+      case 10:
+        return TextBasedUI.OTHER;
+      default:
+        return TextBasedUI.INVALIDCHOICE;
     }
   }
 

@@ -33,12 +33,12 @@ import javafx.scene.input.MouseEvent;
  * FileHandler to read and write data to and from files. ShoppingListController implements the
  * <code>Initializable</code> interface to initialize the controller class.
  *
+ * @author Theodor Sjetnan Utvik, Sigurd Riseth
+ * @version 0.0.2
  * @see FileHandler
  * @see Initializable
  * @see FoodItem
  * @since 05.03.2024
- * @version 0.0.1
- * @author Theodor Sjetnan Utvik, Sigurd Riseth
  */
 
 public class ShoppingListController implements Initializable {
@@ -89,14 +89,13 @@ public class ShoppingListController implements Initializable {
 
   /**
    * Initializes the controller class. This method is automatically called after the fxml file has
-   * been loaded.
-   * The method sets the home button image to invisible, and adds a listener to the search bar text
-   * property. The listener will update the list view with the filtered items every time the text in
-   * the search bar changes. The method also populates the shopping list with items from the CSV
-   * file.
+   * been loaded. The method sets the home button image to invisible, and adds a listener to the
+   * search bar text property. The listener will update the list view with the filtered items every
+   * time the text in the search bar changes. The method also populates the shopping list with items
+   * from the CSV file.
    *
-   * @param location  the location used to resolve relative paths for the root object, or null if the
-   *                  location is not known.
+   * @param location  the location used to resolve relative paths for the root object, or null if
+   *                  the location is not known.
    * @param resources the resources used to localize the root object, or null if the root object was
    *                  not localized.
    */
@@ -125,7 +124,8 @@ public class ShoppingListController implements Initializable {
     });
 
     // Populate the shopping list with items from the CSV file
-    List<String> shoppingList = FileHandler.readLinesFromFile("src/main/resources/shoppingList.csv");
+    List<String> shoppingList = FileHandler.readLinesFromFile(
+        "src/main/resources/shoppingList.csv");
     shoppingListView.getItems().addAll(shoppingList);
 
   }
@@ -133,9 +133,9 @@ public class ShoppingListController implements Initializable {
 
   /**
    * This method will filter the food items based on the search query in the search bar. It will be
-   * triggered by a listener on the search bar text property. It should update the foodItemsView with
-   * the filtered items. The food items should be read from the file "foodItems.csv". The search
-   * should be case-insensitive.
+   * triggered by a listener on the search bar text property. It should update the foodItemsView
+   * with the filtered items. The food items should be read from the file "foodItems.csv". The
+   * search should be case-insensitive.
    */
   private void searchBarTextChanged() {
     foodItemsView.getItems().clear();
@@ -167,9 +167,9 @@ public class ShoppingListController implements Initializable {
 
   /**
    * This method allows the input field for quantity to be shown when the user selects an item from
-   * the food items view. The input field will be shown when the user adds an item in the
-   * food items view. The input field will be hidden when the user presses the enter key.
-   * The method will also add the selected item with the quantity to the shopping list.
+   * the food items view. The input field will be shown when the user adds an item in the food items
+   * view. The input field will be hidden when the user presses the enter key. The method will also
+   * add the selected item with the quantity to the shopping list.
    *
    * @param selectedItem the item selected by the user
    */
@@ -196,7 +196,7 @@ public class ShoppingListController implements Initializable {
    * This method will add the selected item with the quantity to the shopping list, with the right
    * format, so the file later can be read.
    *
-   * @param item the item to add
+   * @param item     the item to add
    * @param quantity the quantity of the item
    */
   private void addItemWithQuantity(String item, int quantity) {
@@ -209,8 +209,8 @@ public class ShoppingListController implements Initializable {
 
   /**
    * This method ensurer the selected item is added to the shopping list with the quantity specified
-   * by the user.
-   * If the quantity is not a number, the method will print an error message to the console.
+   * by the user. If the quantity is not a number, the method will print an error message to the
+   * console.
    */
   private void addSelectedItemWithQuantity() {
     String selectedItem = foodItemsView.getSelectionModel().getSelectedItem();
@@ -241,7 +241,8 @@ public class ShoppingListController implements Initializable {
     try {
       String filePath = "src/main/resources/shoppingList.csv";
       List<String> lines = Arrays.asList(itemWithQuantity);
-      Files.write(Paths.get(filePath), lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+      Files.write(Paths.get(filePath), lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE,
+          StandardOpenOption.APPEND);
     } catch (IOException e) {
       System.err.println("Failed to update the CSV file: " + e.getMessage());
     }
@@ -258,7 +259,7 @@ public class ShoppingListController implements Initializable {
     FileHandler.writeShoppingListToFile("src/main/resources/shoppingList.csv", shoppingList);
   }
 
-/**
+  /**
    * This method will allow the user to remove items from the shopping list. It will be triggered by
    * a button click. It should remove the selected item from the shopping list.
    */
@@ -296,7 +297,8 @@ public class ShoppingListController implements Initializable {
     String filePath = "src/main/resources/shoppingList.csv";
 
     try {
-      Files.write(Paths.get(filePath), "".getBytes()); // Clear the content without deleting the file
+      Files.write(Paths.get(filePath),
+          "".getBytes()); // Clear the content without deleting the file
     } catch (IOException e) {
       System.err.println("Failed to clear the CSV file: " + e.getMessage());
     }
@@ -328,7 +330,7 @@ public class ShoppingListController implements Initializable {
    */
   @FXML
   public void goHome(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/CartCaptainFrontPage.fxml", "Front Page");
+    changeScene(event, "/scenebuilderjavafxapp/FrontPage.fxml", "Front Page");
   }
 
   /**
@@ -336,7 +338,7 @@ public class ShoppingListController implements Initializable {
    */
   @FXML
   public void goRecipes(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/recipePage.fxml", "Recipe");
+    changeScene(event, "/scenebuilderjavafxapp/Recipe.fxml", "Recipe");
   }
 
   /**
@@ -344,6 +346,6 @@ public class ShoppingListController implements Initializable {
    */
   @FXML
   public void goFridge(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/FridgeFrontPage.fxml", "Fridge");
+    changeScene(event, "/scenebuilderjavafxapp/Fridge.fxml", "Fridge");
   }
 }

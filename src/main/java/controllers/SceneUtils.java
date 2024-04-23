@@ -9,6 +9,15 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * Utility class for changing scenes in the application. The class contains a method for changing
+ * scenes.
+ *
+ * @author Theodor Sjetnan Utvik
+ * @version 0.0.1
+ * @since 12.03.2024
+ */
+
 
 public class SceneUtils {
 
@@ -27,25 +36,6 @@ public class SceneUtils {
     }
   }
 
-  /**
-   * Changes the scene to the given FXML file. Used for changing scenes from within a controller.
-   * The scene is changed by clikcing an ImageView element.
-   * @param event The event that triggers the scene change.
-   */
 
-  public static void changeSceneWithImage(MouseEvent event, String fxmlFile, String title) {
-    try {
-      FXMLLoader loader = new FXMLLoader(SceneUtils.class.getResource(fxmlFile));
-      Parent root = loader.load();
-
-      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      Scene scene = new Scene(root);
-      stage.setScene(scene);
-      stage.setTitle(title);
-      stage.show();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
 }
 

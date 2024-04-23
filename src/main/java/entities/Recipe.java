@@ -28,6 +28,16 @@ public class Recipe {
   private String image;
 
 
+  /**
+   * Constructor for the Recipe class. The constructor takes in the following parameters:
+   *
+   * @param recipeName       is the name of the recipe.
+   * @param timeToCookRecipe is the time it takes to cook the recipe.
+   * @param cuisineType      is the type of cuisine the recipe is.
+   * @param ingredients      is a list of ingredients for the recipe.
+   * @param approach         is a list of steps to cook the recipe.
+   * @param image            is the image for the recipe.
+   */
   public Recipe(String recipeName, String timeToCookRecipe, String cuisineType,
       ArrayList<String> ingredients, ArrayList<String> approach, String image) {
     setRecipeName(recipeName);

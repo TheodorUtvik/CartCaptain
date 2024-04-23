@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21"
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+  <center>
+    <HBox alignment="CENTER" prefHeight="351.0" prefWidth="600.0" spacing="10.0"
+      BorderPane.alignment="CENTER">
+      <Button fx:id="shoppingListButton" mnemonicParsing="false" onAction="#onShoppingList"
+        prefHeight="190.0" prefWidth="90.0">
+        <padding>
+          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        </padding>
+        <graphic>
+          <ImageView fx:id="shoppingListImage" fitHeight="230.0" fitWidth="160.0"
+            pickOnBounds="true" preserveRatio="true" accessibleText="Shopping List">
+            <image>
+              <Image url="@../images/CartKunstListe.png"/>
+            </image>
+          </ImageView>
+        </graphic>
+      </Button>
+      <Button fx:id="fridgeButton" mnemonicParsing="false" onAction="#onFridge" prefHeight="190.0"
+        prefWidth="133.0">
+        <padding>
+          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        </padding>
+        <graphic>
+          <ImageView fx:id="fridgeImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true"
+            preserveRatio="true" accessibleText="Fridge">
+            <image>
+              <Image url="@../images/CartKunstKjøleskap.png"/>
+            </image>
+          </ImageView>
+        </graphic>
+      </Button>
+      <Button fx:id="recipesButton" mnemonicParsing="false" onAction="#onRecipes" prefHeight="190.0"
+        prefWidth="90.0">
+        <padding>
+          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        </padding>
+        <graphic>
+          <ImageView fx:id="recipesImage" fitHeight="230.0" fitWidth="160.0" pickOnBounds="true"
+            preserveRatio="true" accessibleText="Recipe">
+            <image>
+              <Image url="@../images/CartKunstOppskrift.png"/>
+            </image>
+          </ImageView>
+        </graphic>
+      </Button>
+    </HBox>
+  </center>
+  <top>
+    <Label prefHeight="0.0" prefWidth="279.0" text="Cart Captain" BorderPane.alignment="CENTER">
+      <padding>
+        <Insets bottom="10.0" left="17.0" right="10.0" top="10.0"/>
+      </padding>
+      <font>
+        <Font name="System Bold Italic" size="40.0"/>
+      </font>
+    </Label>
+  </top>
+</BorderPane>

@@ -33,7 +33,6 @@ public class FileHandler {
   public static Iterator<FoodItem> readFoodFromFile(String fileName) {
     List<FoodItem> foodItems = new ArrayList<>();
 
-    // Use try-with-resources to ensure the scanner is closed properly
     try (Scanner scanner = new Scanner(Files.newBufferedReader(Paths.get(fileName)))) {
       scanner.useDelimiter(",|\\R"); // Regex for comma or any line terminator
 
@@ -73,11 +72,12 @@ public class FileHandler {
    * Writes a <code>Recipe</code> object to a file.
    *
    * @param fileName the name of the file to write to
-   * @param recipe the <code>Recipe</code> object to write
+   * @param recipe   the <code>Recipe</code> object to write
    */
   public static void writeRecipeToFile(String fileName, Recipe recipe) {
     try {
-      String recipeString = String.format("%s%n%s%n%s%n%s%n", recipe.getRecipeName(), recipe.getTimeToCookRecipe(),
+      String recipeString = String.format("%s%n%s%n%s%n%s%n", recipe.getRecipeName(),
+          recipe.getTimeToCookRecipe(),
           recipe.getCuisineType(), recipe.getImage());
       List<String> ingredients = recipe.getIngredients();
       for (String ingredient : ingredients) {
@@ -112,12 +112,11 @@ public class FileHandler {
       ArrayList<String> ingredients = new ArrayList<>();
       ArrayList<String> approach = new ArrayList<>();
 
-      // Les innholdet i filen og del det inn i ingredienser og fremgangsmåter
       boolean isApproach = false;
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
         if (line.isEmpty()) {
-          isApproach = true; // Når det er en tom linje, markerer det slutten på ingrediensene
+          isApproach = true;
           continue;
         }
         if (!isApproach) {
@@ -158,6 +157,7 @@ public class FileHandler {
     }
     return lines;
   }
+
   /**
    * Writes a list of <code>FoodItem</code> objects to a file.
    *
@@ -168,7 +168,8 @@ public class FileHandler {
     try {
       for (String foodItem : foodItems) {
         foodItem = foodItem + "\n";
-        Files.write(Paths.get(fileName), foodItem.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        Files.write(Paths.get(fileName), foodItem.getBytes(), StandardOpenOption.CREATE,
+            StandardOpenOption.APPEND);
       }
     } catch (IOException e) {
       System.err.println("Failed to write to file: " + e.getMessage());
@@ -177,10 +178,14 @@ public class FileHandler {
 
 
   /**
-   * Writes a shopping list to a file.
+   * Writes a shopping list to a file. Each line in the file will contain the name of a food item,
+   * the unit, the food type, and the quantity.
+   *
+   * @param fileName     the name of the file to write to
+   * @param shoppingList the list of food items to write
    */
   public static void writeShoppingListToFile(String fileName, List<String> shoppingList) {
-    List<String> lines = new ArrayList<>(shoppingList); // Preparing the lines to write
+    List<String> lines = new ArrayList<>(shoppingList);
     try {
       Files.write(Paths.get(fileName), lines, StandardCharsets.UTF_8,
           StandardOpenOption.CREATE, StandardOpenOption.APPEND);
@@ -190,14 +195,15 @@ public class FileHandler {
   }
 
   /**
-   * Changes the quantity of a food item in the shopping list.
-   * Output will be item name, unit, food type, quantity.
+   * Changes the quantity of a food item in the shopping list. Output will be item name, unit, food
+   * type, quantity.
    *
-   * @param itemName path of the file to edit
+   * @param itemName    path of the file to edit
    * @param newQuantity the new quantity of the food item
    * @throws Exception if the item is not found
    */
-  public static void changeFoodItemQuantity(String path, String itemName, String newQuantity) throws Exception {
+  public static void changeFoodItemQuantity(String path, String itemName, String newQuantity)
+      throws Exception {
     List<String> lines = readLinesFromFile(path);
     boolean itemFound = false;
     for (int i = 0; i < lines.size(); i++) {
@@ -215,6 +221,11 @@ public class FileHandler {
     writeFoodToFile(path, lines);
   }
 
+  /**
+   * Removes a food item from the shopping list.
+   *
+   * @param itemName the name of the food item to remove
+   */
   public static void removeFoodItem(String path, String itemName) {
     List<String> lines = readLinesFromFile(path);
     boolean itemFound = false;

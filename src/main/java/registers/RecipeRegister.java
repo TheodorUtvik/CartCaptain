@@ -1,16 +1,13 @@
 package registers;
 
-import entities.FoodItem;
-import file_handling.FileHandler;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import entities.Recipe;
 
 /**
- * Class for storing Recipes.
+ * Class for storing Recipes. The class includes fields: <li>Recipe Name</li> <li>Time to cook
+ * recipe</li> <li>Cuisine Type</li> <li>Ingredients</li> <li>Approach</li> <li>Image</li>
+ * <li>Recipe Count</li>
  *
  * @author Sigurd Riseth
  * @version 0.0.2
@@ -18,6 +15,7 @@ import entities.Recipe;
  * @since 26.02.2024
  */
 public class RecipeRegister {
+
   /**
    * The register of recipes.
    */
@@ -38,16 +36,18 @@ public class RecipeRegister {
    * @param recipe the recipe to add
    */
   public boolean tryAddRecipe(Recipe recipe) {
-    if(register.containsKey(recipe.getRecipeName())) {
+    if (register.containsKey(recipe.getRecipeName())) {
       return false;
     }
     this.register.put(recipe.getRecipeName(), recipe);
     recipeCount++;
     return true;
   }
+
   public Iterator<Recipe> getRecipes() {
     return register.values().iterator();
   }
+
   /**
    * Removes a recipe from the register.
    *
@@ -62,12 +62,12 @@ public class RecipeRegister {
    *
    * @param name the name of the recipe to find
    * @return the recipe with the specified name
-  */
+   */
 
   public Recipe findRecipe(String name) {
-     if (!register.containsKey(name)) {
-       return null;
-     }
+    if (!register.containsKey(name)) {
+      return null;
+    }
     return this.register.get(name);
   }
 
@@ -82,7 +82,7 @@ public class RecipeRegister {
         .iterator();
   }
 
-  public void intitializeRecipe(){
+  public void intitializeRecipe() {
     //for (int i = 0; i < recipeCount; i++) {
     //  FileHandler.readFoodFromFile("src/main/resources/recipe" + i + ".csv").forEachRemaining(this::tryAddRecipe);
     //}

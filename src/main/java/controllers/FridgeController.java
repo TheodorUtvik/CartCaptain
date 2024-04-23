@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -22,15 +21,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
- * FridgeController is the controller for the fridge page in the application. It handles the logic for
- * displaying food items in the fridge, searching for food items, and categorizing food items.
+ * FridgeController is the controller for the fridge page in the application. It handles the logic
+ * for displaying food items in the fridge, searching for food items, and categorizing food items.
  * It also provides functionality for navigating to other pages in the application.
  *
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ * @version 0.0.2
  * @see FoodItem
  * @see FileHandler
  * @since 05.03.2024
- * @version 0.0.2
- * @author Sigurd Riseth, Theodor Sjetnan Utvik
  */
 
 public class FridgeController {
@@ -101,7 +100,8 @@ public class FridgeController {
   }
 
   /**
-   * Reads the selected items and opens a menu for editing it using <code>showAmountChangeDialog()</code>.
+   * Reads the selected items and opens a menu for editing it using
+   * <code>showAmountChangeDialog()</code>.
    *
    * @param event the event that triggers the method
    */
@@ -120,13 +120,13 @@ public class FridgeController {
   }
 
   /**
-   * Opens a dialog for changing the amount of a food item in the fridge.
-   * Also allows the user to remove the food item from the fridge.
+   * Opens a dialog for changing the amount of a food item in the fridge. Also allows the user to
+   * remove the food item from the fridge.
    *
-   * @param itemName the name of the food item
+   * @param itemName     the name of the food item
    * @param itemQuantity the initial quantity of the food item
    */
-  private void showAmountChangeDialog(String itemName, String[] itemQuantity) { //TODO: refaktorer
+  private void showAmountChangeDialog(String itemName, String[] itemQuantity) {
     Stage amountStage = new Stage();
     BorderPane pane = new BorderPane();
 
@@ -138,7 +138,8 @@ public class FridgeController {
     amountField.promptTextProperty().setValue("Ny mengde...");
     amountField.setMaxWidth(200);
 
-    Text amountText = new Text("Her kan du endre mengden " + itemName + " fra " + itemQuantity[0] + " " + itemQuantity[1]);
+    Text amountText = new Text(
+        "Her kan du endre mengden " + itemName + " fra " + itemQuantity[0] + " " + itemQuantity[1]);
     Text errorText = new Text();
     errorText.setVisible(false);
     errorText.setStyle("-fx-fill: red");
@@ -160,7 +161,7 @@ public class FridgeController {
         }
         FileHandler.changeFoodItemQuantity("src/main/resources/Fridge.csv", itemName,
             newAmount);
-      updateFridgeListView();
+        updateFridgeListView();
       } catch (Exception e) {
         errorText.setText("En feil oppsto. Vennligst skriv inn et gyldig tall.");
         errorText.setVisible(true);
@@ -215,14 +216,14 @@ public class FridgeController {
   }
 
   /**
-   * Init method that runs when the FXML file is loaded.
-   * It populates the ListView with all food items in the fridge.
+   * Init method that runs when the FXML file is loaded. It populates the ListView with all food
+   * items in the fridge.
    */
   @FXML
   private void initialize() { // This method should be triggered by a listener on the TextField's textProperty
     itemError.setVisible(false);
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/Fridge.csv"); // Adjust the path as needed
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       fridgeListView.getItems().add(foodItemDisplay(foodItem));
@@ -331,7 +332,7 @@ public class FridgeController {
     fridgeListView.getItems().clear();
     String searchQuery = searchField.getText().toLowerCase();
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
-        "src/main/resources/Fridge.csv"); // Adjust the path as needed
+        "src/main/resources/Fridge.csv");
     while (allFoodItems.hasNext()) {
       FoodItem foodItem = allFoodItems.next();
       if (foodItem.getName().toLowerCase().contains(searchQuery)) {
@@ -365,7 +366,7 @@ public class FridgeController {
    */
   @FXML
   public void goHome(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/CartCaptainFrontPage.fxml", "Front Page");
+    changeScene(event, "/scenebuilderjavafxapp/FrontPage.fxml", "Front Page");
   }
 
   /**
@@ -373,7 +374,7 @@ public class FridgeController {
    */
   @FXML
   public void goRecipes(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/recipePage.fxml", "Recipe");
+    changeScene(event, "/scenebuilderjavafxapp/Recipe.fxml", "Recipe");
   }
 
   /**
@@ -381,6 +382,6 @@ public class FridgeController {
    */
   @FXML
   public void goShoppingList(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/ShoppingListFrontPage.fxml", "Shopping List");
+    changeScene(event, "/scenebuilderjavafxapp/ShoppingList.fxml", "Shopping List");
   }
 }

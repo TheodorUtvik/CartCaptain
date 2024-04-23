@@ -2,6 +2,14 @@ package generaltools;
 
 import java.util.Scanner;
 
+/**
+ * InputHandler is a utility class for reading input from the console. The class contains methods
+ * for reading strings and integers from the console. Inspired with stackoverflow.
+ *
+ * @author Halvard Nordberg, Theodor Sjetnan Utvik
+ * @version 0.0.1
+ * @since 09.02.2024
+ */
 public class InputHandler {
 
   private final Scanner userInput;
@@ -22,8 +30,7 @@ public class InputHandler {
   /**
    * Reads an integer from the console. The method prints the prompt before reading the integer. If
    * the input is not an integer, the method prints an error message and prompts the user to enter a
-   * new value.
-   * Inspired with stackoverflow.
+   * new value. Inspired with stackoverflow.
    *
    * @return the integer read from the console
    */

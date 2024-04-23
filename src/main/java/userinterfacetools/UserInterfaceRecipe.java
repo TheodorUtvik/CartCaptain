@@ -74,6 +74,7 @@ public class UserInterfaceRecipe {
     recipeRegister.tryAddRecipe(recipe);
     TextBasedUI.recipeAdded();
   }
+
   public List<String> addIngredients() {
     List<String> ingredients = new ArrayList<>();
     boolean adding = true;
@@ -88,6 +89,7 @@ public class UserInterfaceRecipe {
     }
     return ingredients;
   }
+
   public List<String> addApproach() {
     List<String> approach = new ArrayList<>();
     boolean adding = true;
@@ -123,7 +125,7 @@ public class UserInterfaceRecipe {
   public void removeRecipe() {
     TextBasedUI.recipeNameRemove();
     String name = inputHandler.readString();
-    if(recipeRegister.findRecipe(name) == null) {
+    if (recipeRegister.findRecipe(name) == null) {
       TextBasedUI.recipeNotFound();
       return;
     }

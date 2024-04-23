@@ -24,15 +24,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
- * RecipeController is the controller for the recipe page in the application. It handles the logic for
- * displaying recipes, opening a recipe page with details, and navigating to other pages in the
+ * RecipeController is the controller for the recipe page in the application. It handles the logic
+ * for displaying recipes, opening a recipe page with details, and navigating to other pages in the
  * application.
  *
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ * @version 0.0.2
  * @see Recipe
  * @see FileHandler
  * @since 12.03.2024
- * @version 0.0.2
- * @author Sigurd Riseth, Theodor Sjetnan Utvik
  */
 
 public class RecipeController {
@@ -139,8 +139,8 @@ public class RecipeController {
 
   /**
    * Opens a new stage with the recipe details. The stage contains the recipe image, name,
-   * ingredients, and approach. The ingredients are displayed in a vertical box with a title,
-   * and the approach is displayed in a vertical box with a title.
+   * ingredients, and approach. The ingredients are displayed in a vertical box with a title, and
+   * the approach is displayed in a vertical box with a title.
    *
    * @param recipe the recipe to display
    */
@@ -170,7 +170,8 @@ public class RecipeController {
 
     HBox contents = new HBox();
     contents.setSpacing(30);
-    VBox ingredientsVBox = createVerticalBoxWithLabels("Ingredienser", recipe.getIngredients(), false);
+    VBox ingredientsVBox = createVerticalBoxWithLabels("Ingredienser", recipe.getIngredients(),
+        false);
     VBox approachVBox = createVerticalBoxWithLabels("Fremgangsmåte", recipe.getApproach(), true);
     Button purchaseButton = new Button("Legg til i handleliste");
     purchaseButton.setOnAction(event -> {
@@ -196,8 +197,8 @@ public class RecipeController {
   /**
    * Creates a vertical box with labels. The box contains a title and a list of items.
    *
-   * @param title the title of the box
-   * @param items the items to display
+   * @param title    the title of the box
+   * @param items    the items to display
    * @param wrapText whether the text should wrap
    * @return a VBox with the title and items
    */
@@ -228,7 +229,7 @@ public class RecipeController {
    */
   @FXML
   public void goHome(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/CartCaptainFrontPage.fxml", "Front Page");
+    changeScene(event, "/scenebuilderjavafxapp/FrontPage.fxml", "Front Page");
   }
 
   /**
@@ -236,7 +237,7 @@ public class RecipeController {
    */
   @FXML
   public void goShoppingList(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/ShoppingListFrontPage.fxml", "Recipe");
+    changeScene(event, "/scenebuilderjavafxapp/ShoppingList.fxml", "Recipe");
   }
 
   /**
@@ -244,10 +245,8 @@ public class RecipeController {
    */
   @FXML
   public void goFridge(ActionEvent event) {
-    changeScene(event, "/scenebuilderjavafxapp/FridgeFrontPage.fxml", "Fridge");
+    changeScene(event, "/scenebuilderjavafxapp/Fridge.fxml", "Fridge");
   }
-
-
 
 
 }

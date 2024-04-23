@@ -48,13 +48,9 @@ public class UserInterfaceMethods {
    * Constructs a new UserInterfaceMethods object.
    */
   public UserInterfaceMethods() {
-    //this.groceryList = new FoodItemRegister();
-    //this.fridge = new FoodItemRegister();
     this.inputHandler = new InputHandler();
     getGroceryList();
     setFridge();
-    //this.groceryList.initialize();
-    //this.fridge.initialize();
   }
 
   /**

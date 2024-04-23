@@ -1,28 +1,30 @@
 package application;
 
 import java.util.Objects;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+/**
+ * Main app class which inlcudes the main <code>start</code> method to run the application.
+ */
 public class MainApp extends Application {
 
   @Override
   public void start(Stage primaryStage) {
     try {
-      // Assuming the FXML file is placed under src/main/resources
       Parent root = FXMLLoader.load(
           Objects.requireNonNull(getClass().getResource(
-              "/scenebuilderjavafxapp/CartCaptainFrontPage.fxml"))); // Replace "YourFXMLFileName.fxml" with the actual name of your FXML file
+              "/scenebuilderjavafxapp/FrontPage.fxml")));
 
       Scene scene = new Scene(root);
-      primaryStage.setTitle("Cart Captain"); // Set the window title here
+      primaryStage.setTitle("Cart Captain");
       primaryStage.setScene(scene);
       primaryStage.show();
 
-    } catch(Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }

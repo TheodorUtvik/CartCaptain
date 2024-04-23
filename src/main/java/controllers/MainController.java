@@ -6,8 +6,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+/**
+ * Controller class for the main page of the application. This class handles the event handlers for
+ * the buttons on the main page. The buttons are for navigating between the shopping list, fridge,
+ * and recipes pages.
+ *
+ * @author Theodor Sjetnan Utvik
+ * @version 0.0.2
+ * @since 12.03.2024
+ */
 
 public class MainController {
 
@@ -24,7 +33,7 @@ public class MainController {
   private void onShoppingList() {
     try {
       FXMLLoader loader = new FXMLLoader(
-          getClass().getResource("/scenebuilderjavafxapp/ShoppingListFrontPage.fxml"));
+          getClass().getResource("/scenebuilderjavafxapp/ShoppingList.fxml"));
       Parent shoppingListRoot = loader.load();
 
       Stage stage = (Stage) shoppingListButton.getScene().getWindow();
@@ -40,7 +49,7 @@ public class MainController {
   private void onFridge() {
     try {
       FXMLLoader loader = new FXMLLoader(
-          getClass().getResource("/scenebuilderjavafxapp/FridgeFrontPage.fxml"));
+          getClass().getResource("/scenebuilderjavafxapp/Fridge.fxml"));
       Parent fridgeRoot = loader.load();
 
       Stage stage = (Stage) fridgeButton.getScene().getWindow();
@@ -56,7 +65,7 @@ public class MainController {
   private void onRecipes() {
     try {
       FXMLLoader loader = new FXMLLoader(
-          getClass().getResource("/scenebuilderjavafxapp/recipePage.fxml"));
+          getClass().getResource("/scenebuilderjavafxapp/Recipe.fxml"));
       Parent recipesRoot = loader.load();
 
       Stage stage = (Stage) recipesButton.getScene().getWindow();

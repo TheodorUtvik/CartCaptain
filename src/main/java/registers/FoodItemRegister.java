@@ -89,11 +89,19 @@ public class FoodItemRegister {
     return register.values().iterator();
   }
 
-
+  /**
+   * Initializes the register by reading food items from a file.
+   */
   public void initialize() {
-    FileHandler.readFoodFromFile("src/main/resources/foodItems.csv").forEachRemaining(this::tryAddFoodItem);
+    FileHandler.readFoodFromFile("src/main/resources/foodItems.csv")
+        .forEachRemaining(this::tryAddFoodItem);
   }
 
+  /**
+   * Creates a list of items in the register which are removed.
+   *
+   * @return a list of items removed from the register.
+   */
   public List<FoodItem> removeAllItems() {
     List<FoodItem> removedItems = new ArrayList<>(register.values());
     register.clear();
