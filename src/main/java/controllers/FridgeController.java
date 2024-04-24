@@ -126,6 +126,9 @@ public class FridgeController {
     nameField.promptTextProperty().setValue("Vare...");
     nameField.setMaxWidth(200);
 
+    Text quantityText = new Text();
+    quantityText.setVisible(false);
+
     foodTypeList = new ListView<>();
     initList();
     foodTypeList.setMaxHeight(100);
@@ -160,6 +163,8 @@ public class FridgeController {
       String selectedItem = foodTypeList.getSelectionModel().getSelectedItem();
       nameField.setText(selectedItem);
       foodTypeList.setVisible(false);
+      quantityText.setText(getQuantityField(selectedItem));
+      quantityText.setVisible(true);
     });
     cancelButton.setOnAction(event -> addStage.close());
     saveButton.setOnAction(event -> {
@@ -192,13 +197,24 @@ public class FridgeController {
       }
     });
 
-    box.getChildren().addAll(foodTypeBox, quantityField, saveButtons, errorText);
+    box.getChildren().addAll(foodTypeBox, quantityField, quantityText, saveButtons, errorText);
     pane.setCenter(box);
 
     Scene scene = new Scene(pane, 400, 300);
     addStage.setScene(scene);
     addStage.setTitle("Legg til vare");
     addStage.show();
+  }
+
+  private String getQuantityField(String selectedItem) {
+    Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile("src/main/resources/foodItems.csv");
+    while (allFoodItems.hasNext()) {
+      FoodItem foodItem = allFoodItems.next();
+      if (foodItem.getName().equals(selectedItem)) {
+        return foodItem.getUnit();
+      }
+    }
+    return "";
   }
 
   private void initList() {
