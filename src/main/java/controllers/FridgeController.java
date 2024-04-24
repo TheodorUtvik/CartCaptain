@@ -217,6 +217,9 @@ public class FridgeController {
     return "";
   }
 
+  /**
+   * Initializes the list of food items that can be added to the fridge.
+   */
   private void initList() {
     Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile("src/main/resources/foodItems.csv");
     while (allFoodItems.hasNext()) {
