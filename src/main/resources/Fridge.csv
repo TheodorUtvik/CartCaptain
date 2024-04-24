@@ -1,5 +1,4 @@
 Paprika, gram, Frukt & Grønt, 100.00
-Poteter, gram, Frukt & Grønt, 1000.00
 Ørret, gram, Fisk, 300.00
 Pølser, gram, Kjøtt, 500.00
 Ris, gram, Korn,8090
@@ -7,6 +6,10 @@ Pasta, gram, Korn, 500.00
 Sjokolade, gram, Snacks, 100.00
 Potetgull, gram, Snacks, 150.00
 Ost, gram, Meieri,100
-Egg, stykk, Meieri,4
 Kaffe, gram, Drikkevarer,8000
 Te, gram, Drikkevarer, 200.00
+Laks,gram,Fisk,200.0
+Ørret,gram,Fisk,300.0
+Egg,stykk,Meieri,12.0
+Egg,stykk,Meieri,2.0
+Ost,gram,Meieri,29090.0

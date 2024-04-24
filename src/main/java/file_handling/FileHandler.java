@@ -243,4 +243,14 @@ public class FileHandler {
     clearFile(path);
     writeFoodToFile(path, lines);
   }
+
+  public static void addFoodItem(String s, FoodItem foodItem) {
+    try {
+      Files.write(Paths.get(s), (foodItem.getName() + "," + foodItem.getUnit() + ","
+          + foodItem.getFoodType() + "," + foodItem.getQuantity() + "\n").getBytes(),
+          StandardOpenOption.APPEND, StandardOpenOption.CREATE);
+    } catch (IOException e) {
+      System.err.println("Failed to write to file: " + e.getMessage());
+    }
+  }
 }

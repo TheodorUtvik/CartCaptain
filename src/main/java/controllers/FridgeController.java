@@ -5,6 +5,7 @@ import static controllers.SceneUtils.changeScene;
 import entities.FoodItem;
 import file_handling.FileHandler;
 import java.util.Iterator;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -46,6 +47,10 @@ public class FridgeController {
    */
   @FXML
   private Text itemError;
+
+  private TextField nameField;
+
+  private ListView<String> foodTypeList;
 
   /**
    * The ListView that displays all food items in the fridge.
@@ -90,6 +95,12 @@ public class FridgeController {
   public ImageView shoppingListButtonImage;
 
   /**
+   * The button for adding a new food item to the fridge.
+   */
+  @FXML
+  private Button addItem;
+
+  /**
    * Displays the food item in the following format: "name - quantity unit".
    *
    * @param foodItem the food item to display
@@ -97,6 +108,122 @@ public class FridgeController {
    */
   private String foodItemDisplay(FoodItem foodItem) {
     return foodItem.getName() + " - " + foodItem.getQuantity() + " " + foodItem.getUnit();
+  }
+
+  /**
+   * Opens a dialog for adding a new food item to the fridge.
+   */
+  @FXML
+  public void addItem() {
+    Stage addStage = new Stage();
+    BorderPane pane = new BorderPane();
+
+    VBox box = new VBox();
+    box.setAlignment(Pos.CENTER);
+    box.setSpacing(10);
+
+    TextField nameField = new TextField();
+    nameField.promptTextProperty().setValue("Vare...");
+    nameField.setMaxWidth(200);
+
+    foodTypeList = new ListView<>();
+    initList();
+    foodTypeList.setMaxHeight(100);
+    foodTypeList.setMaxWidth(200);
+    foodTypeList.setVisible(false);
+
+    nameField.textProperty().addListener((observable, oldValue, newValue) -> {
+      foodTypeList.setVisible(true);
+      searchBarTextChanged(nameField.getText().toLowerCase());
+    });
+
+    VBox foodTypeBox = new VBox();
+    foodTypeBox.setAlignment(Pos.CENTER);
+    foodTypeBox.getChildren().addAll(nameField, foodTypeList);
+
+    TextField quantityField = new TextField();
+    quantityField.promptTextProperty().setValue("Mengde...");
+    quantityField.setMaxWidth(200);
+
+    Text errorText = new Text();
+    errorText.setVisible(false);
+    errorText.setStyle("-fx-fill: red");
+
+    HBox saveButtons = new HBox();
+    saveButtons.setAlignment(Pos.CENTER);
+    saveButtons.setSpacing(10);
+    Button saveButton = new Button("Lagre");
+    Button cancelButton = new Button("Lukk");
+    saveButtons.getChildren().addAll(cancelButton, saveButton);
+
+    foodTypeList.setOnMouseClicked(event -> {
+      String selectedItem = foodTypeList.getSelectionModel().getSelectedItem();
+      nameField.setText(selectedItem);
+      foodTypeList.setVisible(false);
+    });
+    cancelButton.setOnAction(event -> addStage.close());
+    saveButton.setOnAction(event -> {
+      try {
+        String name = nameField.getText();
+        String quantity = quantityField.getText();
+        if (name.isBlank() || quantity.isBlank()) {
+          throw new IllegalArgumentException("Empty fields.");
+        }
+        double quantityDouble = Double.parseDouble(quantity);
+        FoodItem foodItem = null;
+        Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile(
+            "src/main/resources/foodItems.csv");
+        for (Iterator<FoodItem> it = allFoodItems; it.hasNext(); ) {
+          FoodItem foodItems = it.next();
+          if (foodItems.getName().equals(name)) {
+            foodItem = foodItems;
+            foodItem.setQuantity(quantityDouble);
+          }
+        }
+        if (foodItem == null) {
+          throw new IllegalArgumentException("Item not found.");
+        }
+        FileHandler.addFoodItem("src/main/resources/Fridge.csv", foodItem);
+        updateFridgeListView();
+        addStage.close();
+      } catch (Exception e) {
+        errorText.setText("En feil oppsto. Vennligst fyll ut alle feltene.");
+        errorText.setVisible(true);
+      }
+    });
+
+    box.getChildren().addAll(foodTypeBox, quantityField, saveButtons, errorText);
+    pane.setCenter(box);
+
+    Scene scene = new Scene(pane, 400, 300);
+    addStage.setScene(scene);
+    addStage.setTitle("Legg til vare");
+    addStage.show();
+  }
+
+  private void initList() {
+    Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile("src/main/resources/foodItems.csv");
+    while (allFoodItems.hasNext()) {
+      FoodItem foodItem = allFoodItems.next();
+      foodTypeList.getItems().add(foodItem.getName());
+    }
+  }
+
+  /**
+   * This method will filter the food items based on the search query in the search bar. It will be
+   * triggered by a listener on the search bar text property. It should update the foodItemsView
+   * with the filtered items. The food items should be read from the file "foodItems.csv". The
+   * search should be case-insensitive.
+   */
+  private void searchBarTextChanged(String searchQuery) {
+    foodTypeList.getItems().clear();
+    Iterator<FoodItem> allFoodItems = FileHandler.readFoodFromFile("src/main/resources/foodItems.csv");
+    while (allFoodItems.hasNext()) {
+      FoodItem foodItem = allFoodItems.next();
+      if (foodItem.getName().toLowerCase().contains(searchQuery)) {
+        foodTypeList.getItems().add(foodItem.getName());
+      }
+    }
   }
 
   /**

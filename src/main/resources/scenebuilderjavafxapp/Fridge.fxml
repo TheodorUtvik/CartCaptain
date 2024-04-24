@@ -11,68 +11,54 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21"
-  xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FridgeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FridgeController">
   <children>
-    <TextField fx:id="searchField" layoutX="139.0" layoutY="66.0" prefHeight="26.0"
-      prefWidth="234.0" promptText="Søk etter matvare..."/>
-    <Button fx:id="searchButton" layoutX="402.0" layoutY="66.0" mnemonicParsing="false"
-      onAction="#onSearchButtonClicked" text="Søk"/>
+    <TextField fx:id="searchField" layoutX="139.0" layoutY="66.0" prefHeight="26.0" prefWidth="234.0" promptText="Søk etter matvare..." />
+    <Button fx:id="searchButton" layoutX="402.0" layoutY="66.0" mnemonicParsing="false" onAction="#onSearchButtonClicked" text="Søk" />
     <Text layoutX="245.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kjøleskap">
       <font>
-        <Font name="Arial" size="25.0"/>
+        <Font name="Arial" size="25.0" />
       </font>
     </Text>
-    <ListView fx:id="fridgeListView" layoutX="71.0" layoutY="176.0" prefHeight="173.0"
-      prefWidth="441.0"/>
+    <ListView fx:id="fridgeListView" layoutX="71.0" layoutY="176.0" prefHeight="173.0" prefWidth="441.0" />
     <HBox alignment="CENTER" layoutX="71.0" layoutY="128.0" prefHeight="31.0" prefWidth="441.0">
       <children>
-        <Button mnemonicParsing="false" onAction="#categoryAll" text="Alle"/>
-        <Button mnemonicParsing="false" onAction="#categoryDairy" text="Meieri"/>
-        <Button mnemonicParsing="false" onAction="#categoryMeat" text="Kjøtt"/>
-        <Button mnemonicParsing="false" onAction="#categoryFish" text="Fisk"/>
-        <Button mnemonicParsing="false" onAction="#categoryGrains" text="Korn"/>
-        <Button mnemonicParsing="false" onAction="#categoryFruitAndVegetables"
-          text="Frukt &amp; Grønt"/>
+        <Button mnemonicParsing="false" onAction="#categoryAll" text="Alle" />
+        <Button mnemonicParsing="false" onAction="#categoryDairy" text="Meieri" />
+        <Button mnemonicParsing="false" onAction="#categoryMeat" text="Kjøtt" />
+        <Button mnemonicParsing="false" onAction="#categoryFish" text="Fisk" />
+        <Button mnemonicParsing="false" onAction="#categoryGrains" text="Korn" />
+        <Button mnemonicParsing="false" onAction="#categoryFruitAndVegetables" text="Frukt &amp; Grønt" />
       </children>
     </HBox>
     <VBox layoutX="6.0" layoutY="32.0" prefHeight="168.0" prefWidth="54.0">
-      <ImageView fx:id="hamburgerMenu" fitHeight="25.0" fitWidth="30.0"
-        onMousePressed="#showMenu" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../images/menu-burger.png"/>
+      <ImageView fx:id="hamburgerMenu" fitHeight="25.0" fitWidth="30.0" onMousePressed="#showMenu" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../images/menu-burger.png" />
       </ImageView>
-      <Button fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#goHome"
-        visible="false">
+      <Button fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#goHome" visible="false">
         <graphic>
-          <ImageView fx:id="homeButtonImage" fitHeight="150.0" fitWidth="30.0"
-            pickOnBounds="true" preserveRatio="true">
-            <Image url="@../images/house-chimney.png"/>
+          <ImageView fx:id="homeButtonImage" fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/house-chimney.png" />
           </ImageView>
         </graphic>
       </Button>
-      <Button fx:id="shoppingListButton" disable="true" mnemonicParsing="false"
-        onAction="#goShoppingList" visible="false">
+      <Button fx:id="shoppingListButton" disable="true" mnemonicParsing="false" onAction="#goShoppingList" visible="false">
         <graphic>
-          <ImageView fx:id="shoppingListButtonImage" fitHeight="150.0" fitWidth="30.0"
-            pickOnBounds="true" preserveRatio="true">
-            <Image url="@../images/shopping-cartIcon.png"/>
+          <ImageView fx:id="shoppingListButtonImage" fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/shopping-cartIcon.png" />
           </ImageView>
         </graphic>
       </Button>
-      <Button fx:id="recipeButton" disable="true" mnemonicParsing="false" onAction="#goRecipes"
-        visible="false">
+      <Button fx:id="recipeButton" disable="true" mnemonicParsing="false" onAction="#goRecipes" visible="false">
         <graphic>
-          <ImageView fx:id="recipeButtonImage" fitHeight="150.0" fitWidth="30.0"
-            pickOnBounds="true" preserveRatio="true">
-            <Image url="@../images/recipeIcon.png"/>
+          <ImageView fx:id="recipeButtonImage" fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/recipeIcon.png" />
           </ImageView>
         </graphic>
       </Button>
     </VBox>
-    <Button fx:id="changeAmountButton" layoutX="225.0" layoutY="349.0" onAction="#changeAmount"
-      prefWidth="150.0" text="Endre antall"/>
-    <Text layoutX="402.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0"
-      text="Vennligst velg en vare først." fx:id="itemError"/>
+    <Button fx:id="changeAmountButton" layoutX="225.0" layoutY="349.0" onAction="#changeAmount" prefWidth="150.0" text="Endre antall" />
+    <Text fx:id="itemError" layoutX="402.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vennligst velg en vare først." />
+      <Button fx:id="addItem" layoutX="476.0" layoutY="66.0" mnemonicParsing="false" text="Legg til vare" onAction="#addItem"/>
   </children>
 </AnchorPane>
